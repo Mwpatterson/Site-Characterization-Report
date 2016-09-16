@@ -1,0 +1,1332 @@
+---
+fontsize: 11pt
+geometry: margin=1in, includefoot, top=1in, bottom=1.25in
+header-includes:
+- \usepackage{fancyhdr}
+- \usepackage{ragged2e}
+- \usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
+- \usepackage{lastpage}
+- \usepackage{hyperref}
+- \usepackage[hypcap]{caption}
+- \usepackage{array}
+- \usepackage{graphicx}
+- \usepackage[datesep=/]{datetime2}
+- \usepackage{ltablex}
+- \usepackage{pifont}
+- \usepackage{float}
+- \usepackage{longtable}
+- \usepackage{array}
+linkcolor: black
+mainfont: Calibri
+output:
+  pdf_document:
+    fig_caption: yes
+    fig_width: 4
+    latex_engine: xelatex
+    number_sections: yes
+  html_document: default
+  word_document: default
+---
+```{r libraries, echo=FALSE, message=FALSE, warning=FALSE}
+
+#load libraries
+# call all necessary libaries
+#if packages listed below are not installed, use install.packages("packageName") before running library(packageName)# 
+
+library(knitr)
+library(kfigr)
+library(atbdLibrary)
+library(dplyr)
+library(stringr)
+require(xlsx)
+require(tidyr)
+require(XLConnect)
+require(ggplot2)
+
+# install TeX program :  http://miktex.org/2.9/setup (Windows) ; http://tug.org/mactex/ (Mac)
+# re-install, update miktex - datetime2 package (called here) was released 3/24/15, all older versions do not have this package pre-loaded.
+# documentation for kfigr https://github.com/mkoohafkan/kfigr/blob/master/vignettes/introduction.Rmd
+
+```
+
+
+```{r set FilePath, echo=FALSE, message=FALSE}
+#Set working directory and file paths
+options(stringsAsFactors = FALSE) 
+
+
+if (file.exists(
+  'K:/Site Characterization Report/rmdTemplate/template')){
+  wdir<-'K:/Site Characterization Report/rmdTemplate/template'
+}
+
+# for testing function updates
+# functionDir<-'C:/Users/selmendorf/Documents/ATBDS/ATBDgit/devTOS/atbdLibrary/R'
+# 
+# for (i in list.files(functionDir, full.names=T)){
+#   if (i %in% paste(functionDir,c('atbdLibrary-internal.R', 'rFunctionsChangeLog.txt'),sep="/")){next}
+#   source(i)
+# }
+
+myPathToGraphics <- paste(wdir,'graphics', sep='/')
+myPathToData <- paste(wdir,'data', sep='/')
+myPathToCIFiles <- paste(myPathToData, 'CI_files', sep='/')
+if(exists("gitPath")){
+myPathToWB <- paste(gitPath,'organismalIPT/beetles/betDefData', sep='/')
+}
+
+```
+
+```{r myVariables, echo=FALSE}
+## set variables      ##Note- for future versions, modifications to latex tables below may be necessary
+
+#Set the domain/site variables
+
+domainName <- "Southeast"
+domainID <- "03"   #no D
+coreName <- "Ordway-Swisher Biological Station"
+coreCode <- "OSBS"
+rel1Name <- "Disney Wilderness Preserve"
+rel1Code <- "DSNY"
+rel2Name <- "Jones Ecological Research Center"
+rel2Code <- "JERC"
+
+#Title page
+myTitle <- "TOS Site Characterization Report: Domain 03"
+
+firstAuthor <- "Rachel Kraus"
+docNum <- "NEON.DOC.XXXXXX"  #This is the template document #, replace with your doccument #
+rev <- "A"
+authorOrg <- "FSU"
+
+secondAuthor <- "Michael Patterson"
+secondOrg <- "FSU"
+
+thirdAuthor <- "Oliver Smith"
+thirdOrg <- "FSU"
+
+#Approvals
+approvalName <- ""
+approvalOrg <- ""
+approvalDate <- ""
+
+secondApprovalName <- ""
+secondApprovalOrg <- ""
+secondApprovalDate <- ""
+
+#Release
+releasedByName <- "Jen DeNicholas"
+releasedByOrg <- "CM"
+releasedByDate <- "mm/dd/2015"
+
+
+#change record
+revA <- "A"
+revADate <- "mm/dd/yyyy"
+revAECO <- "ECO-xxxx"
+revADesc <- "Initial Release" 
+
+revB <- "B"
+revBDate <- "mm/dd/yyyy"
+revBECO <- "ECO-xxxx"
+revBDesc <- "" 
+
+revC <- "C"
+revCDate <- "mm/dd/yyyy"
+revCECO <- "ECO-xxxx"
+revCDesc <- "" 
+
+if(exists("myPathToWB")){
+# List fieldNames here to auto-populate the subproducts list under Variables Reported
+variablesReported <- c("targetTaxaPresent", "morphospeciesID","individualCount","taxonID","scientificName", "taxonRank","identificationQualifier")
+}
+
+```
+
+
+[//]: TEMPLATE SECTION 1 - DO NOT CHANGE!! #####################################
+[//]: These are document settings for NEON template, code will not print
+
+
+\DTMsetdatestyle{mmddyyyy}
+\thispagestyle{fancy}
+\sloppy
+\RaggedRight
+\pagestyle{fancy}
+\pagenumbering{gobble}
+\fancyhf{}
+\fancyheadoffset[L, R]{0.5in}
+\fancyfootoffset[L, R]{0.5in}
+\fancyhead[L]{\includegraphics[width=4cm]{Logo}
+\vspace{0.5cm}} 
+
+\fancyhead[R]{
+\footnotesize
+\setlength{\extrarowheight}{1mm}
+\begin{tabular}{|p{5cm}|p{5cm}|p{1in}|}
+\hline
+\multicolumn{2}{|p{11cm}|}{\emph{Title:} `r myTitle`} & \emph{Date:} \today \\ \hline
+\emph{NEON.DOC\#:} `r docNum`         & \emph{Author:} `r firstAuthor`        & \emph{Revision:} `r rev` \\ \hline
+\end{tabular}
+\vspace{1cm}
+} 
+        
+[//]: check out http://www.tablesgenerator.com/latex_tables for help with code to generate tables
+
+\renewcommand{\headrulewidth}{0pt}
+\maketitle
+\thispagestyle{fancy}
+
+\begin{center}
+
+\vspace{1in}
+\huge \bfseries \uppercase {`r myTitle` \\[0.4cm] }
+
+\end{center}
+
+\vspace{1in}
+
+\setlength{\extrarowheight}{1mm}
+\begin{tabular}{|m{5.5cm}|m{5.5cm}|m{5.5cm}|}
+\hline
+\textbf{PREPARED BY} &\textbf{ORGANIZATION}  &\textbf{DATE} \\ \hline
+`r firstAuthor`      & `r authorOrg`         & \today \\ \hline
+`r secondAuthor`     & `r secondOrg`         & \today \\ \hline
+`r thirdAuthor`     & `r thirdOrg`         & \today \\ \hline
+\end{tabular}
+
+
+\setlength{\extrarowheight}{1mm}
+\begin{tabular}{|m{5.5cm}|m{5.5cm}|m{5.5cm}|}
+\hline
+\textbf{APPROVALS}     &\textbf{ORGANIZATION}  &\textbf{APPROVAL DATE} \\ \hline
+`r approvalName`       & `r approvalOrg`       &  `r approvalDate`\\ \hline
+`r secondApprovalName` & `r secondApprovalOrg` &`r secondApprovalDate`  \\ \hline
+ & & \\ \hline
+ & & \\ \hline
+\end{tabular}
+
+\setlength{\extrarowheight}{1mm}
+\begin{tabular}{|m{5.5cm}|m{5.5cm}|m{5.5cm}|}
+\hline
+\textbf{RELEASED BY} &\textbf{ORGANIZATION}  &\textbf{RELEASE DATE} \\ \hline
+`r releasedByName` & `r releasedByOrg`        &  `r releasedByDate` \\ \hline
+\end{tabular}
+
+\vspace{1in}
+
+\begin{center}
+See configuration management system for approval history.
+
+\bigskip
+
+\textcopyright \the\year\ NEON Inc. All rights reserved.
+
+\scriptsize{The National Ecological Observatory Network is a project solely funded by the National Science Foundation and managed under cooperative agreement by Battelle. Any opinions, findings, and conclusions or recommendations expressed in this material are those of the author(s) and do not necessarily reflect the views of the National Science Foundation.}
+\end{center}
+
+\newpage
+
+\vspace{3in}
+
+\begin{center}
+
+\bfseries\Large\uppercase{Change Record}
+\end{center}
+
+\vspace{1in}
+
+\setlength{\extrarowheight}{1mm}
+\begin{tabular}{|m{1in}|m{1in}|m{1in}|m{3in}|}
+\hline
+\textbf{REVISION} & \textbf{DATE} & \textbf{ECO\#} & \textbf{DESCRIPTION OF CHANGE} \\ \hline
+`r revA`         & `r revADate`   & `r revAECO`    & `r revADesc`          \\ \hline
+`r revB`         & `r revBDate`   & `r revBECO`    & `r revBDesc`          \\ \hline
+`r revC`         & `r revCDate`   & `r revCECO`    & `r revCDesc`          \\ \hline
+\end{tabular}
+
+
+\newpage
+\renewcommand\contentsname{\uppercase{Table of contents}}
+\tableofcontents
+
+\renewcommand\listtablename{\uppercase{list of tables and figures}}
+\let\oldnumberline\numberline
+\renewcommand{\numberline}{\tablename~\oldnumberline}
+\listoftables
+\renewcommand{\numberline}{\figurename~\oldnumberline}
+\renewcommand\listfigurename{}
+\addtocontents{lof}{\vskip -1.2cm}
+\listoffigures
+
+\newpage
+
+\section{\uppercase{Description}}
+\pagenumbering{arabic} 
+\fancyfoot[L]{
+\footnotesize{\color{gray}Template NEON.DOC.000xxxx Rev A - `r releasedByDate`}
+} 
+\fancyfoot[C]{
+\textcopyright \the\year\ NEON Inc. All rights reserved. \\
+Page \thepage \hspace{1pt} of \pageref{LastPage}
+}
+
+
+[//]: TEMPLATE SECTION 2 #######################################################
+[//]: Okay to edit
+
+
+##Purpose
+Domain and site-specific information collected and described here is used to inform the execution of protocols for the NEON Terrestrial Observation System (TOS), and complements the official NEON TOS data products generated from each site. In addition, the TOS spatial layout and plot allocation is described for each site within the domain.
+
+##Scope
+This document includes any site specific characterization methods and the results of characterization efforts for each of the two sites in the `r domainName` domain. For more information about the sampling methods, reference the TOS Site Characterization Methods Document (RD[06]). The geographic coordinates for all TOS sampling locations can be found in the Reference Documents area of the NEON Data Portal and are provided with TOS data product downloads.
+
+
+\section{\uppercase{Related Documents and Acronyms}}
+\pagenumbering{arabic} 
+\fancyfoot[L]{
+\footnotesize{\color{gray}Template NEON.DOC.000xxxx Rev A - `r releasedByDate`}
+} 
+\fancyfoot[C]{
+\textcopyright \the\year\ NEON Inc. All rights reserved. \\
+Page \thepage \hspace{1pt} of \pageref{LastPage}
+## Applicable Documents
+Applicable documents contain information that shall be applied in the current document. Examples are higher level requirements documents, standards, rules and regulations.
+
+```{r Applicable Documents list, echo=FALSE}
+
+# Documents will be assigned an ER[##] in the order they are listed
+
+ADlist <- as.data.frame(rbind(
+  "name1" = c("name"="EHS Safety Policy and Program Manual", "doc"= "NEON.DOC.004300"),
+  "name2" = c("name"="NEON Training Plan", "doc"= "NEON.DOC.001155"),
+  "name3" = c("name"="Field Operations Job Instruction Training Plan", "doc"= "NEON.DOC.050005"),
+  "name4" = c("name"="TOS Science Design for Ground Beetle Abundance and Diversity", "doc"= "NEON.DOC.000909"),
+  "name5" = c("name"="TOS Science Design for Mosquito Abundance, Diversity and Phenology", "doc"= "NEON.DOC.000910"),
+  "name6" = c("name"="TOS Science Design for Plant Diversity", "doc"= "NEON.DOC. 000912"),
+  "name7" = c("name"="TOS Science Design for Small Mammal Abundance and Diversity", "doc"= "NEON.DOC.000915"),
+  "name8" = c("name"="TOS Science Design for Plant Biomass, Productivity, and Leaf Area Index", "doc"= "NEON.DOC.000914"),
+  "name9" = c("name"="NEON Observatory Design", "doc"= "NEON.DOC.000001")
+  # any additional documents...
+))
+
+
+ADlist <- cbind(ADlist,
+  "ref"= paste("AD[",
+              formatC(1:nrow(ADlist), width=2, flag="0"),
+              "]", 
+              sep="")
+)
+
+```
+
+\begin{tabular}{|m{1cm}|m{3cm}|m{11cm}|}
+\hline
+`r paste(ADlist$ref, "&",
+        ADlist$doc, "&",
+        ADlist$name, "\\\\ ","\\hline", sep="", collapse=" ")`
+\end{tabular}
+
+
+##  Reference Documents
+
+Reference documents contain information complementing, explaining, detailing, or otherwise supporting the information included in the current document.
+
+```{r Reference Document list, echo=FALSE}
+
+# Documents will be assigned an RD[##] in the order they are listed
+
+RDlist <- as.data.frame(rbind(
+  "name1" = c("name"="NEON Acronym List", "doc"= "NEON.DOC.000008"),
+  "name2" = c("name"="NEON Glossary of Terms", "doc"= "NEON.DOC.000243"),
+  "name3" = c("name"="TOS Science Design for Spatial Sampling", "doc"= "NEON.DOC.000913"),
+  "name4" = c("name"="TIS Site Characterization Report", "doc"= "NEON.DOC.XXXXXX"),
+  "name5" = c("name"="AOS Site Characterization Report", "doc"= "NEON.DOC.XXXXXX"),
+  "name6" = c("name"="TOS Site Characterization Methods", "doc"= "NEON.DOC.003885"),
+  "name7" = c("name"="TOS Protocol and Procedure: Small Mammal Sampling", "doc"="NEON.DOC.000481"),
+  "name8" = c("name"="TOS Protocol and Procedure: Breeding Landbird Abundance and Diversity", "doc" = "NEON.DOC.01401")
+  # any additional documents...
+))
+
+RDlist <- cbind(RDlist,
+  "ref"= paste("RD[",
+              formatC(1:nrow(RDlist), width=2, flag="0"),
+              "]", 
+              sep="")
+)
+
+```
+\begin{tabular}{|m{1cm}|m{3cm}|m{11cm}|}
+\hline
+`r paste(RDlist$ref, "&",
+        RDlist$doc, "&",
+        RDlist$name, "\\\\ ","\\hline", sep="", collapse=" ")`
+\end{tabular}
+
+##  Acronyms
+
+\begin{tabular}{|m{3cm}|m{12.5cm}|}
+\hline
+\bfseries{Acronym}&  \bfseries{Definition}  \\ \hline
+BOLD    &  Barcode of Life Datasystems \\ \hline
+NLCD    &  National Land Cover Database \\ \hline
+\end{tabular}
+
+\section{\uppercase{Domain `r domainID` Overview: `r domainName` Domain}}
+
+
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\textwidth] {`r paste(myPathToGraphics,'D10_Observatory_map.png', sep='/')`}
+\caption{NEON project map with Domain `r domainID` highlighted in red}
+\label{fig:D10_Observatory_map}
+\end{figure}
+
+
+\emph{\color{red}Core towers as red dots, relocatable towers as green dots. See D10 example above}
+
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\textwidth] {`r paste(myPathToGraphics,'D10_Domain_map.png', sep='/')`}
+\caption{Site boundaries within Domain `r domainID`}
+\label{fig:D10_domain_map}
+\end{figure}
+
+\emph{\color{red}Summarize the domain description. See the domain descriptions in K:Site Characterization Report}
+
+*  States included in the domain: Alabama, Florida, Georgia, Louisiana, Mississippi, North Carolina, South Carolina, Texas 
+*  Core site:  `r coreName`
+*  Relocatable 1: `r rel1Name`
+*  Relocatable 2: `r rel2Name`
+*  Science themes: Forest Management 
+
+\section{\uppercase{Core Site- `r coreName` `r coreCode`}}
+
+The Ordway-Swisher Biological Station (OSBS) is operated by the University of Florida and comprises over 9,300 acres (38km2). It is a year-round field station established for the long-term study and conservation of unique ecosystems through management, research and education. The Station is located approximately 20 miles east of Gainesville in Melrose (Putnam County, Florida).  The Ordway-Swisher Biological Station site is designed to study an intact longleaf pine ecosystem, which is one of the historically dominant forest types in the region. The longleaf pine ecosystem spans the region, with deep sandy soils through the central ridgeline from North-to-mid Florida.
+
+*  Site host: University of Florida Foundation 
+*  Putnam/Florida
+*  Area: 38 km2
+*  Elevation: 20-50m
+*  Dominant vegetation type- Ordway-Swisher is dominated by pine and turkey oak (\textit{Quercus laevis Walter}) vegetation with a grass and forb groundcover. Pines are primarily Longleaf Pines (\textit{Pinus palustris Mill.}) and Lobolly (\textit{P. Taeda}) and the dominant perennial grass is wiregrass (\textit{Aristida stricta Michx.}). Numerous species of other perennial grasses and forbs also present. 
+*  General management: The forest is maintained by fire and has a relatively open structure: it is managed with prescribed burns at a frequency of 3-4 years.
+*  There are two aquatic arrays at Ordway-Swisher, representing the two dominant aquatic features on the landscape: 1) Suggs lake, a shallow surface water lake that is rich in taxa and biologically active in structure and function; and 2) Barco lake, a deep lake connected to ground water.  See the AOS site characterization report for more details (RD[05]).
+*  Plot Selection: NEON TOS Plots were allocated across the site avoiding existing research.  
+
+
+##TOS Spatial Sampling Design
+
+<!---
+[//]:  A majority of sites can use the dialogue below.  If the site had any NLCD mismatch use something along the lines of: TOS plots were allocated at OSBS according to a spatially balanced and stratified-random design (RD[3]).  The 2006 National Land Cover Database (NLCD) was selected for stratification because of the consistent and comparable data availability across the United States. Due to a mismatch between a strata described by the NLCD (shrub scrub) and existing ground cover (turkey oak and long-leaf pine), TOS plots were not initially allocated to shrub scrub.  The associated pixels will be reclassified with data from NEON's remote sensing platform such that this landscape component will be sampled early in NEON Operations.  The maps below depict the plot locations for the first year of NEON sampling.  Some plot locations may change over time due to logistics, safety, and science requirements.  Please visit the NEON website (http://www.neonscience.org) for updated plot locations at each site.
+-->
+
+TOS plots were allocated at `r coreCode` according to a spatially balanced and stratified-random design (RD[3]).  The 2006 National Land Cover Database (NLCD) was selected for stratification because of the consistent and comparable data availability across the United States. Due to a mismatch between a strata described by the NLCD (shrub scrub) and existing ground cover (turkey oak and long-leaf pine), TOS plots were not initially allocated to shrub scrub.  The associated pixels will be reclassified with data from NEON's remote sensing platform such that this landscape component will be sampled early in NEON Operations. TOS plots that are distributed throughout the site according to the spatial design are hereafter referred to as 'distributed plots'. TOS plots that are randomly allocated within the airshed of the NEON Terrestrial Instrument System (TIS) tower to collect complementary data are not stratified by NLCD class; these plots are hereafter referred to as 'tower plots'. The maps below depict the plot locations for the first year of NEON sampling.  Some plot locations may change over time due to logistics, safety, and science requirements.  Please visit the NEON website (http://www.neonscience.org) for updated plot locations at each site.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\textwidth] {`r paste(myPathToGraphics,'D10_CPER_map.png', sep='/')`}
+\caption{Map of TOS plot locations within the NEON TOS sampling boundary at `r coreCode`}
+\label{fig:D10_CPER_map}
+\end{figure}
+See RD[03] for additional information about the sampling that occurs at each plot type.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\textwidth] {`r paste(myPathToGraphics,'D10_CPER_Tower_map.png', sep='/')`}
+\caption{Map of the tower airshed at `r coreCode`}
+\label{fig:D10_CPER_map}
+\end{figure}
+More information about the tower airshed can be found in the FIU site characterization reports (RD[04])  
+
+
+```{r NLCD tables, echo=FALSE, message=FALSE, warning=FALSE}
+require(xlsx)
+require(plyr)
+require(dplyr)
+require(tidyr)
+require(raster)
+require(rgdal)
+library(knitr)
+
+#applicable modules data is up-to-date and more accurate
+data<- read.csv(file= "A:/TOS/TOS_Workspace/SpatialLookUpTables/applicableModules.csv",head=TRUE,sep=",", stringsAsFactors=FALSE)
+legend<- read.csv(file= "N:/Science/FSU/Site Characterization Report/moduleCodes.csv",head=TRUE,sep=",", stringsAsFactors=FALSE)
+if (file.exists(
+  'C:/Users/dbarnett/Documents/GitHub/organismalIPT')){
+  all.site.directory<-read.csv('C:/Users/dbarnett/Documents/GitHub/devTOS/spatialData/supportingDocs/all_sites_ref_sheet.csv',head=T,sep=",",stringsAsFactors = F)
+}
+
+if (file.exists(
+  'C:/Users/rkrauss/Documents/GitHub/organismalIPT')){
+  all.site.directory<-read.csv('C:/Users/rkrauss/Documents/GitHub/devTOS/spatialData/supportingDocs/all_sites_ref_sheet.csv',head=T,sep=",",stringsAsFactors = F)
+}
+
+if (file.exists(
+  'C:/Users/mpatterson/Documents/GitHub/organismalIPT')){
+  all.site.directory<-read.csv('C:/Users/mpatterson/Documents/GitHub/devTOS/spatialData/supportingDocs/all_sites_ref_sheet.csv',head=T,sep=",",stringsAsFactors = F)
+}
+
+#this chunk pulls in the RRQRR raster and extracts a block count by NLCD value.
+RRQRR <- raster(all.site.directory$nlcdUsedForAllocation [which(all.site.directory$site==coreCode)])
+Counts<-(freq(RRQRR))
+Counts<-as.data.frame(Counts)
+Counts<-Counts[complete.cases(Counts),] #this removes the NA
+Counts<-data.frame("value"=Counts$value, "count"=Counts$count) #cleaning up the names for use later
+
+#This chunk is used to change Raster values to english
+#raster values
+Class<-c(11,12,21,22,23,24,31,41,42,43,51,52,71,72,73,74,81,82,90,95)
+
+#NLCD names
+NLCDClass<-c("openWater","perennialIceSnow","developedOpenSpace","developedLowIntensity","developedMediumIntensity","developedHighIntensity","barrenLand","deciduousForest","evergreenForest","mixedForest","dwarfScrub","shrubScrub","grasslandHerbaceous","sedgeHerbaceous","lichens","moss","pastureHay","cultivatedCrops","woodyWetlands","emergentHerbaceousWetlands")
+
+#merged!
+NLCD.data<-data.frame(Class,NLCDClass, stringsAsFactors = FALSE)
+
+#this chunk creates the all.dat dataframe which is used by the function in producing the establishment goals.
+#now combine the NLCD data frame with the Counts data frame to turn the number values of NLCD class into written values
+Counts$value<-NLCD.data[match(Counts$value, NLCD.data$Class),2]
+
+#Convert to km2 and get column names set up for running estimation function
+Counts$area<-((Counts$count*900)/1000000)
+Counts$site<-coreCode
+Counts<-subset(Counts, select = -count)
+names(Counts)[names(Counts)=="value"] <- "NLCD.Class"
+all.dat<-data.frame("NLCD Class" = as.factor(Counts$NLCD.Class),"area" = Counts$area)
+all.dat$percentage<-NA
+for (i in 1:length(all.dat$NLCD.Class)) {
+  all.dat$percentage[i]<-(all.dat$area[i]/sum(all.dat$area))*100
+}
+
+#format table to match SCR format
+all.dat$NLCD.Class <- gsub("([a-z])([A-Z])", "\\1 \\2", all.dat$NLCD.Class)
+all.dat$NLCD.Class <- gsub("(^|[[:space:]])([[:alpha:]])", "\\1\\U\\2", all.dat$NLCD.Class, perl=TRUE)
+all.dat$area <- round(all.dat$area, 2)
+all.dat$percentage <- round(all.dat$percentage, 2)
+all.dat <- all.dat[order(-all.dat$percentage),]
+
+#all.dat <- data.frame(NLCD.Class = all.dat$NLCD.Class, Site.Area = all.dat$area, Percent = #all.dat$percentage)
+
+cols <- c('NLCD Class', 'Site Area km^2^','Percent')
+
+#FOPS established table
+FOPS_established<- read.xlsx(file= paste(all.site.directory$FOPS.Datasheet.Location[which(all.site.directory$site==coreCode)]),sheetName ="targetNumbers" ,head=TRUE,sep=",", stringsAsFactors=FALSE)
+
+FOPS_established<-FOPS_established %>% dplyr::select(nlcdClass,plotType,subtype,target)
+FOPS_established<-FOPS_established[complete.cases(FOPS_established),]
+
+#format table to match SCR format
+FOPS_established$nlcdClass <- gsub("([a-z])([A-Z])", "\\1 \\2", FOPS_established$nlcdClass)
+FOPS_established$nlcdClass <- gsub("(^|[[:space:]])([[:alpha:]])", "\\1\\U\\2", FOPS_established$nlcdClass, perl=TRUE)
+
+FOPS_established <- FOPS_established[order(FOPS_established$plotType, FOPS_established$subtype),]
+FOPSestablished <- FOPS_established[,c(2,3,1,4)]
+
+data_sorted<- data[order(data$siteID,data$plotType,data$subtype),]
+myvars <- c("siteID","plotType","subtype","plotID","nlcdClass","applicableModules")
+data_modules <- data_sorted[myvars]
+
+data_modules$nlcdClass[which((data_modules$plotType=="tower"))]<- ''
+
+#pull out modules and add rows.
+#This code functions by extending the data frame width so that each module is listed in its own cell.
+data_modules$bet<-""
+data_modules$bet[which(grepl('bet', data_modules$applicableModules)==TRUE)]<-'bet'
+data_modules$bgc<-""
+data_modules$bgc[which(grepl('bgc', data_modules$applicableModules)==TRUE)]<-'bgc'
+data_modules$sme<-""
+data_modules$sme[which(grepl('sme', data_modules$applicableModules)==TRUE)]<-'sme'
+data_modules$brd<-""
+data_modules$brd[which(grepl('brd', data_modules$applicableModules)==TRUE)]<-'brd'
+data_modules$cdw<-""
+data_modules$cdw[which(grepl('cdw', data_modules$applicableModules)==TRUE)]<-'cdw'
+data_modules$ltr<-""
+data_modules$ltr[which(grepl('ltr', data_modules$applicableModules)==TRUE)]<-'ltr'
+data_modules$dhp<-""
+data_modules$dhp[which(grepl('dhp', data_modules$applicableModules)==TRUE)]<-'dhp'
+data_modules$div<-""
+data_modules$div[which(grepl('div', data_modules$applicableModules)==TRUE)]<-'div'
+data_modules$hbp<-""
+data_modules$hbp[which(grepl('hbp', data_modules$applicableModules)==TRUE)]<-'hbp'
+data_modules$bbc<-""
+data_modules$bbc[which(grepl('bbc', data_modules$applicableModules)==TRUE)]<-'bbc'
+data_modules$vst<-""
+data_modules$vst[which(grepl('vst', data_modules$applicableModules)==TRUE)]<-'vst'
+data_modules$mfb<-""
+data_modules$mfb[which(grepl('mfb', data_modules$applicableModules)==TRUE)]<-'mfb'
+data_modules$mam<-""
+data_modules$mam[which(grepl('mam', data_modules$applicableModules)==TRUE)]<-'mam'
+data_modules$tck<-""
+data_modules$tck[which(grepl('tck', data_modules$applicableModules)==TRUE)]<-'tck'
+data_modules$mos<-""
+data_modules$mos[which(grepl('mos', data_modules$applicableModules)==TRUE)]<-'mos'
+data_modules$phe<-""
+data_modules$phe[which(grepl('phe', data_modules$applicableModules)==TRUE)]<-'phe'
+data_modules$cfc<-""
+data_modules$cfc[which(grepl('cfc', data_modules$applicableModules)==TRUE)]<-'cfc'
+
+#After expanding the width of the data frame, we remove the redundant Applicable modules column
+data_modules$applicableModules<-NULL
+
+#Next we subset each group of established plots based
+established_baseplots<-subset(data_modules,data_modules$subtype=="basePlot")
+established_phenogrids<-subset(data_modules,data_modules$subtype=="phenology")
+established_mammalplots<-subset(data_modules,data_modules$subtype=="mammalGrid")
+established_tickplots<-subset(data_modules,data_modules$subtype=="tickPlot")
+established_mosquitopoints<-subset(data_modules,data_modules$subtype=="mosquitoPoint")
+established_birdgrids<-subset(data_modules,data_modules$subtype=="birdGrid")
+
+#Then Melt the data to form new unique rows for every module
+grouped_baseplots<- established_baseplots %>%gather(plotID2,module,bet:cfc)
+grouped_phenogrids<- established_phenogrids %>%gather(plotID2,module,bet:cfc)
+grouped_mammalplots<- established_mammalplots %>%gather(plotID2,module,bet:cfc)
+grouped_tickplots<- established_tickplots %>%gather(plotID2,module,bet:cfc)
+grouped_mosquitopoints<- established_mosquitopoints %>%gather(plotID2,module,bet:cfc)
+grouped_birdgrids<- established_birdgrids %>%gather(plotID2,module,bet:cfc)
+
+#create the master established list
+established_all<-rbind(grouped_baseplots,grouped_phenogrids,grouped_mammalplots,grouped_tickplots,grouped_mosquitopoints,grouped_birdgrids)
+
+#clean the master established list
+established_all[established_all==""] <- NA
+established_all$plotID2<-NULL
+established_all<-established_all[complete.cases(established_all$module),]
+names(established_all)[names(established_all)=="subtype"] <- "subType"
+
+
+#this chunk counts the established plots grouped by module
+plot_counts_Mod<-count(established_all, c('siteID','nlcdClass','plotType','subType', 'module'))
+names(plot_counts_Mod)[names(plot_counts_Mod)=="freq"] <- "established"
+output<-plot_counts_Mod[which(plot_counts_Mod$siteID==coreCode),]
+
+for (i in 1:length(output$siteID)){
+  output$module[i]<-legend$ElementName[which(legend$ElementCode==output$module[i])]
+}
+
+#format table to match SCR
+output$nlcdClass <- gsub("([a-z])([A-Z])", "\\1 \\2", output$nlcdClass)
+output$nlcdClass <- gsub("(^|[[:space:]])([[:alpha:]])", "\\1\\U\\2", output$nlcdClass, perl=TRUE)
+output$subType <- gsub("([a-z])([A-Z])", "\\1 \\2", output$subType)
+output$subType <- gsub("(^|[[:space:]])([[:alpha:]])", "\\1\\U\\2", output$subType, perl=TRUE)
+output$plotType <- gsub("(^|[[:space:]])([[:alpha:]])", "\\1\\U\\2", output$plotType, perl=TRUE)
+
+output <- output[order(output$plotType, output$subType, output$module),]
+output <- subset(output, select = -c(siteID))
+
+output <- output[,c(2,3,1,4,5)]
+
+distributedOutput <- filter(output, plotType == "Distributed")
+distributedOutput <- filter(distributedOutput, subType == "Base Plot")
+
+towerOutput<- filter(output, plotType == "Tower")
+```
+\begin{table}[H]
+\caption{NLCD Land Cover Classes and Area within the TOS site boundary at `r coreCode`}
+\begin{tabular}{|m{2in}|m{2in}|m{2in}|}
+\hline
+\textbf{NLCD Class} & \textbf{Site Area km$^2$} & \textbf{Percent} \\ \hline
+`r paste(all.dat$NLCD.Class, "&", all.dat$area, "&", 
+         all.dat$percentage, 
+         " \\\\ ","\\hline", sep="", collapse=" ")`
+\end{tabular}
+\end{table}
+Note: Any NLCD land cover classes less than 5% will not be sampled. Additionally, no sampling will take place in Water, Developed, or Barren NLCD classes.
+
+\begin{longtable}{|c|c|c|c|}
+\caption{NLCD Land Cover Classes and TOS plot numbers at `r coreCode`}\\
+\hline
+\textbf{Plot Type} & \textbf{Plot Subtype} & \textbf{NLCD Class} & \textbf{Number of Plots Established} \\ 
+\hline
+\endhead
+`r paste(FOPSestablished$plotType, "&", FOPSestablished$subtype, "&", 
+         FOPSestablished$nlcdClass, "&", FOPSestablished$target, 
+         " \\\\ ","\\hline", sep="", collapse=" ")`
+\end{longtable}
+Note: NLCD land cover classes as not used to stratify tower plots
+
+\begin{longtable}{|c|c|c|p{4cm}|c|}
+\caption{Number of distributed base plots per NLCD Land Cover Class per protocol at `r coreCode`. Distributed Base Plots typically support more than one TOS protocol; 'Number of Plots' cannot be added to get total TOS Distributed Base Plot number.}\\
+\hline
+\textbf{Plot Type} & \textbf{Plot Subtype} & \textbf{NLCD Class} & \textbf{Protocols} & \textbf{Number of Plots} \\ \hline
+\endhead
+`r paste(distributedOutput$plotType, "&", distributedOutput$subType, "&", 
+         distributedOutput$nlcdClass, "&", distributedOutput$module, "&", 
+         distributedOutput$established,
+         " \\\\ ","\\hline", sep="", collapse=" ")`
+\end{longtable}
+
+\begin{longtable}{|c|c|c|c|}
+\caption{Number of tower plots per protocol at `r coreCode`.Tower Base Plots typically support more than one TOS protocol; 'Number of Plots' cannot be added to get total TOS Tower Base Plot number.} \\
+\hline
+\textbf{Plot Type} & \textbf{Plot Subtype} & \textbf{Protocols} & \textbf{Number of Plots} \\ \hline
+\endhead
+`r paste(towerOutput$plotType, "&", towerOutput$subType,"&", towerOutput$module, "&", 
+         towerOutput$established,
+         " \\\\ ","\\hline", sep="", collapse=" ")`
+\end{longtable}
+
+```{r belowground biomass, echo=FALSE, message=FALSE, warning=FALSE}
+library(knitr)
+library(kfigr)
+library(atbdLibrary)
+library(dplyr)
+require(xlsx)
+require(tidyr)
+require(XLConnect)
+require(ggplot2)
+
+site <- coreCode
+
+if (file.exists(
+  'C:/Users/rkrauss/Documents/GitHub/biogeochemistryIPT')){
+  megapit_wdir<- "C:/Users/rkrauss/Documents/GitHub/biogeochemistryIPT/megapit_roots/atbd/megapit_roots/data/CI_files/CI_ingested/"
+}
+
+if (file.exists(
+  'C:/Users/mpatterson/Documents/GitHub/biogeochemistryIPT')){
+  megapit_wdir<- "C:/Users/mpatterson/Documents/GitHub/biogeochemistryIPT/megapit_roots/atbd/megapit_roots/data/CI_files/CI_ingested/"
+}
+
+dodoInput  <- tbl_df(read.csv("~/GitHub/biogeochemistryIPT/megapit_roots/atbd/megapit_roots/data/soil_pit_biomass_cf.csv", header=T, stringsAsFactors = F))
+
+# Create totalRootMass variable - sum of all live, dead, fine, coarse root mass in milligrams
+dodoInput <- mutate(dodoInput, totalRootMass = fineRootLiveMass + fineRootDeadMass + coarseRootLiveMass + coarseRootDeadMass)
+
+#trim to site
+Input <- filter(dodoInput, siteID== paste("D",domainID,site,sep=""))
+
+#add allsitedata
+allsite.reference.sheet  <- tbl_df(read.csv("~/GitHub/devTOS/spatialData/supportingDocs/all_sites_ref_sheet.csv", header=T, stringsAsFactors = F))
+megapit.month<-allsite.reference.sheet$megapit.moth[which(allsite.reference.sheet$site==site)]
+megapit.year<-allsite.reference.sheet$megapit.year[which(allsite.reference.sheet$site==site)]
+```
+
+```{r setup sampling profiles,echo=FALSE, message=FALSE, warning=FALSE}
+#prep required columns
+Input <- mutate(Input, incrementRootDensity = totalRootMass/sampleVolume)
+Input <- mutate(Input, incrementMassArea = incrementRootDensity*(bottomDepth-topDepth)*10)
+
+first.profile<-subset(Input,Input$pitProfileID==1)
+first.profile$depthIncrementID<-c(1:length(first.profile$pitProfileID))
+second.profile<-subset(Input,Input$pitProfileID==2)
+second.profile$depthIncrementID<-c(1:length(second.profile$pitProfileID))
+third.profile<-subset(Input,Input$pitProfileID==3)
+third.profile$depthIncrementID<-c(1:length(third.profile$pitProfileID))
+
+First.table<-data.frame(c(1:max(c(first.profile$depthIncrementID,second.profile$depthIncrementID,third.profile$depthIncrementID))))
+names(First.table) <- c("DepthID")
+for (i in 1:length(First.table$DepthID)) {
+First.table$Upper.Depth[i]<- Input$topDepth[i]
+First.table$Lower.Depth[i]<- Input$bottomDepth[i]
+}
+names(First.table) <- c("DepthID","Upper Depth", "Lower Depth")
+Second.table<-First.table
+data.for.graph<-First.table
+First.table$'Average Mass per Increment mg/cm^3'<-NA
+First.table$'Standard Devation'<-NA
+Second.table$'Average Mass per Increment g/m^2'<-NA
+Second.table$'Standard Devation'<-NA
+data.for.graph$profile1<-NA
+data.for.graph$profile2<-NA
+data.for.graph$profile3<-NA
+
+#mean for table 1
+for (i in 1:length(First.table$DepthID)) {
+  horizon<-c(sum(first.profile$incrementRootDensity[which(first.profile$depthIncrementID==i)]),
+  sum(second.profile$incrementRootDensity[which(second.profile$depthIncrementID==i)]),
+  sum(third.profile$incrementRootDensity[which(third.profile$depthIncrementID==i)]))
+First.table$`Average Mass per Increment mg/cm^3`[i]<- mean(horizon)
+}
+
+#standard dev for table 1
+for (i in 1:length(First.table$DepthID)) {
+  horizon<-c(sum(first.profile$incrementRootDensity[which(first.profile$depthIncrementID==i)]),
+  sum(second.profile$incrementRootDensity[which(second.profile$depthIncrementID==i)]),
+  sum(third.profile$incrementRootDensity[which(third.profile$depthIncrementID==i)]))
+First.table$`Standard Devation`[i]<- sd(horizon)
+}
+
+#mean for table 2
+cumulative1<-NULL
+cumulative2<-NULL
+cumulative3<-NULL
+
+for (i in 1:length(Second.table$DepthID)) {
+  #set up cumulative value generator
+  cumulative1<-sum(c(cumulative1,first.profile$incrementMassArea[which(first.profile$depthIncrementID==i)]))
+  cumulative2<-sum(c(cumulative2,second.profile$incrementMassArea[which(second.profile$depthIncrementID==i)]))
+  cumulative3<-sum(c(cumulative3,third.profile$incrementMassArea[which(third.profile$depthIncrementID==i)]))
+  
+  horizon<-c(cumulative1,cumulative2,cumulative3)
+Second.table$`Average Mass per Increment g/m^2`[i]<- mean(horizon)
+}
+
+
+#standard dev for table 2
+cumulative1<-NULL
+cumulative2<-NULL
+cumulative3<-NULL
+
+for (i in 1:length(Second.table$DepthID)) {
+  cumulative1<-sum(c(cumulative1,first.profile$incrementMassArea[which(first.profile$depthIncrementID==i)]))
+  cumulative2<-sum(c(cumulative2,second.profile$incrementMassArea[which(second.profile$depthIncrementID==i)]))
+  cumulative3<-sum(c(cumulative3,third.profile$incrementMassArea[which(third.profile$depthIncrementID==i)]))
+  
+  horizon<-c(cumulative1,cumulative2,cumulative3)
+Second.table$`Standard Devation`[i]<- sd(horizon)
+}
+
+#reset variables for starting graph creation
+cumulative1<-NULL
+cumulative2<-NULL
+cumulative3<-NULL
+data.for.graph$percentage.total1<-NA
+data.for.graph$percentage.total2<-NA
+data.for.graph$percentage.total3<-NA
+
+
+for (i in 1:length(data.for.graph$DepthID)) {
+  #set up cumulative value generator
+  cumulative1<-sum(c(cumulative1,first.profile$incrementMassArea[which(first.profile$depthIncrementID==i)]))
+  cumulative2<-sum(c(cumulative2,second.profile$incrementMassArea[which(second.profile$depthIncrementID==i)]))
+  cumulative3<-sum(c(cumulative3,third.profile$incrementMassArea[which(third.profile$depthIncrementID==i)]))
+  data.for.graph$profile1[i]<-cumulative1
+  data.for.graph$profile2[i]<-cumulative2
+  data.for.graph$profile3[i]<-cumulative3
+  data.for.graph$percentage.total1[i]<-(data.for.graph$profile1[i]/(sum(first.profile$incrementMassArea)))
+  data.for.graph$percentage.total2[i]<-(data.for.graph$profile2[i]/(sum(second.profile$incrementMassArea)))
+  data.for.graph$percentage.total3[i]<-(data.for.graph$profile3[i]/(sum(third.profile$incrementMassArea)))
+}
+#create the summary table (table 3)
+Summary.labels<-c("Total Pit Depth", "Total Cumulative Mass at 30cm","Total Cumulative Mass at 100cm", "Total Cumulative Mass")
+Summary.values<-c((max(Input$bottomDepth)),
+                  (Second.table$`Average Mass per Increment g/m^2`[3]),
+                  (Second.table$`Average Mass per Increment g/m^2`[10]),
+                  (Second.table$`Average Mass per Increment g/m^2`[length(Second.table$`Average Mass per Increment g/m^2`)])
+  
+)
+
+Summary.table<-data.frame(Summary.labels,Summary.values)
+
+#standardize tables for the SCR
+First.table$`Average Mass per Increment mg/cm^3` <- round(First.table$`Average Mass per Increment mg/cm^3`, digits =2)
+First.table$`Standard Devation` <- round(First.table$`Standard Devation`, digits =2)
+
+Second.table$`Average Mass per Increment g/m^2` <- round(Second.table$`Average Mass per Increment g/m^2`, digits =2)
+Second.table$`Standard Devation` <- round(Second.table$`Standard Devation`, digits =2)
+
+Summary.table$Summary.values <- round(Summary.table$Summary.values, digits =2)
+
+
+Summary.table$Summary.values[Summary.table$Summary.labels == "TotalPitDepth"] <- round(Summary.table$Summary.values, digits =0)
+
+#set up the graph
+
+megapitGraph <-ggplot(Second.table, aes(x=`Lower Depth`, y=`Average Mass per Increment g/m^2`, group=1))+
+  geom_line(aes(color="Mean of all 3 Profiles"), size=1.5)+
+  geom_point(data = data.for.graph, aes(x=`Lower Depth`, y=profile1, color="Profile 1"), shape= 16, size=3)+
+  geom_point(data = data.for.graph, aes(x=`Lower Depth`, y=profile2, color ="Profile 2"), shape =17, size =3)+
+  geom_point(data = data.for.graph, aes(x=`Lower Depth`, y=profile3, color= "Profile 3"), shape =15, size =3)+
+  labs(title = paste(site,"Megapit: Mass of Roots by Pit Depth"), x ="Pit depth (cm)", y= "Cumulative Root mass g/m2")+
+  scale_colour_manual(name='', values=c('Mean of all 3 Profiles' = 'black', 'Profile 1'= 'black'
+                                        ,'Profile 2' = 'black', 'Profile 3'= 'black')) +
+  guides(color =guide_legend(override.aes = list(linetype=c(1,0,0,0),
+                                                 shape = c(NA,16,17,15),
+                                                 size =c (2,3,3,3))))+
+  theme(legend.key=element_rect(fill =NA))
+
+#change width to change size
+ggsave(filename=paste(coreCode,'biomass.jpg'), plot = megapitGraph, path = paste(myPathToGraphics),width =10, height=10)
+
+#paste(myPathToGraphics,paste(coreCode,'biomass.jpg'), sep='/')
+
+#change column names at allow for knitting
+colnames(First.table)[2] <- "UpperDepth"
+colnames(First.table)[3] <- "LowerDepth"
+colnames(First.table)[4] <- "AverageMassperIncrementmgcm3"
+colnames(First.table)[5] <- "StandardDevation"
+
+colnames(Second.table)[2] <- "UpperDepth"
+colnames(Second.table)[3] <- "LowerDepth"
+colnames(Second.table)[4] <- "AverageMassperIncrementgm2"
+colnames(Second.table)[5] <- "StandardDevation"
+
+lowestdepth<-max(Second.table$LowerDepth)
+```
+
+##Belowground Biomass
+
+###Site-Specific Methods
+<!---
+[//]:  Include general information: Date, group who collected the data (NEON staff or external contractor) and any deviations from the methods. Summarize high level important points. Reference the data product number on the data portal. Reference NRCS soil narratives if they become available.
+-->
+Ex. Belowground biomass characterization data was collected down to `r lowestdepth` cm by NEON staff in `r megapit.month` `r megapit.year`. Since the NEON protocol for long-term, operational sampling of belowground biomass only collects data to a depth of 30cm, the belowground biomass site characterization data are critical for scaling belowground biomass measurements to greater depths; see the TOS Science Design for Plant Biomass, Productivity, and Leaf Area Index (RD[8]) for more information. The tables below summarize the belowground biomass site characterization work and more data and information can be found by searching the data product numbers in Appendix A. Samples were collected following the standard methods outlined in TOS Site Characterization Methods (RD[6]), except a 5.08cm diameter bulk density soil corer, soil knife, and drill bit was used to extract soil to test out protocols methods at this site. The tables below summarize the belowground biomass site characterization work; more data and information can be found by searching the NEON data portal for the data product numbers in Appendix A.
+
+###Results
+[//]:  Be sure to check units!!!!
+
+\begin{longtable}{|c|c|c|c|}
+\caption{Domain `r domainID` `r coreCode` fine root mass per depth increment}\\
+\hline
+\textbf{Upper Depth} & \textbf{Lower Depth} & \textbf{Mean mg per cm$^3$} & \textbf{Std Dev} \\ 
+\hline
+\endhead
+`r paste(First.table$UpperDepth, "&", First.table$LowerDepth, "&", 
+         First.table$AverageMassperIncrementmgcm3, "&", First.table$StandardDevation, 
+         " \\\\ ","\\hline", sep="", collapse=" ")`
+\end{longtable}
+
+\begin{longtable}{|c|c|c|c|}
+\caption{Domain `r domainID` `r coreCode` cumulative fine root mass as a function of depth}\\
+\hline
+\textbf{Upper Depth} & \textbf{Lower Depth} & \textbf{Mean Cumulative g per m$^2$} & \textbf{Cumulative Std Dev} \\ 
+\hline
+\endhead
+`r paste(Second.table$UpperDepth, "&", Second.table$LowerDepth, "&", 
+         Second.table$AverageMassperIncrementgm2, "&", Second.table$StandardDevation, 
+         " \\\\ ","\\hline", sep="", collapse=" ")`
+\end{longtable}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=1\textwidth] {`r paste(myPathToGraphics,paste(coreCode,'biomass.jpg'), sep='/')`}
+\caption{Domain `r domainID` `r coreCode`  cumulative root mass by pit depth}
+\end{figure}
+
+\begin{longtable}{|c|c|}
+\caption{Domain `r domainID` `r coreCode`  fine root biomass sampling summary data}\\
+\hline
+Total Pit Depth cm &`r paste(Summary.table$Summary.values[Summary.table$Summary.labels == "Total Pit Depth"], 
+         " \\\\ ","\\hline", sep="", collapse=" ")`
+Total Cumulative Mass at 30cm g per m$^2$ &`r paste(Summary.table$Summary.values[Summary.table$Summary.labels == "Total Cumulative Mass at 30cm"], 
+         " \\\\ ","\\hline", sep="", collapse=" ")`
+Total Cumulative Mass at 100cm g per m$^2$ &`r paste(Summary.table$Summary.values[Summary.table$Summary.labels == "Total Cumulative Mass at 100cm"], 
+         " \\\\ ","\\hline", sep="", collapse=" ")`
+Total Cumulative Mass g per m$^2$ &`r paste(Summary.table$Summary.values[Summary.table$Summary.labels == "Total Cumulative Mass"], 
+         " \\\\ ","\\hline", sep="", collapse=" ")`
+\end{longtable}
+
+```{r plant char, echo=FALSE, message=FALSE, warning=FALSE}
+site <- coreCode
+#options(scipen = 999)
+
+
+#currently this is all the data that Courtney provided. Unfortunately this does not cover all SCR sites so we will need to learn how and where he provided this information
+datasheet<-read.csv("N:/Science/FSU/Site Characterization Report/plant_diversity_2013.csv", sep = ",", head=T)
+alt.datasheet<-read.csv("N:/Science/FSU/Site Characterization Report/plant_site_char.ns_2013_groundcover.csv", sep = ",", head=T)
+CSP.datasheet<-read.csv("N:/Science/FSU/Site Characterization Report/References/CSP_div_data/phenologySpeciesOrderedList_20160621.csv", sep = ",", head=T)
+
+#start by checking to see if your site is in the dataset
+#First Table
+#ifelse(any(CSP.datasheet$siteID==site),print("Site has associated data"), print("***WARNING*** Site has no associated data"))
+#Second Table
+#ifelse(any(datasheet$siteid==site, alt.datasheet==site),print("Site has associated data"), print("***WARNING*** Site has no associated data"))
+
+#subset data to fit specific site
+site.data<-subset(CSP.datasheet, CSP.datasheet$siteID==site)
+clean.data<-site.data[, colSums(is.na(site.data)) != nrow(site.data)]
+#set up the first table
+First.Table<-dplyr::select(site.data,taxonID,scientificName,rank)
+#choose between two possible columns of data
+for(i in 1:length(First.Table$taxonID)){
+  #add any values from meanPercentCover
+  if(is.na(site.data$meanPercentCover[which(site.data$taxonID==First.Table$taxonID[i])])==FALSE){
+    First.Table$MeanPercentCover[i]<- site.data$meanPercentCover[which(site.data$taxonID==First.Table$taxonID[i])]
+  }
+  #add any values from nsMeanPercentCover
+  if(is.na(site.data$nsMeanPercentCover[which(site.data$taxonID==First.Table$taxonID[i])])==FALSE){
+    First.Table$MeanPercentCover[i]<- site.data$nsMeanPercentCover[which(site.data$taxonID==First.Table$taxonID[i])]
+  }
+  #Make sure NA values are maintained
+  if((is.na(site.data$nsMeanPercentCover[which(site.data$taxonID==First.Table$taxonID[i])])==TRUE)& (is.na(site.data$meanPercentCover[which(site.data$taxonID==First.Table$taxonID[i])])==TRUE)){
+    First.Table$MeanPercentCover[i]<-NA
+  }
+}
+
+#Clean and Round
+First.Table$scratch<-First.Table$MeanPercentCover
+First.Table$MeanPercentCover<-round(First.Table$MeanPercentCover, digits=0)
+for(i in 1:length(First.Table$MeanPercentCover)){
+  if(is.na(First.Table$scratch[i])==FALSE){
+  if(First.Table$scratch[i]<1){
+    First.Table$MeanPercentCover[i]<- "<1"
+  }
+  if(First.Table$scratch[i]==0){
+    First.Table$MeanPercentCover[i]<- "0"
+  }
+  }  
+}
+First.Table$scratch<-NULL
+
+#add column
+First.Table$MeanCanopyAreaPerSqM<-signif(site.data$meanCanopyAreaPerSqM,2)
+#if(any(is.na(site.data$meanCanopyAreaPerSqM)==TRUE)==TRUE){
+  #print("***Warning*** NAs in Column")
+#}
+First.Table$MeanCanopyAreaPerSqM<-round(First.Table$MeanCanopyAreaPerSqM, digits=3)
+
+#choose between two more possible columns of data
+for(i in 1:length(First.Table$taxonID)){
+  #add any values from meanAbhPerSqM
+  if(is.na(site.data$meanAbhPerSqM[which(site.data$taxonID==First.Table$taxonID[i])])==FALSE){
+    First.Table$meanAbhPerSqM[i]<- site.data$meanAbhPerSqM[which(site.data$taxonID==First.Table$taxonID[i])]
+  }
+  #add any values from nsMeanAbhPerSqM
+  if(is.na(site.data$nsMeanAbhPerSqM[which(site.data$taxonID==First.Table$taxonID[i])])==FALSE){
+    First.Table$meanAbhPerSqM[i]<- site.data$nsMeanAbhPerSqM[which(site.data$taxonID==First.Table$taxonID[i])]
+  }
+  #Make sure NA values are maintained
+  if((is.na(site.data$nsMeanAbhPerSqM[which(site.data$taxonID==First.Table$taxonID[i])])==TRUE)& (is.na(site.data$meanAbhPerSqM[which(site.data$taxonID==First.Table$taxonID[i])])==TRUE)){
+    First.Table$meanAbhPerSqM[i]<-NA
+  }
+}
+
+#Round to the nearest 100th
+First.Table$meanAbhPerSqM<-as.numeric(First.Table$meanAbhPerSqM)
+First.Table$meanAbhPerSqM<-round(First.Table$meanAbhPerSqM, digits=2)
+
+#add \ to any special characters so latex doesn't get angry
+First.Table$scientificName <-sub("&","\\\\&", First.Table$scientificName)
+
+
+#if(any(is.na(site.data$meanAbhPerSqM)==TRUE & is.na(site.data$nsMeanAbhPerSqM)==TRUE)==TRUE){
+  #print("***Warning*** NAs in Column")
+#}
+
+#Subsetting
+site.datasheet<-subset(datasheet, datasheet$siteid==site)
+
+#this checks to make sure scientific names
+if(length(unique(site.datasheet$scientificname))<=1){
+  site.datasheet<-subset(alt.datasheet, alt.datasheet$siteid==site)
+  colnames(site.datasheet)[3] <- "plotid"
+  colnames(site.datasheet)[9] <- "speciescover"
+  alt.data.used<-"Y"
+  #print("alt data used")
+}
+
+# using the non-git applicable modules in the chance that some site characterization plots are no longer active and thus removed from the github trimmed list
+
+applicableModules.full<-read.csv("A:/TOS/TOS_Workspace/SpatialLookUpTables/applicableModules.csv", sep = ",", head=T)
+applicableModules.site<-subset(applicableModules.full,applicableModules.full$siteID==coreCode)
+site.datasheet$mortonOrder<-site.datasheet$plotid
+
+#add plotIDs from morton orders using applicable modules
+for(i in 1:length(site.datasheet$siteid)){
+  site.datasheet$plotid[i]<-applicableModules.site$plotID[which(applicableModules.site$mortonOrder==site.datasheet$mortonOrder[i])]
+}
+
+#plot names
+plotIDs<-data.frame(unique(as.character(site.datasheet$plotid)))
+plotIDs$unique.as.character.site.datasheet.plotid..<-as.character(plotIDs$unique.as.character.site.datasheet.plotid..)
+
+#spilt out scientific Name 
+First.Table$genus<-NA
+First.Table$spp <-NA
+First.Table$theRest <- NA
+
+for (w in 1:nrow(First.Table)){
+First.Table$genus[w]<- strsplit(First.Table$scientificName[w],' ')[[1]][1] 
+}
+
+for (w in 1:nrow(First.Table)){
+First.Table$spp[w]<- strsplit(First.Table$scientificName[w],' ')[[1]][2]
+}
+
+for (w in 1:nrow(First.Table)){
+  First.Table$theRest[w]<- gsub("^([^ ]* [^ ]*)( .*)$", "\\2", First.Table$scientificName[w])
+}
+
+First.Table$Genspp<-NA
+
+#pull out the names you want to italize
+for (w in 1:nrow(First.Table)){
+  if(First.Table$spp[w] == "sp.") {
+    First.Table$Genspp[w] <- paste("\\textit{",First.Table$genus[w],"}",sep = " ")
+  } else if (First.Table$spp[w] == "spp.") {
+    First.Table$Genspp[w] <- paste("\\textit{",First.Table$genus[w],"}",sep = " ")
+  } else {
+    First.Table$Genspp[w] <-paste("\\textit{",First.Table$genus[w], First.Table$spp[w],"}",sep = " ")
+  }
+}
+
+
+#for some reason it adds the genus plus sp to "theRest" if there is species name,  this deletes that duplication 
+for (w in 1:nrow(First.Table)){
+  if(First.Table$spp[w] == "sp.") {
+    First.Table$theRest[w] <- "sp."
+  } else if (First.Table$spp[w] == "spp.") {
+    First.Table$theRest[w] <- "sp."
+  } else {
+    First.Table$theRest[w] <- First.Table$theRest[w]
+  }
+}
+
+#italize the var. and ssp. names
+var <- "var."
+First.Table$theRest <- ifelse(grepl(var,First.Table$theRest), 
+                              paste(sub('var.*','',First.Table$theRest),"var.",
+                                    (paste("\\textit{",str_extract(First.Table$theRest,'(?<=var.\\s)\\w+'),"}",sep ="")),
+                                    sub('.*var\\.\\s+\\w+\\s+','',First.Table$theRest),sep =" "),
+                              First.Table$theRest)
+ssp <- "ssp."
+First.Table$theRest <- ifelse(grepl(ssp,First.Table$theRest), 
+                              paste(sub('ssp.*','',First.Table$theRest),"ssp.",
+                                    (paste("\\textit{",str_extract(First.Table$theRest,'(?<=ssp.\\s)\\w+'),"}",sep ="")),
+                                    sub('.*ssp\\.\\s+\\w+\\s+','',First.Table$theRest),sep =" "),
+                              First.Table$theRest)
+
+
+#this code checks for plot IDs to make sure they follow the HEAL_001 format of the 4 letter code, underscore, and three digit number. This system will not work if morton order numbers are used
+#bad.plotIDs<-NA
+
+#for(i in 1:(length(plotIDs$unique.as.character.site.datasheet.plotid..))){
+#  if (nchar(plotIDs$unique.as.character.site.datasheet.plotid..[i])!=8){
+#    bad.plotIDs<-c(bad.plotIDs,plotIDs$unique.as.character.site.datasheet.plotid..[i])
+#  }
+#}
+
+#bad.plotIDs
+
+#fill the plot ID you want to change
+#bad.plot<-"CPER_23"
+#fill in the replacement value
+#bad.plot.replacement<-"CPER_023"
+
+#for (i in 1:length(site.datasheet$plotid)) {
+#  if (site.datasheet$plotid[i]==bad.plot){
+#    site.datasheet$plotid[i]<-bad.plot.replacement
+#  }
+#}
+
+#check for successs
+#print(length(which(site.datasheet$plotid==bad.plot)))
+
+Second.Table<-dplyr::select(site.datasheet,plotid)
+
+Second.Table<-unique(Second.Table)
+
+
+#species richness
+for(i in 1:length(Second.Table$plotid)){
+  Second.Table$species.richness[i]<-length(unique(site.datasheet$taxonid[which(site.datasheet$plotid==Second.Table$plotid[i])]))
+}
+
+species.list<-unique(as.character(site.datasheet$scientificname[which(site.datasheet$siteid==site)]))
+
+species.list<-species.list[!(is.na(species.list) | species.list=="")]
+
+average.cover.per.species<-data.frame(species.list)
+cover.ready<-dplyr::select(site.datasheet,plotid,scientificname,taxonid,speciescover)
+
+
+cover.ready$speciescover<-as.character(cover.ready$speciescover)
+cover.ready$speciescover[cover.ready$speciescover == "t"|cover.ready$speciescover == ""| is.na(cover.ready$speciescover) ]<-".5"
+cover.ready$speciescover<-as.numeric(cover.ready$speciescover)
+cover.ready[cover.ready==""]  <- NA 
+cover.ready<-cover.ready[complete.cases(cover.ready),]
+
+Second.Table$plotid<-as.character(Second.Table$plotid)
+
+plot<-data.frame(NULL)
+object<-vector()
+plotlist<-vector()
+count<-vector()
+
+#This chunk calculates the Shannon Diversity Index for the plot
+average.cover.per.species.per.plot<-cover.ready
+average.cover.per.species.per.plot<-aggregate(average.cover.per.species.per.plot,by= list(average.cover.per.species.per.plot$plotid, average.cover.per.species.per.plot$scientificname),FUN = mean)
+average.cover.per.species.per.plot<-average.cover.per.species.per.plot[-(3:5)]
+average.cover.per.species.per.plot<-average.cover.per.species.per.plot[complete.cases(average.cover.per.species.per.plot),]
+
+#this IF statement deals with making sure plotIDs are of the same structure. If it is in plotID notation (HARV_001) then it remains a character. If it is a mOrder number, it changes the column to numeric
+if((site %in% c("STER","BART"))==TRUE){
+  Second.Table$plotid<-as.numeric(Second.Table$plotid)
+}
+Second.Table$Shannon<-NA
+Second.Table$Total.Herbacious.Cover<-NA
+value<-vector()
+  
+for (i in 1:length(Second.Table$plotid)){
+  
+  sum.cover<-sum(average.cover.per.species.per.plot$speciescover[which(average.cover.per.species.per.plot$Group.1==Second.Table$plotid[i])])
+  for (q in 1:length(average.cover.per.species.per.plot$speciescover[which(average.cover.per.species.per.plot$Group.1==Second.Table$plotid[i])])){
+    p<-0
+    S<-average.cover.per.species.per.plot$speciescover[which(average.cover.per.species.per.plot$Group.1==Second.Table$plotid[i])]
+    ifelse(S[q]!=0,p<-((S[q]/sum.cover)*log((S[q]/sum.cover))),p<-0)
+    value<-c(value,p)
+  }
+  Second.Table$Shannon[i]<-sum(value)*-1
+  value<-vector()
+  Second.Table$Total.Herbacious.Cover[i]<-sum.cover
+}
+
+Second.Table$Shannon<-round(Second.Table$Shannon,2)
+Second.Table$Total.Herbacious.Cover<-round(Second.Table$Total.Herbacious.Cover,0)
+
+#add // for underscores so latex doesnt freak out
+Second.Table$plotid <- sub("_","\\\\_", Second.Table$plotid)
+#orders table by plotID
+Second.Table<-Second.Table[order(Second.Table$plotid),]
+```
+
+##Plant Characterization and Phenology Species Selection
+###Site-Specific Methods
+Plant characterization data were collected by an external contractor during the summer of \emph{\color{red}XXXX} following the standard methods outlined in TOS Site Characterization Methods (RD[6]). Plant diversity data were collected in \emph{\color{red}July 2013 by NEON technicians}. For more information on this protocol and data product numbers see Appendix A.
+
+###Results
+
+[//]: run the results
+
+
+\begin{longtable}{|c|>{\centering\arraybackslash}p{4cm}|c|c|>{\centering\arraybackslash}p{2cm}|>{\centering\arraybackslash}p{2cm}|}
+\caption{Per Plot Breakdown of Species Richness, Diversity, and Herbaceous Cover at  `r coreCode`}\\
+\hline
+\textbf{Taxon ID} & \textbf{Scientic Name} & \textbf{Rank} & \textbf{Mean Percent Cover} & \textbf{Mean Canopy Area per m$^2$} & \textbf{Mean ABH cm$^2$ per m$^2$} \\ 
+\hline
+\endhead
+`r paste(First.Table$taxonID, "&", First.Table$Genspp , First.Table$theRest, "&",
+         First.Table$rank, "&", First.Table$MeanPercentCover,"&", First.Table$MeanCanopyAreaPerSqM,"&",   First.Table$meanAbhPerSqM, 
+         " \\\\ ","\\hline", sep="", collapse=" ")`
+\end{longtable}
+
+
+
+\begin{longtable}{|c|c|c|c|}
+\caption{Per Plot Breakdown of Species Richness, Diversity, and Herbaceous Cover at  `r coreCode`}\\
+\hline
+\textbf{Plot ID} & \textbf{Species Richness} & \textbf{Shannon Diversity Index} & \textbf{Percent Total Herbaceous Cover} \\ 
+\hline
+\endhead
+`r paste(Second.Table$plotid, "&", Second.Table$species.richness, "&", 
+         Second.Table$Shannon, "&", Second.Table$Total.Herbacious.Cover, 
+         " \\\\ ","\\hline", sep="", collapse=" ")`
+\end{longtable}
+
+```{r insect and tick, echo=FALSE, message=FALSE, warning=FALSE }
+site <- coreCode
+
+#beetle/mosquito/tick results:  since the data is coming from so many different sources the data will be manually manipulated and uploaded here to create the tables in latex.  the headers below are a guide, see previous site char. reports for other table headers depending on the data available at each site. Will have to change latex options if headers change. For bold data, trap locations ID will have to created ( I sort by unique lat/long combinations and create unqiue trap locations)
+
+#beetle trap locations (do not need if the data was pooled)Must include trapID,Lat, Long
+beetleTrapLocations <-read.csv(file="K:/Site Characterization Report/D03/DSNYbeetletraps.csv",
+                     head=TRUE,sep=",",stringsAsFactors = FALSE)
+
+#beetle ID results: includes BOLDID, name (Gen Spp), date,trapID
+beetleID <-read.csv(file="K:/Site Characterization Report/D03/DSNYbeetle.csv",
+                     head=TRUE,sep=",",stringsAsFactors = FALSE)  
+#remove incomplete records
+beetleID<- beetleID[complete.cases(beetleID$species_taxID),]
+beetleID<- beetleID[!grepl("_",beetleID$name),]
+
+#italize the scientifc name
+beetleID$name <-paste("\\textit{",beetleID$name,"}",sep = " ")
+
+
+
+
+
+#mosquito trap locations (do not need if the data was pooled)Must include trapID,Lat, Long
+mosquitoTrapLocations <-read.csv(file="K:/Site Characterization Report/D03/DSNYmosquitotrap.csv",
+                     head=TRUE,sep=",",stringsAsFactors = FALSE)
+
+#mosquito ID results: includes BOLDID, name (Gen Spp), date,trap
+mosquitoID <-read.csv(file="K:/Site Characterization Report/D03/DSNYmosquito.csv",
+                     head=TRUE,sep=",",stringsAsFactors = FALSE) 
+
+#remove incomplete records
+mosquitoID<- mosquitoID[complete.cases(mosquitoID$species_taxID),]
+mosquitoID<- mosquitoID[!grepl("_",mosquitoID$name),]
+
+#italize the scientifc name
+mosquitoID$name <-paste("\\textit{",mosquitoID$name,"}",sep = " ")
+
+
+
+
+
+#tick trap locations (do not need if the data was pooled)Must include trapID,Lat, Long
+#tickTrapLocations <-read.csv(file="A:/TOS/TOS_Workspace/16_PacificNW/REL2_ABBY/TOS_WorkDir/grids/ABBY_arcMergedGrids_V1.csv",
+#                     head=TRUE,sep=",",stringsAsFactors = FALSE)
+
+#tick ID results: includes BOLDID, name (Gen Spp), date,trap
+#tickID <-read.csv(file="A:/TOS/TOS_Workspace/16_PacificNW/REL2_ABBY/TOS_WorkDir/grids/ABBY_arcMergedGrids_V1.csv",
+#                     head=TRUE,sep=",",stringsAsFactors = FALSE)  
+#italize the scientifc name
+#tickID$name <-paste("\\textit{",tickID$name,"}",sep = " ")
+
+
+```
+
+##Beetles
+###Site-Specific Methods
+Beetle site characterization was conducted in  \emph{\color{red}June and July 2010 by NEON staff} following the standard methods outlined in TOS Site Characterization Methods (RD[6]). Beetle site characterization data was collected to start site level teaching collections. For sequencing information visit http://www.boldsystems.org. For more information on this protocol and data product numbers see Appendix A.
+
+###Results
+
+[//]: run the results
+
+
+\begin{longtable}{|c|c|c|}
+\caption{`r coreCode` Beetle Trap Locations}\\
+\hline
+\textbf{Trap ID} & \textbf{Lat} & \textbf{Long} \\ 
+\hline
+\endhead
+`r paste(beetleTrapLocations$trapID, "&", beetleTrapLocations$Lat, "&",
+         beetleTrapLocations$Long," \\\\ ","\\hline", sep="", collapse=" ")`
+\end{longtable}
+
+\begin{longtable}{|c|c|c|c|}
+\caption{`r coreCode` Beetle Identification Results}\\
+\hline
+\textbf{BOLD Sample ID} & \textbf{Scientific Name}  & \textbf{Collection Date}  & \textbf{Trap Location} \\ 
+\hline
+\endhead
+`r paste(beetleID$BOLDID, "&", beetleID$name, "&", beetleID$date, "&",
+          beetleID$trapID," \\\\ ","\\hline", sep="", collapse=" ")`
+\end{longtable}
+
+##Mosquitoes
+###Site-Specific Methods
+Mosquito site characterization was conducted in  \emph{\color{red}June and July 2010 by NEON staff} following the standard methods outlined in TOS Site Characterization Methods (RD[6]) to test protocol methods and start site level species lists. No pathogen testing was performed. For sequencing information visit http://www.boldsystems.org. For more information on this protocol and data product numbers see Appendix A.
+
+###Results
+
+\begin{longtable}{|c|c|c|}
+\caption{`r coreCode` Mosquito Trap Locations}\\
+\hline
+\textbf{Trap ID} & \textbf{Lat} & \textbf{Long} \\ 
+\hline
+\endhead
+`r paste(mosquitoTrapLocations$trapID, "&", mosquitoTrapLocations$Lat, "&",
+         mosquitoTrapLocations$Long,
+         " \\\\ ","\\hline", sep="", collapse=" ")`
+\end{longtable}
+
+\begin{longtable}{|c|>{\centering\arraybackslash}p{4cm}|c|c|}
+\caption{`r coreCode` Mosquito Identification Results}\\
+\hline
+\textbf{BOLD Sample ID} & \textbf{Scientific Name} & \textbf{Collection Date} & \textbf{Trap Location} \\ 
+\hline
+\endhead
+`r paste(mosquitoID$BOLDID, "&", mosquitoID$name, "&",
+         mosquitoID$date, "&", mosquitoID$trap, 
+         " \\\\ ","\\hline", sep="", collapse=" ")`
+\end{longtable}
+
+##Ticks
+###Site-Specific Methods
+Tick site characterization was conducted in  \emph{\color{red}June and July 2010 by NEON staff} following the standard methods outlined in TOS Site Characterization Methods (RD[6]) to test protocol methods and start site level species lists. No pathogen testing was performed.For more information on this protocol and data product numbers see Appendix A.
+
+###Results
+
+[//]: run the results if any, if not use in the site specific methods "There was no tick site characterization work done at `r coreCode`. For more information on this protocol and data product numbers see Appendix A."
+
+
+
+##Species Reference Lists
+[//]: List references for plant/insects species lists (mammal and bird lists are available in the protocols)
