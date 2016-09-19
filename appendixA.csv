@@ -1,0 +1,17 @@
+Name,Description,Identification Code
+Root sampling (megapit),Fine root biomass in 10cm increments (first 1m depth) and 20cm increments (from 1m to 2m depth) from soil pit sampling,NEON.DOM.SITE.DP1.10066
+Soil physical properties (Megapit),"Soil taxonomy, horizon names, horizon depths, as well as soil bulk density, porosity, texture (sand, silt, and clay content) in the <= 2 mm soil fraction for each soil horizon. Data were derived from a sampling location expected to be representative of the area where the Instrumented Soil Plots per site are located and were collected once during site construction. Also see distributed soil data products.",NEON.DOM.SITE.DP1.00096
+Soil chemical properties (Megapit),"Total content of a range of chemical elements, pH, and electrical conductivity in the <= 2 mm soil fraction for each soil horizon. Data were derived from a sampling location expected to be representative of the area where the Instrumented Soil Plots per site are located and were collected once during site construction. Also see distributed soil data products.",NEON.DOM.SITE.DP1.00097
+Woody plant vegetation structure,"Structure measurements, including height, canopy diameter, and stem diameter, as well as mapped position of individual woody plants",NEON.DOM.SITE.DP1.10098
+Plant presence and percent cover,"Plant species presence as observed in multi-scale plots: species and associated percent cover at 1-m2 and plant species presence at 10-m2, 100-m2 and 400-m2",NEON.DOM.SITE.DP1.10058
+Plant phenology observations,Phenophase status and intensity of tagged plants,NEON.DOM.SITE.DP1.10055
+Plant foliar stable isotopes,Field collection metadata describing the sampling of sun-lit canopy foliar tissues for stable isotope compositions. Also includes raw data returned from the laboratory.,NEON.DOM.SITE.DP1.10053
+Plant foliar physical and chemical properties,"Plant sun-lit canopy foliar physical (e.g., leaf mass per area) and chemical properties reported at the level of the individual.",NEON.DOM.SITE.DP1.10026
+Non-herbaceous perennial vegetation structure,"Field measurements of individual non-herbaceous perennial plants (e.g. cacti, ferns)",NEON.DOM.SITE.DP1.10045.
+Ground beetles sampled from pitfall traps,Taxonomically identified ground beetles and the plots and times from which they were collected.,NEON.DOM.SITE.DP1.10022
+Ground beetle sequences DNA barcode,CO1 DNA sequences from select ground beetles,NEON.DOM.SITE.DP1.10020
+Mosquitoes sampled from CO2traps,Taxonomically identified mosquitoes and the plots and times from which they were collected,NEON.DOM.SITE.DP1.10043
+Mosquito-borne pathogen status,Presence/absence of a pathogen in a single mosquito sample (pool),NEON.DOM.SITE.DP1.10041
+Mosquito sequences DNA barcode,CO1 DNA sequences from select mosquitoes,NEON.DOM.SITE.DP1.10038
+Ticks sampled using drag cloths,Abundance and density of ticks collected by drag and/or flag sampling (by species and/or lifestage),NEON.DOM.SITE.DP1.10093
+Tick-borne pathogen status,Presence/absence of a pathogen in each single tick sample,NEON.DOM.SITE.DP1.10092

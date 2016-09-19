@@ -280,7 +280,7 @@ Page \thepage \hspace{1pt} of \pageref{LastPage}
 Domain and site-specific information collected and described here is used to inform the execution of protocols for the NEON Terrestrial Observation System (TOS), and complements the official NEON TOS data products generated from each site. In addition, the TOS spatial layout and plot allocation is described for each site within the domain.
 
 ##Scope
-This document includes any site specific characterization methods and the results of characterization efforts for each of the two sites in the `r domainName` domain. For more information about the sampling methods, reference the TOS Site Characterization Methods Document (RD[06]). The geographic coordinates for all TOS sampling locations can be found in the Reference Documents area of the NEON Data Portal and are provided with TOS data product downloads.
+This document includes any site specific characterization methods and the results of characterization efforts for each of the \emph{\color{red}two} sites in the `r domainName` domain. For more information about the sampling methods, reference the TOS Site Characterization Methods Document (RD[06]). The geographic coordinates for all TOS sampling locations can be found in the Reference Documents area of the NEON Data Portal and are provided with TOS data product downloads.
 
 
 \section{\uppercase{Related Documents and Acronyms}}

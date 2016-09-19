@@ -1,0 +1,18 @@
+updates needed in template
+*make insect dates red
+*gsub (instead of sub)
+*plotid/morder in plant tables (second table)
+*add () to section heads with site codes
+*table names
+*duplicate table in table of contents if they extend one page
+*km2 in intro text m$^2$
+*update logo in git
+
+D3
+*maps are tilted
+*blue in DSNY boundary is tough to read
+*fix code for table 2 in DSNY
+*TOS spatial for JERC-  NLCD mismatch- work with Dave 
+*SPP reference lists
+*References formatting
+*appendixA
