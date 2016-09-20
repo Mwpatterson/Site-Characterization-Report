@@ -11,12 +11,12 @@ updates needed in template
 *references
 
 D3
-*maps are tilted
-*blue in DSNY boundary is tough to read
-*DSNY phenology says 13 instead of 2 
+*maps are tilted [X]
+*blue in DSNY boundary is tough to read [X]
+*DSNY phenology says 13 instead of 2  [X]
 *fix code for table 2 in DSNY and add fix to template if we think it could be a problem that happens again
 *TOS spatial intro for JERC-  NLCD mismatch- work with Dave 
-*JERC phenology is 13 instead of 2
+*JERC phenology is 13 instead of 2 [X]
 *SPP reference lists for all three sites
 *References formatting
 *appendixA
