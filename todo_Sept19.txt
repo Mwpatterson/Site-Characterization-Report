@@ -1,18 +1,22 @@
 updates needed in template
-*make insect dates red
-*gsub (instead of sub)
-*plotid/morder in plant tables (second table)
-*add () to section heads with site codes
-*table names
-*duplicate table in table of contents if they extend one page
-*km2 in intro text m$^2$
+*make insect dates red in the site specific information since they will need to be manually changed 
+*gsub (instead of sub) in the plant char. section ( in case of 2 & signs in the spp. name)
+*plotid/morder in plant tables (second table) (have the if else code already made)
+*add () to section heads with site codes- so it reads SITE NAME (CODE)
+*table names-  some of the nlcd table names are too long
+*stop duplicate tables in table of contents if they extend one page
+*km2 in site intro text km$^2$
 *update logo in git
+*appendix A
+*references
 
 D3
 *maps are tilted
 *blue in DSNY boundary is tough to read
-*fix code for table 2 in DSNY
-*TOS spatial for JERC-  NLCD mismatch- work with Dave 
-*SPP reference lists
+*DSNY phenology says 13 instead of 2 
+*fix code for table 2 in DSNY and add fix to template if we think it could be a problem that happens again
+*TOS spatial intro for JERC-  NLCD mismatch- work with Dave 
+*JERC phenology is 13 instead of 2
+*SPP reference lists for all three sites
 *References formatting
 *appendixA
