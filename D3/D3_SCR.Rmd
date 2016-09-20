@@ -517,6 +517,11 @@ FOPS_established<- read.xlsx(file= paste(all.site.directory$FOPS.Datasheet.Locat
 FOPS_established<-FOPS_established %>% dplyr::select(nlcdClass,plotType,subtype,target)
 FOPS_established<-FOPS_established[complete.cases(FOPS_established),]
 
+#backup check on too many Pheno plots
+if(FOPS_established$target[which(FOPS_established$subtype=="phenology")]>8){
+  FOPS_established$target[which(FOPS_established$subtype=="phenology")]<-2
+}
+
 #format table to match SCR format
 FOPS_established$nlcdClass <- gsub("([a-z])([A-Z])", "\\1 \\2", FOPS_established$nlcdClass)
 FOPS_established$nlcdClass <- gsub("(^|[[:space:]])([[:alpha:]])", "\\1\\U\\2", FOPS_established$nlcdClass, perl=TRUE)
@@ -639,6 +644,10 @@ Note: Any NLCD land cover classes less than 5% will not be sampled. Additionally
 \hline
 \textbf{Plot Type} & \textbf{Plot Subtype} & \textbf{NLCD Class} & \textbf{Number of Plots Established} \\ 
 \hline
+\endfirsthead
+\hline
+\textbf{Plot Type} & \textbf{Plot Subtype} & \textbf{NLCD Class} & \textbf{Number of Plots Established} \\ 
+\hline
 \endhead
 `r paste(FOPSestablished$plotType, "&", FOPSestablished$subtype, "&", 
          FOPSestablished$nlcdClass, "&", FOPSestablished$target, 
@@ -647,7 +656,10 @@ Note: Any NLCD land cover classes less than 5% will not be sampled. Additionally
 Note: NLCD land cover classes as not used to stratify tower plots
 
 \begin{longtable}{|c|c|c|p{4cm}|c|}
-\caption{Number of distributed base plots per NLCD Land Cover Class per protocol at `r coreCode`. Distributed Base Plots typically support more than one TOS protocol; 'Number of Plots' cannot be added to get total TOS Distributed Base Plot number.}\\
+\caption{Number of distributed base plots per NLCD Land Cover Class per protocol at `r coreCode`.}\\
+\hline
+\textbf{Plot Type} & \textbf{Plot Subtype} & \textbf{NLCD Class} & \textbf{Protocols} & \textbf{Number of Plots} \\ \hline
+\endfirsthead
 \hline
 \textbf{Plot Type} & \textbf{Plot Subtype} & \textbf{NLCD Class} & \textbf{Protocols} & \textbf{Number of Plots} \\ \hline
 \endhead
@@ -656,9 +668,14 @@ Note: NLCD land cover classes as not used to stratify tower plots
          distributedOutput$established,
          " \\\\ ","\\hline", sep="", collapse=" ")`
 \end{longtable}
+Note: Distributed Base Plots typically support more than one TOS protocol; 'Number of Plots' cannot be added to get total TOS Distributed Base Plot number.
+
 
 \begin{longtable}{|c|c|c|c|}
-\caption{Number of tower plots per protocol at `r coreCode`.Tower Base Plots typically support more than one TOS protocol; 'Number of Plots' cannot be added to get total TOS Tower Base Plot number.} \\
+\caption{Number of tower plots per protocol at `r coreCode`} \\
+\hline
+\textbf{Plot Type} & \textbf{Plot Subtype} & \textbf{Protocols} & \textbf{Number of Plots} \\ \hline
+\endfirsthead
 \hline
 \textbf{Plot Type} & \textbf{Plot Subtype} & \textbf{Protocols} & \textbf{Number of Plots} \\ \hline
 \endhead
@@ -666,6 +683,7 @@ Note: NLCD land cover classes as not used to stratify tower plots
          towerOutput$established,
          " \\\\ ","\\hline", sep="", collapse=" ")`
 \end{longtable}
+Note: Tower Base Plots typically support more than one TOS protocol; 'Number of Plots' cannot be added to get total TOS Tower Base Plot number.
 
 ```{r belowground biomass, echo=FALSE, message=FALSE, warning=FALSE}
 library(knitr)
@@ -872,6 +890,9 @@ Belowground biomass characterization data was collected down to `r lowestdepth` 
 \hline
 \textbf{Upper Depth} & \textbf{Lower Depth} & \textbf{Mean mg per cm$^3$} & \textbf{Std Dev} \\ 
 \hline
+\endfirsthead
+\textbf{Upper Depth} & \textbf{Lower Depth} & \textbf{Mean mg per cm$^3$} & \textbf{Std Dev} \\ 
+\hline
 \endhead
 `r paste(First.table$UpperDepth, "&", First.table$LowerDepth, "&", 
          First.table$AverageMassperIncrementmgcm3, "&", First.table$StandardDevation, 
@@ -880,6 +901,10 @@ Belowground biomass characterization data was collected down to `r lowestdepth` 
 
 \begin{longtable}{|c|c|c|c|}
 \caption{Domain `r domainID` `r coreCode` cumulative fine root mass as a function of depth}\\
+\hline
+\textbf{Upper Depth} & \textbf{Lower Depth} & \textbf{Mean Cumulative g per m$^2$} & \textbf{Cumulative Std Dev} \\ 
+\hline
+\endfirsthead
 \hline
 \textbf{Upper Depth} & \textbf{Lower Depth} & \textbf{Mean Cumulative g per m$^2$} & \textbf{Cumulative Std Dev} \\ 
 \hline
@@ -1012,6 +1037,13 @@ if(length(unique(site.datasheet$scientificname))<=1){
 applicableModules.full<-read.csv("A:/TOS/TOS_Workspace/SpatialLookUpTables/applicableModules.csv", sep = ",", head=T)
 applicableModules.site<-subset(applicableModules.full,applicableModules.full$siteID==coreCode)
 site.datasheet$mortonOrder<-site.datasheet$plotid
+
+#add plotIDs from morton orders using applicable modules if necessary
+if (any(grepl("[[:alpha:]]",site.datasheet$plotid))==FALSE){
+for(i in 1:nrow(site.datasheet)){
+  site.datasheet$plotid[i]<-applicableModules.site$plotID[which(applicableModules.site$mortonOrder==site.datasheet$mortonOrder[i])]
+}
+}
 
 #add plotIDs from morton orders using applicable modules if necessary (sometimes plotIDs are already available)
 for(i in 1:length(site.datasheet$siteid)){
@@ -1182,7 +1214,11 @@ Plant characterization data were collected by an external contractor during the 
 
 
 \begin{longtable}{|c|>{\centering\arraybackslash}p{4cm}|c|c|>{\centering\arraybackslash}p{2cm}|>{\centering\arraybackslash}p{2cm}|}
-\caption{Per Plot Breakdown of Species Richness, Diversity, and Herbaceous Cover at  `r coreCode`}\\
+\caption{Site Plant Characterization and Phenology Species Summary at `r coreCode`}\\
+\hline
+\textbf{Taxon ID} & \textbf{Scientic Name} & \textbf{Rank} & \textbf{Mean Percent Cover} & \textbf{Mean Canopy Area per m$^2$} & \textbf{Mean ABH cm$^2$ per m$^2$} \\ 
+\hline
+\endfirsthead
 \hline
 \textbf{Taxon ID} & \textbf{Scientic Name} & \textbf{Rank} & \textbf{Mean Percent Cover} & \textbf{Mean Canopy Area per m$^2$} & \textbf{Mean ABH cm$^2$ per m$^2$} \\ 
 \hline
@@ -1199,8 +1235,11 @@ Plant characterization data were collected by an external contractor during the 
 \hline
 \textbf{Plot ID} & \textbf{Species Richness} & \textbf{Shannon Diversity Index} & \textbf{Percent Total Herbaceous Cover} \\ 
 \hline
+\endfirsthead
+\hline
+\textbf{Plot ID} & \textbf{Species Richness} & \textbf{Shannon Diversity Index} & \textbf{Percent Total Herbaceous Cover} \\ 
+\hline
 \endhead
-
 
 `r paste(Second.Table$plotid, "&", Second.Table$species.richness, "&", 
          Second.Table$Shannon, "&", Second.Table$Total.Herbacious.Cover, 
@@ -1269,6 +1308,10 @@ Beetle site characterization was conducted in June and July 2010 by NEON staff f
 \hline
 \textbf{Trap ID} & \textbf{Lat} & \textbf{Long} \\ 
 \hline
+\endfirsthead
+\hline
+\textbf{Trap ID} & \textbf{Lat} & \textbf{Long} \\ 
+\hline
 \endhead
 `r paste(beetleTrapLocations$trapID, "&", beetleTrapLocations$Lat, "&",
          beetleTrapLocations$Long," \\\\ ","\\hline", sep="", collapse=" ")`
@@ -1276,6 +1319,10 @@ Beetle site characterization was conducted in June and July 2010 by NEON staff f
 
 \begin{longtable}{|c|c|c|c|}
 \caption{`r coreCode` Beetle Identification Results}\\
+\hline
+\textbf{BOLD Sample ID} & \textbf{Scientific Name}  & \textbf{Collection Date}  & \textbf{Trap Location} \\ 
+\hline
+\endfirsthead
 \hline
 \textbf{BOLD Sample ID} & \textbf{Scientific Name}  & \textbf{Collection Date}  & \textbf{Trap Location} \\ 
 \hline
@@ -1295,6 +1342,10 @@ Mosquito site characterization was conducted in June and July 2010 by NEON staff
 \hline
 \textbf{Trap ID} & \textbf{Lat} & \textbf{Long} \\ 
 \hline
+\endfirsthead
+\hline
+\textbf{Trap ID} & \textbf{Lat} & \textbf{Long} \\ 
+\hline
 \endhead
 `r paste(mosquitoTrapLocations$trapID, "&", mosquitoTrapLocations$Lat, "&",
          mosquitoTrapLocations$Long,
@@ -1304,8 +1355,10 @@ Mosquito site characterization was conducted in June and July 2010 by NEON staff
 \begin{longtable}{|c|>{\centering\arraybackslash}p{4cm}|c|c|}
 \caption{`r coreCode` Mosquito Identification Results}\\
 \hline
-
-
+\textbf{BOLD Sample ID} & \textbf{Scientific Name} & \textbf{Collection Date} & \textbf{Trap Location} \\ 
+\hline
+\endfirsthead
+\hline
 \textbf{BOLD Sample ID} & \textbf{Scientific Name} & \textbf{Collection Date} & \textbf{Trap Location} \\ 
 \hline
 \endhead
@@ -1566,6 +1619,10 @@ Note: Any NLCD land cover classes less than 5% will not be sampled. Additionally
 \hline
 \textbf{Plot Type} & \textbf{Plot Subtype} & \textbf{NLCD Class} & \textbf{Number of Plots Established} \\ 
 \hline
+\endfirsthead
+\hline
+\textbf{Plot Type} & \textbf{Plot Subtype} & \textbf{NLCD Class} & \textbf{Number of Plots Established} \\ 
+\hline
 \endhead
 `r paste(FOPSestablished$plotType, "&", FOPSestablished$subtype, "&", 
          FOPSestablished$nlcdClass, "&", FOPSestablished$target, 
@@ -1574,7 +1631,10 @@ Note: Any NLCD land cover classes less than 5% will not be sampled. Additionally
 Note: NLCD land cover classes as not used to stratify tower plots
 
 \begin{longtable}{|c|c|c|p{4cm}|c|}
-\caption{Number of distributed base plots per NLCD Land Cover Class per protocol at `r rel1Code`. Distributed Base Plots typically support more than one TOS protocol; 'Number of Plots' cannot be added to get total TOS Distributed Base Plot number.}\\
+\caption{Number of distributed base plots per NLCD Land Cover Class per protocol at `r rel1Code`. }\\
+\hline
+\textbf{Plot Type} & \textbf{Plot Subtype} & \textbf{NLCD Class} & \textbf{Protocols} & \textbf{Number of Plots} \\ \hline
+\endfirsthead
 \hline
 \textbf{Plot Type} & \textbf{Plot Subtype} & \textbf{NLCD Class} & \textbf{Protocols} & \textbf{Number of Plots} \\ \hline
 \endhead
@@ -1583,9 +1643,13 @@ Note: NLCD land cover classes as not used to stratify tower plots
          distributedOutput$established,
          " \\\\ ","\\hline", sep="", collapse=" ")`
 \end{longtable}
+Note: Distributed Base Plots typically support more than one TOS protocol; 'Number of Plots' cannot be added to get total TOS Distributed Base Plot number.
 
 \begin{longtable}{|c|c|c|c|}
-\caption{Number of tower plots per protocol at `r rel1Code`.Tower Base Plots typically support more than one TOS protocol; 'Number of Plots' cannot be added to get total TOS Tower Base Plot number.} \\
+\caption{Number of tower plots per protocol at `r rel1Code`} \\
+\hline
+\textbf{Plot Type} & \textbf{Plot Subtype} & \textbf{Protocols} & \textbf{Number of Plots} \\ \hline
+\endfirsthead
 \hline
 \textbf{Plot Type} & \textbf{Plot Subtype} & \textbf{Protocols} & \textbf{Number of Plots} \\ \hline
 \endhead
@@ -1593,6 +1657,7 @@ Note: NLCD land cover classes as not used to stratify tower plots
          towerOutput$established,
          " \\\\ ","\\hline", sep="", collapse=" ")`
 \end{longtable}
+Note: Tower Base Plots typically support more than one TOS protocol; 'Number of Plots' cannot be added to get total TOS Tower Base Plot number.
 
 ```{r REL 1 belowground biomass, echo=FALSE, message=FALSE, warning=FALSE}
 library(knitr)
@@ -1799,6 +1864,10 @@ Ex. Belowground biomass characterization data was collected down to `r lowestdep
 \hline
 \textbf{Upper Depth} & \textbf{Lower Depth} & \textbf{Mean mg per cm$^3$} & \textbf{Std Dev} \\ 
 \hline
+\endfirsthead
+\hline
+\textbf{Upper Depth} & \textbf{Lower Depth} & \textbf{Mean mg per cm$^3$} & \textbf{Std Dev} \\ 
+\hline
 \endhead
 `r paste(First.table$UpperDepth, "&", First.table$LowerDepth, "&", 
          First.table$AverageMassperIncrementmgcm3, "&", First.table$StandardDevation, 
@@ -1807,6 +1876,10 @@ Ex. Belowground biomass characterization data was collected down to `r lowestdep
 
 \begin{longtable}{|c|c|c|c|}
 \caption{Domain `r domainID` `r rel1Code` cumulative fine root mass as a function of depth}\\
+\hline
+\textbf{Upper Depth} & \textbf{Lower Depth} & \textbf{Mean Cumulative g per m$^2$} & \textbf{Cumulative Std Dev} \\ 
+\hline
+\endfirsthead
 \hline
 \textbf{Upper Depth} & \textbf{Lower Depth} & \textbf{Mean Cumulative g per m$^2$} & \textbf{Cumulative Std Dev} \\ 
 \hline
@@ -1917,22 +1990,11 @@ First.Table$meanAbhPerSqM<-round(First.Table$meanAbhPerSqM, digits=2)
 #add \ to any special characters so latex doesn't get angry
 First.Table$scientificName <-gsub("&","\\\\&", First.Table$scientificName)
 
-
-#if(any(is.na(site.data$meanAbhPerSqM)==TRUE & is.na(site.data$nsMeanAbhPerSqM)==TRUE)==TRUE){
-  #print("***Warning*** NAs in Column")
-#}
-
 #Subsetting
-site.datasheet<-subset(datasheet, datasheet$siteid==site)
+site.datasheet<-subset(alt.datasheet, alt.datasheet$siteid==site)
+colnames(site.datasheet)[3] <- "plotid"
+colnames(site.datasheet)[9] <- "speciescover"
 
-#this checks to make sure scientific names
-if(length(unique(site.datasheet$scientificname))<=1){
-  site.datasheet<-subset(alt.datasheet, alt.datasheet$siteid==site)
-  colnames(site.datasheet)[3] <- "plotid"
-  colnames(site.datasheet)[9] <- "speciescover"
-  alt.data.used<-"Y"
-  #print("alt data used")
-}
 
 # using the non-git applicable modules in the chance that some site characterization plots are no longer active and thus removed from the github trimmed list
 
@@ -1941,7 +2003,7 @@ applicableModules.site<-subset(applicableModules.full,applicableModules.full$sit
 site.datasheet$mortonOrder<-site.datasheet$plotid
 
 #add plotIDs from morton orders using applicable modules if necessary
-if (!grepl("[[:alpha:]]",site.datasheet$plotid)){
+if (any(grepl("[[:alpha:]]",site.datasheet$plotid))==FALSE){
 for(i in 1:nrow(site.datasheet)){
   site.datasheet$plotid[i]<-applicableModules.site$plotID[which(applicableModules.site$mortonOrder==site.datasheet$mortonOrder[i])]
 }
@@ -2008,31 +2070,75 @@ First.Table$theRest <- ifelse(grepl(ssp,First.Table$theRest),
                               First.Table$theRest)
 
 
-#this code checks for plot IDs to make sure they follow the HEAL_001 format of the 4 letter code, underscore, and three digit number. This system will not work if morton order numbers are used
-#bad.plotIDs<-NA
 
-#for(i in 1:(length(plotIDs$unique.as.character.site.datasheet.plotid..))){
-#  if (nchar(plotIDs$unique.as.character.site.datasheet.plotid..[i])!=8){
-#    bad.plotIDs<-c(bad.plotIDs,plotIDs$unique.as.character.site.datasheet.plotid..[i])
-#  }
-#}
+Second.Table<-NULL
 
-#bad.plotIDs
+Second.Table<-dplyr::select(site.datasheet,plotid)
 
-#fill the plot ID you want to change
-#bad.plot<-"CPER_23"
-#fill in the replacement value
-#bad.plot.replacement<-"CPER_023"
+Second.Table<-unique(Second.Table)
 
-#for (i in 1:length(site.datasheet$plotid)) {
-#  if (site.datasheet$plotid[i]==bad.plot){
-#    site.datasheet$plotid[i]<-bad.plot.replacement
-#  }
-#}
 
-#check for successs
-#print(length(which(site.datasheet$plotid==bad.plot)))
+#species richness
+for(i in 1:length(Second.Table$plotid)){
+  Second.Table$species.richness[i]<-length(unique(site.datasheet$taxonid[which(site.datasheet$plotid==Second.Table$plotid[i])]))
+}
 
+species.list<-unique(as.character(site.datasheet$scientificname[which(site.datasheet$siteid==site)]))
+
+species.list<-species.list[!(is.na(species.list) | species.list=="")]
+
+average.cover.per.species<-data.frame(species.list)
+cover.ready<-dplyr::select(site.datasheet,plotid,scientificname,taxonid,speciescover)
+
+
+cover.ready$speciescover<-as.character(cover.ready$speciescover)
+cover.ready$speciescover[cover.ready$speciescover == "t"|cover.ready$speciescover == ""| is.na(cover.ready$speciescover) ]<-".5"
+cover.ready$speciescover<-as.numeric(cover.ready$speciescover)
+cover.ready[cover.ready==""]  <- NA 
+cover.ready<-cover.ready[complete.cases(cover.ready),]
+
+Second.Table$plotid<-as.character(Second.Table$plotid)
+
+plot<-data.frame(NULL)
+object<-vector()
+plotlist<-vector()
+count<-vector()
+
+#This chunk calculates the Shannon Diversity Index for the plot
+average.cover.per.species.per.plot<-cover.ready
+average.cover.per.species.per.plot<-aggregate(average.cover.per.species.per.plot,by= list(average.cover.per.species.per.plot$plotid, average.cover.per.species.per.plot$scientificname),FUN = mean)
+average.cover.per.species.per.plot<-average.cover.per.species.per.plot[-(3:5)]
+average.cover.per.species.per.plot<-average.cover.per.species.per.plot[complete.cases(average.cover.per.species.per.plot),]
+
+#this IF statement deals with making sure plotIDs are of the same structure. If it is in plotID notation (HARV_001) then it remains a character. If it is a mOrder number, it changes the column to numeric
+if(any(grepl("[[:alpha:]]",site.datasheet$plotid))==FALSE){
+  Second.Table$plotid<-as.numeric(Second.Table$plotid)
+}
+Second.Table$Shannon<-NA
+Second.Table$Total.Herbacious.Cover<-NA
+value<-vector()
+  
+for (i in 1:length(Second.Table$plotid)){
+  
+  sum.cover<-sum(average.cover.per.species.per.plot$speciescover[which(average.cover.per.species.per.plot$Group.1==Second.Table$plotid[i])])
+  for (q in 1:length(average.cover.per.species.per.plot$speciescover[which(average.cover.per.species.per.plot$Group.1==Second.Table$plotid[i])])){
+    p<-0
+    S<-average.cover.per.species.per.plot$speciescover[which(average.cover.per.species.per.plot$Group.1==Second.Table$plotid[i])]
+    ifelse(S[q]!=0,p<-((S[q]/sum.cover)*log((S[q]/sum.cover))),p<-0)
+    value<-c(value,p)
+  }
+  Second.Table$Shannon[i]<-sum(value)*-1
+  value<-vector()
+  Second.Table$Total.Herbacious.Cover[i]<-sum.cover
+}
+
+Second.Table$Shannon<-round(Second.Table$Shannon,2)
+Second.Table$Total.Herbacious.Cover<-round(Second.Table$Total.Herbacious.Cover,0)
+
+#add // for underscores so latex doesnt freak out
+Second.Table$plotid <- sub("_","\\\\_", Second.Table$plotid)
+#orders table by plotID
+Second.Table<-Second.Table[order(Second.Table$plotid),]
 ```
 
 ##Plant Characterization and Phenology Species Selection
@@ -2045,13 +2151,34 @@ Plant characterization data were collected by an external contractor during the 
 
 
 \begin{longtable}{|c|>{\centering\arraybackslash}p{4cm}|c|c|>{\centering\arraybackslash}p{2cm}|>{\centering\arraybackslash}p{2cm}|}
-\caption{Per Plot Breakdown of Species Richness, Diversity, and Herbaceous Cover at  `r rel1Code`}\\
+\caption{Site Plant Characterization and Phenology Species Summary at  `r rel1Code`}\\
+\hline
+\textbf{Taxon ID} & \textbf{Scientic Name} & \textbf{Rank} & \textbf{Mean Percent Cover} & \textbf{Mean Canopy Area per m$^2$} & \textbf{Mean ABH cm$^2$ per m$^2$} \\ 
+\hline
+\endfirsthead
 \hline
 \textbf{Taxon ID} & \textbf{Scientic Name} & \textbf{Rank} & \textbf{Mean Percent Cover} & \textbf{Mean Canopy Area per m$^2$} & \textbf{Mean ABH cm$^2$ per m$^2$} \\ 
 \hline
 \endhead
 `r paste(First.Table$taxonID, "&", First.Table$Genspp , First.Table$theRest, "&",
          First.Table$rank, "&", First.Table$MeanPercentCover,"&", First.Table$MeanCanopyAreaPerSqM,"&",   First.Table$meanAbhPerSqM, 
+         " \\\\ ","\\hline", sep="", collapse=" ")`
+\end{longtable}
+
+
+
+\begin{longtable}{|c|c|c|c|}
+\caption{Per Plot Breakdown of Species Richness, Diversity, and Herbaceous Cover at  `r rel1Code`}\\
+\hline
+\textbf{Plot ID} & \textbf{Species Richness} & \textbf{Shannon Diversity Index} & \textbf{Percent Total Herbaceous Cover} \\ 
+\hline
+\endfirsthead
+\hline
+\textbf{Plot ID} & \textbf{Species Richness} & \textbf{Shannon Diversity Index} & \textbf{Percent Total Herbaceous Cover} \\ 
+\hline
+\endhead
+`r paste(Second.Table$plotid, "&", Second.Table$species.richness, "&", 
+         Second.Table$Shannon, "&", Second.Table$Total.Herbacious.Cover, 
          " \\\\ ","\\hline", sep="", collapse=" ")`
 \end{longtable}
 
@@ -2117,6 +2244,10 @@ Beetle site characterization was conducted in June and July 2012 by NEON staff f
 \hline
 \textbf{Trap ID} & \textbf{Lat} & \textbf{Long} \\ 
 \hline
+\endfirsthead
+\hline
+\textbf{Trap ID} & \textbf{Lat} & \textbf{Long} \\ 
+\hline
 \endhead
 `r paste(beetleTrapLocations$trapID, "&", beetleTrapLocations$Lat, "&",
          beetleTrapLocations$Long," \\\\ ","\\hline", sep="", collapse=" ")`
@@ -2124,6 +2255,10 @@ Beetle site characterization was conducted in June and July 2012 by NEON staff f
 
 \begin{longtable}{|c|c|c|c|}
 \caption{`r rel1Code` Beetle Identification Results}\\
+\hline
+\textbf{BOLD Sample ID} & \textbf{Scientific Name}  & \textbf{Collection Date}  & \textbf{Trap Location} \\ 
+\hline
+\endfirsthead
 \hline
 \textbf{BOLD Sample ID} & \textbf{Scientific Name}  & \textbf{Collection Date}  & \textbf{Trap Location} \\ 
 \hline
@@ -2143,6 +2278,10 @@ Mosquito site characterization was conducted in June and July 2012 by NEON staff
 \hline
 \textbf{Trap ID} & \textbf{Lat} & \textbf{Long} \\ 
 \hline
+\endfirsthead
+\hline
+\textbf{Trap ID} & \textbf{Lat} & \textbf{Long} \\ 
+\hline
 \endhead
 `r paste(mosquitoTrapLocations$trapID, "&", mosquitoTrapLocations$Lat, "&",
          mosquitoTrapLocations$Long,
@@ -2151,6 +2290,10 @@ Mosquito site characterization was conducted in June and July 2012 by NEON staff
 
 \begin{longtable}{|c|>{\centering\arraybackslash}p{4cm}|c|c|}
 \caption{`r rel1Code` Mosquito Identification Results}\\
+\hline
+\textbf{BOLD Sample ID} & \textbf{Scientific Name} & \textbf{Collection Date} & \textbf{Trap Location} \\ 
+\hline
+\endfirsthead
 \hline
 \textbf{BOLD Sample ID} & \textbf{Scientific Name} & \textbf{Collection Date} & \textbf{Trap Location} \\ 
 \hline
@@ -2405,6 +2548,10 @@ Note: Any NLCD land cover classes less than 5% will not be sampled. Additionally
 \hline
 \textbf{Plot Type} & \textbf{Plot Subtype} & \textbf{NLCD Class} & \textbf{Number of Plots Established} \\ 
 \hline
+\endfirsthead
+\hline
+\textbf{Plot Type} & \textbf{Plot Subtype} & \textbf{NLCD Class} & \textbf{Number of Plots Established} \\ 
+\hline
 \endhead
 `r paste(FOPSestablished$plotType, "&", FOPSestablished$subtype, "&", 
          FOPSestablished$nlcdClass, "&", FOPSestablished$target, 
@@ -2413,7 +2560,10 @@ Note: Any NLCD land cover classes less than 5% will not be sampled. Additionally
 Note: NLCD land cover classes as not used to stratify tower plots
 
 \begin{longtable}{|c|c|c|p{4cm}|c|}
-\caption{Number of distributed base plots per NLCD Land Cover Class per protocol at `r rel2Code`. Distributed Base Plots typically support more than one TOS protocol; 'Number of Plots' cannot be added to get total TOS Distributed Base Plot number.}\\
+\caption{Number of distributed base plots per NLCD Land Cover Class per protocol at `r rel2Code`}\\
+\hline
+\textbf{Plot Type} & \textbf{Plot Subtype} & \textbf{NLCD Class} & \textbf{Protocols} & \textbf{Number of Plots} \\ \hline
+\endfirsthead
 \hline
 \textbf{Plot Type} & \textbf{Plot Subtype} & \textbf{NLCD Class} & \textbf{Protocols} & \textbf{Number of Plots} \\ \hline
 \endhead
@@ -2422,9 +2572,13 @@ Note: NLCD land cover classes as not used to stratify tower plots
          distributedOutput$established,
          " \\\\ ","\\hline", sep="", collapse=" ")`
 \end{longtable}
+Note: Distributed Base Plots typically support more than one TOS protocol; 'Number of Plots' cannot be added to get total TOS Distributed Base Plot number.
 
 \begin{longtable}{|c|c|c|c|}
-\caption{Number of tower plots per protocol at `r rel2Code`.Tower Base Plots typically support more than one TOS protocol; 'Number of Plots' cannot be added to get total TOS Tower Base Plot number.} \\
+\caption{Number of tower plots per protocol at `r rel2Code`} \\
+\hline
+\textbf{Plot Type} & \textbf{Plot Subtype} & \textbf{Protocols} & \textbf{Number of Plots} \\ \hline
+\endfirsthead
 \hline
 \textbf{Plot Type} & \textbf{Plot Subtype} & \textbf{Protocols} & \textbf{Number of Plots} \\ \hline
 \endhead
@@ -2432,7 +2586,7 @@ Note: NLCD land cover classes as not used to stratify tower plots
          towerOutput$established,
          " \\\\ ","\\hline", sep="", collapse=" ")`
 \end{longtable}
-
+Note: Tower Base Plots typically support more than one TOS protocol; 'Number of Plots' cannot be added to get total TOS Tower Base Plot number.
 ```{r REL 2 belowground biomass, echo=FALSE, message=FALSE, warning=FALSE}
 library(knitr)
 library(kfigr)
@@ -2638,6 +2792,10 @@ Ex. Belowground biomass characterization data was collected down to `r lowestdep
 \hline
 \textbf{Upper Depth} & \textbf{Lower Depth} & \textbf{Mean mg per cm$^3$} & \textbf{Std Dev} \\ 
 \hline
+\endfirsthead
+\hline
+\textbf{Upper Depth} & \textbf{Lower Depth} & \textbf{Mean mg per cm$^3$} & \textbf{Std Dev} \\ 
+\hline
 \endhead
 `r paste(First.table$UpperDepth, "&", First.table$LowerDepth, "&", 
          First.table$AverageMassperIncrementmgcm3, "&", First.table$StandardDevation, 
@@ -2646,6 +2804,10 @@ Ex. Belowground biomass characterization data was collected down to `r lowestdep
 
 \begin{longtable}{|c|c|c|c|}
 \caption{Domain `r domainID` `r rel2Code` cumulative fine root mass as a function of depth}\\
+\hline
+\textbf{Upper Depth} & \textbf{Lower Depth} & \textbf{Mean Cumulative g per m$^2$} & \textbf{Cumulative Std Dev} \\ 
+\hline
+\endfirsthead
 \hline
 \textbf{Upper Depth} & \textbf{Lower Depth} & \textbf{Mean Cumulative g per m$^2$} & \textbf{Cumulative Std Dev} \\ 
 \hline
@@ -2762,22 +2924,23 @@ First.Table$scientificName <-gsub("&","\\\\&", First.Table$scientificName)
 #}
 
 #Subsetting
-site.datasheet<-subset(datasheet, datasheet$siteid==site)
+site.datasheet<-subset(alt.datasheet, alt.datasheet$siteid==site)
+colnames(site.datasheet)[3] <- "plotid"
+colnames(site.datasheet)[9] <- "speciescover"
 
-#this checks to make sure scientific names
-if(length(unique(site.datasheet$scientificname))<=1){
-  site.datasheet<-subset(alt.datasheet, alt.datasheet$siteid==site)
-  colnames(site.datasheet)[3] <- "plotid"
-  colnames(site.datasheet)[9] <- "speciescover"
-  alt.data.used<-"Y"
-  #print("alt data used")
-}
 
 # using the non-git applicable modules in the chance that some site characterization plots are no longer active and thus removed from the github trimmed list
 
 applicableModules.full<-read.csv("A:/TOS/TOS_Workspace/SpatialLookUpTables/applicableModules.csv", sep = ",", head=T)
 applicableModules.site<-subset(applicableModules.full,applicableModules.full$siteID==rel2Code)
 site.datasheet$mortonOrder<-site.datasheet$plotid
+
+#add plotIDs from morton orders using applicable modules if necessary
+if (any(grepl("[[:alpha:]]",site.datasheet$plotid))==FALSE){
+for(i in 1:nrow(site.datasheet)){
+  site.datasheet$plotid[i]<-applicableModules.site$plotID[which(applicableModules.site$mortonOrder==site.datasheet$mortonOrder[i])]
+}
+}
 
 #add plotIDs from morton orders using applicable modules if necessary (sometimes plotIDs are already available)
 for(i in 1:length(site.datasheet$siteid)){
@@ -2908,7 +3071,7 @@ average.cover.per.species.per.plot<-average.cover.per.species.per.plot[-(3:5)]
 average.cover.per.species.per.plot<-average.cover.per.species.per.plot[complete.cases(average.cover.per.species.per.plot),]
 
 #this IF statement deals with making sure plotIDs are of the same structure. If it is in plotID notation (HARV_001) then it remains a character. If it is a mOrder number, it changes the column to numeric
-if((site %in% c("STER","BART"))==TRUE){
+if(any(grepl("[[:alpha:]]",site.datasheet$plotid))==FALSE){
   Second.Table$plotid<-as.numeric(Second.Table$plotid)
 }
 Second.Table$Shannon<-NA
@@ -2948,7 +3111,11 @@ Plant characterization data were collected by an external contractor during the 
 
 
 \begin{longtable}{|c|>{\centering\arraybackslash}p{4cm}|c|c|>{\centering\arraybackslash}p{2cm}|>{\centering\arraybackslash}p{2cm}|}
-\caption{Per Plot Breakdown of Species Richness, Diversity, and Herbaceous Cover at  `r rel2Code`}\\
+\caption{Site Plant Characterization and Phenology Species Summary at `r rel2Code`}\\
+\hline
+\textbf{Taxon ID} & \textbf{Scientic Name} & \textbf{Rank} & \textbf{Mean Percent Cover} & \textbf{Mean Canopy Area per m$^2$} & \textbf{Mean ABH cm$^2$ per m$^2$} \\ 
+\hline
+\endfirsthead
 \hline
 \textbf{Taxon ID} & \textbf{Scientic Name} & \textbf{Rank} & \textbf{Mean Percent Cover} & \textbf{Mean Canopy Area per m$^2$} & \textbf{Mean ABH cm$^2$ per m$^2$} \\ 
 \hline
@@ -2965,9 +3132,11 @@ Plant characterization data were collected by an external contractor during the 
 \hline
 \textbf{Plot ID} & \textbf{Species Richness} & \textbf{Shannon Diversity Index} & \textbf{Percent Total Herbaceous Cover} \\ 
 \hline
+\endfirsthead
+\hline
+\textbf{Plot ID} & \textbf{Species Richness} & \textbf{Shannon Diversity Index} & \textbf{Percent Total Herbaceous Cover} \\ 
+\hline
 \endhead
-
-
 `r paste(Second.Table$plotid, "&", Second.Table$species.richness, "&", 
          Second.Table$Shannon, "&", Second.Table$Total.Herbacious.Cover, 
          " \\\\ ","\\hline", sep="", collapse=" ")`
@@ -3035,6 +3204,10 @@ Beetle site characterization was conducted in June and July 2012 by NEON staff f
 \hline
 \textbf{Trap ID} & \textbf{Lat} & \textbf{Long} \\ 
 \hline
+\endfirsthead
+\hline
+\textbf{Trap ID} & \textbf{Lat} & \textbf{Long} \\ 
+\hline
 \endhead
 `r paste(beetleTrapLocations$trapID, "&", beetleTrapLocations$Lat, "&",
          beetleTrapLocations$Long," \\\\ ","\\hline", sep="", collapse=" ")`
@@ -3042,6 +3215,10 @@ Beetle site characterization was conducted in June and July 2012 by NEON staff f
 
 \begin{longtable}{|c|c|c|c|}
 \caption{`r rel2Code` Beetle Identification Results}\\
+\hline
+\textbf{BOLD Sample ID} & \textbf{Scientific Name}  & \textbf{Collection Date}  & \textbf{Trap Location} \\ 
+\hline
+\endfirsthead
 \hline
 \textbf{BOLD Sample ID} & \textbf{Scientific Name}  & \textbf{Collection Date}  & \textbf{Trap Location} \\ 
 \hline
@@ -3061,6 +3238,10 @@ Mosquito site characterization was conducted in June and July 2012 by NEON staff
 \hline
 \textbf{Trap ID} & \textbf{Lat} & \textbf{Long} \\ 
 \hline
+\endfirsthead
+\hline
+\textbf{Trap ID} & \textbf{Lat} & \textbf{Long} \\ 
+\hline
 \endhead
 `r paste(mosquitoTrapLocations$trapID, "&", mosquitoTrapLocations$Lat, "&",
          mosquitoTrapLocations$Long,
@@ -3069,6 +3250,10 @@ Mosquito site characterization was conducted in June and July 2012 by NEON staff
 
 \begin{longtable}{|c|>{\centering\arraybackslash}p{4cm}|c|c|}
 \caption{`r rel2Code` Mosquito Identification Results}\\
+\hline
+\textbf{BOLD Sample ID} & \textbf{Scientific Name} & \textbf{Collection Date} & \textbf{Trap Location} \\ 
+\hline
+\endfirsthead
 \hline
 \textbf{BOLD Sample ID} & \textbf{Scientific Name} & \textbf{Collection Date} & \textbf{Trap Location} \\ 
 \hline
