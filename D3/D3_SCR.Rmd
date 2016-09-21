@@ -628,7 +628,7 @@ distributedOutput <- filter(distributedOutput, subType == "Base Plot")
 towerOutput<- filter(output, plotType == "Tower")
 ```
 \begin{table}[H]
-\caption{NLCD Land Cover Classes and Area within the TOS site boundary at `r coreCode`}
+\caption{NLCD land cover classes and area within the TOS site boundary at `r coreCode`}
 \begin{tabular}{|>{\centering\arraybackslash}p{6cm}|>{\centering\arraybackslash}p{4cm}|>{\centering\arraybackslash}p{4cm}|}
 \hline
 \textbf{NLCD Class} & \textbf{Site Area km$^2$} & \textbf{Percent} \\ \hline
@@ -640,7 +640,7 @@ towerOutput<- filter(output, plotType == "Tower")
 Note: Any NLCD land cover classes less than 5% will not be sampled. Additionally, no sampling will take place in Water, Developed, or Barren Land NLCD classes.
 
 \begin{longtable}{|c|c|c|c|}
-\caption{NLCD Land Cover Classes and TOS plot numbers at `r coreCode`}\\
+\caption{NLCD land cover classes and TOS plot numbers at `r coreCode`}\\
 \hline
 \textbf{Plot Type} & \textbf{Plot Subtype} & \textbf{NLCD Class} & \textbf{Number of Plots Established} \\ 
 \hline
@@ -656,7 +656,7 @@ Note: Any NLCD land cover classes less than 5% will not be sampled. Additionally
 Note: NLCD land cover classes are not used to stratify tower plots
 
 \begin{longtable}{|c|c|c|>{\centering\arraybackslash}p{4cm}|c|}
-\caption{Number of Distributed Base Plots per NLCD Land Cover Class per protocol at `r coreCode`.}\\
+\caption{Number of Distributed Base Plots per NLCD land cover class per protocol at `r coreCode`.}\\
 \hline
 \textbf{Plot Type} & \textbf{Plot Subtype} & \textbf{NLCD Class} & \textbf{Protocols} & \textbf{Number of Plots} \\ \hline
 \endfirsthead
@@ -886,7 +886,7 @@ Belowground biomass characterization data was collected down to `r lowestdepth` 
 [//]:  Be sure to check units!!!!
 
 \begin{longtable}{|c|c|c|c|}
-\caption{Domain `r domainID` `r coreCode` fine root mass per depth increment}\\
+\caption{Fine root mass per depth increment at `r coreCode`}\\
 \hline
 \textbf{Upper Depth} & \textbf{Lower Depth} & \textbf{Mean mg per cm$^3$} & \textbf{Std Dev} \\ 
 \hline
@@ -900,7 +900,7 @@ Belowground biomass characterization data was collected down to `r lowestdepth` 
 \end{longtable}
 
 \begin{longtable}{|c|c|c|c|}
-\caption{Domain `r domainID` `r coreCode` cumulative fine root mass as a function of depth}\\
+\caption{Cumulative fine root mass as a function of depth at `r coreCode` }\\
 \hline
 \textbf{Upper Depth} & \textbf{Lower Depth} & \textbf{Mean Cumulative g per m$^2$} & \textbf{Cumulative Std Dev} \\ 
 \hline
@@ -917,11 +917,11 @@ Belowground biomass characterization data was collected down to `r lowestdepth` 
 \begin{figure}[H]
 \centering
 \includegraphics[width=1\textwidth] {`r paste(myPathToGraphics,paste(coreCode,'biomass.jpg'), sep='/')`}
-\caption{Domain `r domainID` `r coreCode`  cumulative root mass by pit depth}
+\caption{Cumulative root mass by pit depth at `r coreCode`}
 \end{figure}
 
 \begin{longtable}{|c|c|}
-\caption{Domain `r domainID` `r coreCode`  fine root biomass sampling summary data}\\
+\caption{Fine root biomass sampling summary data at `r coreCode`}\\
 \hline
 Total Pit Depth cm &`r paste(Summary.table$Summary.values[Summary.table$Summary.labels == "Total Pit Depth"], 
          " \\\\ ","\\hline", sep="", collapse=" ")`
@@ -1214,7 +1214,7 @@ Plant characterization data were collected by an external contractor during the 
 
 
 \begin{longtable}{|c|>{\centering\arraybackslash}p{4cm}|c|c|>{\centering\arraybackslash}p{2cm}|>{\centering\arraybackslash}p{2cm}|}
-\caption{Site Plant Characterization and Phenology Species Summary at `r coreCode`}\\
+\caption{Site plant characterization and phenology species summary at `r coreCode`}\\
 \hline
 \textbf{Taxon ID} & \textbf{Scientic Name} & \textbf{Rank} & \textbf{Mean Percent Cover} & \textbf{Mean Canopy Area per m$^2$} & \textbf{Mean ABH cm$^2$ per m$^2$} \\ 
 \hline
@@ -1231,7 +1231,7 @@ Plant characterization data were collected by an external contractor during the 
 Note: Mean canopy area is collected for shrubs. Mean at breast height (ABH) diameter is collected for trees. Taxon IDs and scientific names are based on the USDA Plants database (plants.usda.gov).
 
 \begin{longtable}{|c|c|c|c|}
-\caption{Per Plot Breakdown of Species Richness, Diversity, and Herbaceous Cover at  `r coreCode`}\\
+\caption{Per plot breakdown of species richness, diversity, and herbaceous cover at  `r coreCode`}\\
 \hline
 \textbf{Plot ID} & \textbf{Species Richness} & \textbf{Shannon Diversity Index} & \textbf{Percent Total Herbaceous Cover} \\ 
 \hline
@@ -1290,7 +1290,7 @@ Mosquito site characterization was conducted in June and July 2010 by NEON staff
 ###Results
 
 \begin{longtable}{|c|c|c|}
-\caption{`r coreCode` Mosquito Trap Locations}\\
+\caption{Mosquito trap locations at `r coreCode` }\\
 \hline
 \textbf{Trap ID} & \textbf{Lat} & \textbf{Long} \\ 
 \hline
@@ -1305,7 +1305,7 @@ Mosquito site characterization was conducted in June and July 2010 by NEON staff
 \end{longtable}
 
 \begin{longtable}{|c|>{\centering\arraybackslash}p{4cm}|c|c|}
-\caption{`r coreCode` Mosquito Identification Results}\\
+\caption{Mosquito identification results at `r coreCode` }\\
 \hline
 \textbf{BOLD Sample ID} & \textbf{Scientific Name} & \textbf{Collection Date} & \textbf{Trap Location} \\ 
 \hline
@@ -1575,7 +1575,7 @@ distributedOutput <- filter(distributedOutput, subType == "Base Plot")
 towerOutput<- filter(output, plotType == "Tower")
 ```
 \begin{table}[H]
-\caption{NLCD Land Cover Classes and Area within the TOS site boundary at `r rel1Code`}
+\caption{NLCD land cover classes and area within the TOS site boundary at `r rel1Code`}
 \begin{tabular}{|>{\centering\arraybackslash}p{6cm}|>{\centering\arraybackslash}p{4cm}|>{\centering\arraybackslash}p{4cm}|}
 \hline
 \textbf{NLCD Class} & \textbf{Site Area km$^2$} & \textbf{Percent} \\ \hline
@@ -1587,7 +1587,7 @@ towerOutput<- filter(output, plotType == "Tower")
 Note: Any NLCD land cover classes less than 5% will not be sampled. Additionally, no sampling will take place in Water, Developed, or Barren Land NLCD classes.
 
 \begin{longtable}{|c|c|c|c|}
-\caption{NLCD Land Cover Classes and TOS plot numbers at `r rel1Code`}\\
+\caption{NLCD land cover classes and TOS plot numbers at `r rel1Code`}\\
 \hline
 \textbf{Plot Type} & \textbf{Plot Subtype} & \textbf{NLCD Class} & \textbf{Number of Plots Established} \\ 
 \hline
@@ -1603,7 +1603,7 @@ Note: Any NLCD land cover classes less than 5% will not be sampled. Additionally
 Note: NLCD land cover classes are not used to stratify Tower Plots
 
 \begin{longtable}{|c|c|c|>{\centering\arraybackslash}p{4cm}|c|}
-\caption{Number of Distributed Base plots per NLCD Land Cover Class per protocol at `r rel1Code`. }\\
+\caption{Number of Distributed Base plots per NLCD land cover class per protocol at `r rel1Code`. }\\
 \hline
 \textbf{Plot Type} & \textbf{Plot Subtype} & \textbf{NLCD Class} & \textbf{Protocols} & \textbf{Number of Plots} \\ \hline
 \endfirsthead
@@ -1832,7 +1832,7 @@ Belowground biomass characterization data was collected down to `r lowestdepth` 
 [//]:  Be sure to check units!!!!
 
 \begin{longtable}{|c|c|c|c|}
-\caption{Domain `r domainID` `r rel1Code` fine root mass per depth increment}\\
+\caption{Fine root mass per depth increment at `r rel1Code`}\\
 \hline
 \textbf{Upper Depth} & \textbf{Lower Depth} & \textbf{Mean mg per cm$^3$} & \textbf{Std Dev} \\ 
 \hline
@@ -1847,7 +1847,7 @@ Belowground biomass characterization data was collected down to `r lowestdepth` 
 \end{longtable}
 
 \begin{longtable}{|c|c|c|c|}
-\caption{Domain `r domainID` `r rel1Code` cumulative fine root mass as a function of depth}\\
+\caption{Cumulative fine root mass as a function of depth at `r rel1Code`}\\
 \hline
 \textbf{Upper Depth} & \textbf{Lower Depth} & \textbf{Mean Cumulative g per m$^2$} & \textbf{Cumulative Std Dev} \\ 
 \hline
@@ -1864,11 +1864,11 @@ Belowground biomass characterization data was collected down to `r lowestdepth` 
 \begin{figure}[H]
 \centering
 \includegraphics[width=1\textwidth] {`r paste(myPathToGraphics,paste(rel1Code,'biomass.jpg'), sep='/')`}
-\caption{Domain `r domainID` `r rel1Code`  cumulative root mass by pit depth}
+\caption{Cumulative root mass by pit depth at `r rel1Code`}
 \end{figure}
 
 \begin{longtable}{|c|c|}
-\caption{Domain `r domainID` `r rel1Code`  fine root biomass sampling summary data}\\
+\caption{Fine root biomass sampling summary data at `r rel1Code`}\\
 \hline
 Total Pit Depth cm &`r paste(Summary.table$Summary.values[Summary.table$Summary.labels == "Total Pit Depth"], 
          " \\\\ ","\\hline", sep="", collapse=" ")`
@@ -2123,7 +2123,7 @@ Plant characterization data were collected by an external contractor during the 
 
 
 \begin{longtable}{|c|>{\centering\arraybackslash}p{4cm}|c|c|>{\centering\arraybackslash}p{2cm}|>{\centering\arraybackslash}p{2cm}|}
-\caption{Site Plant Characterization and Phenology Species Summary at  `r rel1Code`}\\
+\caption{Site plant characterization and phenology species summary at `r rel1Code`}\\
 \hline
 \textbf{Taxon ID} & \textbf{Scientic Name} & \textbf{Rank} & \textbf{Mean Percent Cover} & \textbf{Mean Canopy Area per m$^2$} & \textbf{Mean ABH cm$^2$ per m$^2$} \\ 
 \hline
@@ -2140,7 +2140,7 @@ Plant characterization data were collected by an external contractor during the 
 Note: Mean canopy area is collected for shrubs. Mean at breast height (ABH) diameter is collected for trees. Taxon IDs and scientific names are based on the USDA Plants database (plants.usda.gov).
 
 \begin{longtable}{|c|c|c|c|}
-\caption{Per Plot Breakdown of Species Richness, Diversity, and Herbaceous Cover at  `r rel1Code`}\\
+\caption{Per plot breakdown of species richness, diversity, and herbaceous cover at  `r rel1Code`}\\
 \hline
 \textbf{Plot ID} & \textbf{Species Richness} & \textbf{Shannon Diversity Index} & \textbf{Percent Total Herbaceous Cover} \\ 
 \hline
@@ -2211,7 +2211,7 @@ Beetle site characterization was conducted in June and July 2012 by NEON staff f
 
 
 \begin{longtable}{|c|c|c|}
-\caption{`r rel1Code` Beetle Trap Locations}\\
+\caption{Beetle trap locations at `r rel1Code` }\\
 \hline
 \textbf{Trap ID} & \textbf{Lat} & \textbf{Long} \\ 
 \hline
@@ -2225,7 +2225,7 @@ Beetle site characterization was conducted in June and July 2012 by NEON staff f
 \end{longtable}
 
 \begin{longtable}{|c|c|c|c|}
-\caption{`r rel1Code` Beetle Identification Results}\\
+\caption{Beetle identification results at `r rel1Code`}\\
 \hline
 \textbf{BOLD Sample ID} & \textbf{Scientific Name}  & \textbf{Collection Date}  & \textbf{Trap Location} \\ 
 \hline
@@ -2245,7 +2245,7 @@ Mosquito site characterization was conducted in June and July 2012 by NEON staff
 ###Results
 
 \begin{longtable}{|c|c|c|}
-\caption{`r rel2Code` Mosquito Trap Locations}\\
+\caption{Mosquito trap locations at `r rel2Code`}\\
 \hline
 \textbf{Trap ID} & \textbf{Lat} & \textbf{Long} \\ 
 \hline
@@ -2260,7 +2260,7 @@ Mosquito site characterization was conducted in June and July 2012 by NEON staff
 \end{longtable}
 
 \begin{longtable}{|c|>{\centering\arraybackslash}p{4cm}|c|c|}
-\caption{`r rel1Code` Mosquito Identification Results}\\
+\caption{Mosquito identification results at `r rel1Code`}\\
 \hline
 \textbf{BOLD Sample ID} & \textbf{Scientific Name} & \textbf{Collection Date} & \textbf{Trap Location} \\ 
 \hline
@@ -2520,7 +2520,7 @@ distributedOutput <- filter(distributedOutput, subType == "Base Plot")
 towerOutput<- filter(output, plotType == "Tower")
 ```
 \begin{table}[H]
-\caption{NLCD Land Cover Classes and Area within the TOS site boundary at `r rel2Code`}
+\caption{NLCD land cover classes and area within the TOS site boundary at `r rel2Code`}
 \begin{tabular}{|>{\centering\arraybackslash}p{6cm}|>{\centering\arraybackslash}p{4cm}|>{\centering\arraybackslash}p{4cm}|}
 \hline
 \textbf{NLCD Class} & \textbf{Site Area km$^2$} & \textbf{Percent} \\ \hline
@@ -2532,7 +2532,7 @@ towerOutput<- filter(output, plotType == "Tower")
 Note: Any NLCD land cover classes less than 5% will not be sampled. Additionally, no sampling will take place in Water, Developed, or Barren Land NLCD classes.
 
 \begin{longtable}{|c|c|c|c|}
-\caption{NLCD Land Cover Classes and TOS plot numbers at `r rel2Code`}\\
+\caption{NLCD land cover classes and TOS plot numbers at `r rel2Code`}\\
 \hline
 \textbf{Plot Type} & \textbf{Plot Subtype} & \textbf{NLCD Class} & \textbf{Number of Plots Established} \\ 
 \hline
@@ -2548,7 +2548,7 @@ Note: Any NLCD land cover classes less than 5% will not be sampled. Additionally
 Note: NLCD land cover classes are not used to stratify tower plots
 
 \begin{longtable}{|c|c|c|>{\centering\arraybackslash}p{4cm}|c|}
-\caption{Number of Distributed Base plots per NLCD Land Cover Class per protocol at `r rel2Code`}\\
+\caption{Number of Distributed Base plots per NLCD land cover class per protocol at `r rel2Code`}\\
 \hline
 \textbf{Plot Type} & \textbf{Plot Subtype} & \textbf{NLCD Class} & \textbf{Protocols} & \textbf{Number of Plots} \\ \hline
 \endfirsthead
@@ -2776,7 +2776,7 @@ Belowground biomass characterization data was collected down to `r lowestdepth` 
 [//]:  Be sure to check units!!!!
 
 \begin{longtable}{|c|c|c|c|}
-\caption{Domain `r domainID` `r rel2Code` fine root mass per depth increment}\\
+\caption{Fine root mass per depth increment at`r rel2Code`}\\
 \hline
 \textbf{Upper Depth} & \textbf{Lower Depth} & \textbf{Mean mg per cm$^3$} & \textbf{Std Dev} \\ 
 \hline
@@ -2791,7 +2791,7 @@ Belowground biomass characterization data was collected down to `r lowestdepth` 
 \end{longtable}
 
 \begin{longtable}{|c|c|c|c|}
-\caption{Domain `r domainID` `r rel2Code` cumulative fine root mass as a function of depth}\\
+\caption{Cumulative fine root mass as a function of depth at `r rel2Code`}\\
 \hline
 \textbf{Upper Depth} & \textbf{Lower Depth} & \textbf{Mean Cumulative g per m$^2$} & \textbf{Cumulative Std Dev} \\ 
 \hline
@@ -2808,11 +2808,11 @@ Belowground biomass characterization data was collected down to `r lowestdepth` 
 \begin{figure}[H]
 \centering
 \includegraphics[width=1\textwidth] {`r paste(myPathToGraphics,paste(rel2Code,'biomass.jpg'), sep='/')`}
-\caption{Domain `r domainID` `r rel2Code`  cumulative root mass by pit depth}
+\caption{Cumulative root mass by pit depth at`r rel2Code`}
 \end{figure}
 
 \begin{longtable}{|c|c|}
-\caption{Domain `r domainID` `r rel2Code`  fine root biomass sampling summary data}\\
+\caption{Fine root biomass sampling summary data at `r rel2Code`}\\
 \hline
 Total Pit Depth cm &`r paste(Summary.table$Summary.values[Summary.table$Summary.labels == "Total Pit Depth"], 
          " \\\\ ","\\hline", sep="", collapse=" ")`
@@ -3099,7 +3099,7 @@ Plant characterization data were collected by an external contractor during the 
 
 
 \begin{longtable}{|c|>{\centering\arraybackslash}p{4cm}|c|c|>{\centering\arraybackslash}p{2cm}|>{\centering\arraybackslash}p{2cm}|}
-\caption{Site Plant Characterization and Phenology Species Summary at `r rel2Code`}\\
+\caption{Site plant characterization and phenology species summary at `r rel2Code`}\\
 \hline
 \textbf{Taxon ID} & \textbf{Scientic Name} & \textbf{Rank} & \textbf{Mean Percent Cover} & \textbf{Mean Canopy Area per m$^2$} & \textbf{Mean ABH cm$^2$ per m$^2$} \\ 
 \hline
@@ -3116,7 +3116,7 @@ Plant characterization data were collected by an external contractor during the 
 Note: Mean canopy area is collected for shrubs. Mean at breast height (ABH) diameter is collected for trees. Taxon IDs and scientific names are based on the USDA Plants database (plants.usda.gov).
 
 \begin{longtable}{|c|c|c|c|}
-\caption{Per Plot Breakdown of Species Richness, Diversity, and Herbaceous Cover at  `r rel2Code`}\\
+\caption{Per plot breakdown of species richness, diversity, and herbaceous cover at  `r rel2Code`}\\
 \hline
 \textbf{Plot ID} & \textbf{Species Richness} & \textbf{Shannon Diversity Index} & \textbf{Percent Total Herbaceous Cover} \\ 
 \hline
@@ -3188,7 +3188,7 @@ Beetle site characterization was conducted in June and July 2012 by NEON staff f
 
 
 \begin{longtable}{|c|c|c|}
-\caption{`r rel2Code` Beetle Trap Locations}\\
+\caption{Beetle trap locations at `r rel2Code`}\\
 \hline
 \textbf{Trap ID} & \textbf{Lat} & \textbf{Long} \\ 
 \hline
@@ -3202,7 +3202,7 @@ Beetle site characterization was conducted in June and July 2012 by NEON staff f
 \end{longtable}
 
 \begin{longtable}{|c|c|c|c|}
-\caption{`r rel2Code` Beetle Identification Results}\\
+\caption{Beetle identification results at `r rel2Code` }\\
 \hline
 \textbf{BOLD Sample ID} & \textbf{Scientific Name}  & \textbf{Collection Date}  & \textbf{Trap Location} \\ 
 \hline
@@ -3222,7 +3222,7 @@ Mosquito site characterization was conducted in June and July 2012 by NEON staff
 ###Results
 
 \begin{longtable}{|c|c|c|}
-\caption{`r rel2Code` Mosquito Trap Locations}\\
+\caption{Mosquito trap locations at `r rel2Code`}\\
 \hline
 \textbf{Trap ID} & \textbf{Lat} & \textbf{Long} \\ 
 \hline
@@ -3237,7 +3237,7 @@ Mosquito site characterization was conducted in June and July 2012 by NEON staff
 \end{longtable}
 
 \begin{longtable}{|c|>{\centering\arraybackslash}p{4cm}|c|c|}
-\caption{`r rel2Code` Mosquito Identification Results}\\
+\caption{Mosquito identification results at `r rel2Code` }\\
 \hline
 \textbf{BOLD Sample ID} & \textbf{Scientific Name} & \textbf{Collection Date} & \textbf{Trap Location} \\ 
 \hline
@@ -3307,7 +3307,7 @@ if (file.exists(
 For more information on the sampling protocols and the latest observatory data visit http://data.neonscience.org/data-product-catalog and search by name or code number.
 
 \begin{longtable}{|>{\centering\arraybackslash}p{4cm}|>{\centering\arraybackslash}p{8cm}|>{\centering\arraybackslash}p{4cm}|}
-\caption{NEON Data product Names and Descriptions}\\
+\caption{NEON data product names and descriptions}\\
 \hline
 \textbf{Name} & \textbf{Description}  & \textbf{Identification Code} \\ \hline
 \endfirsthead
