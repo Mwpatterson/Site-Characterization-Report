@@ -101,8 +101,8 @@ rel2Code <- "JERC"
 #Title page
 myTitle <- "TOS Site Characterization Report: Domain 03"
 
-firstAuthor <- "Rachel Kraus"
-docNum <- "NEON.DOC.XXXXXX"  #This is the template document #, replace with your doccument #
+firstAuthor <- "Rachel Krauss"
+docNum <- "NEON.DOC.003887"  #This is the template document #, replace with your doccument #
 rev <- "A"
 authorOrg <- "FSU"
 
@@ -173,7 +173,7 @@ variablesReported <- c("targetTaxaPresent", "morphospeciesID","individualCount",
 \begin{tabular}{|p{5cm}|p{5cm}|p{1in}|}
 \hline
 \multicolumn{2}{|p{11cm}|}{\emph{Title:} `r myTitle`} & \emph{Date:} \today \\ \hline
-\emph{NEON.DOC\#:} `r docNum`         & \emph{Author:} `r firstAuthor`        & \emph{Revision:} `r rev` \\ \hline
+\emph{NEON.DOC\#:} `r docNum`         & \emph{Author:} R.Krauss        & \emph{Revision:} `r rev` \\ \hline
 \end{tabular}
 \vspace{1cm}
 } 
@@ -227,7 +227,7 @@ See configuration management system for approval history.
 
 \bigskip
 
-\textcopyright \the\year\ NEON Inc. All rights reserved.
+
 
 \scriptsize{The National Ecological Observatory Network is a project solely funded by the National Science Foundation and managed under cooperative agreement by Battelle. Any opinions, findings, and conclusions or recommendations expressed in this material are those of the author(s) and do not necessarily reflect the views of the National Science Foundation.}
 \end{center}
@@ -247,7 +247,7 @@ See configuration management system for approval history.
 \begin{tabular}{|m{1in}|m{1in}|m{1in}|m{3in}|}
 \hline
 \textbf{REVISION} & \textbf{DATE} & \textbf{ECO\#} & \textbf{DESCRIPTION OF CHANGE} \\ \hline
-`r revA`         & `r revADate`   & `r revAECO`    & `r revADesc`          \\ \hline
+`r revA`         & \today   & `r revAECO`    & `r revADesc`          \\ \hline
 `r revB`         & `r revBDate`   & `r revBECO`    & `r revBDesc`          \\ \hline
 `r revC`         & `r revCDate`   & `r revCECO`    & `r revCDesc`          \\ \hline
 \end{tabular}
@@ -271,10 +271,9 @@ See configuration management system for approval history.
 \section{\uppercase{Description}}
 \pagenumbering{arabic} 
 \fancyfoot[L]{
-\footnotesize{\color{gray}Template NEON.DOC.000xxxx Rev A - `r releasedByDate`}
+\footnotesize{\color{gray}Template NEON.DOC.050006 Rev F}
 } 
 \fancyfoot[C]{
-\textcopyright \the\year\ NEON Inc. All rights reserved. \\
 Page \thepage \hspace{1pt} of \pageref{LastPage}
 }
 
@@ -347,7 +346,7 @@ RDlist <- as.data.frame(rbind(
   "name5" = c("name"="AOS Site Characterization Report", "doc"= "NEON.DOC.011034"),
   "name6" = c("name"="TOS Site Characterization Methods", "doc"= "NEON.DOC.003885"),
   "name7" = c("name"="TOS Protocol and Procedure: Small Mammal Sampling", "doc"="NEON.DOC.000481"),
-  "name8" = c("name"="TOS Protocol and Procedure: Breeding Landbird Abundance and Diversity", "doc" = "NEON.DOC.01401")
+  "name8" = c("name"="TOS Protocol and Procedure: Breeding Landbird Abundance and Diversity", "doc" = "NEON.DOC.014041")
   # any additional documents...
 ))
 
@@ -404,7 +403,7 @@ NLCD    &  National Land Cover Database \\ \hline
 
 \section{\uppercase{Core Site- `r coreName` (`r coreCode`)}}
 
-The Ordway-Swisher Biological Station (OSBS) is operated by the University of Florida and comprises over 9,300 acres (38km$^2$). It is a year-round field station established for the long-term study and conservation of unique ecosystems through management, research and education. The Station is located approximately 20 miles east of Gainesville in Melrose (Putnam County, Florida).  The Ordway-Swisher Biological Station site is designed to study an intact longleaf pine ecosystem, which is one of the historically dominant forest types in the region. The longleaf pine ecosystem spans the region, with deep sandy soils through the central ridgeline from North-to-mid Florida.
+The Ordway-Swisher Biological Station (OSBS) is operated by the University of Florida and comprises over 9,300 acres (38km$^2$). It is a year-round field station established for the long-term study and conservation of unique ecosystems through management, research, and education. The station is located approximately 20 miles east of Gainesville in Melrose (Putnam County, Florida).  The OSBS site is designed to study an intact longleaf pine ecosystem, which is one of the historically dominant forest types in the region. The longleaf pine ecosystem spans the region, with deep sandy soils through the central ridgeline from North-to-mid Florida.
 
 *  Site host: University of Florida Foundation 
 *  Located in: Putnam County, Florida
@@ -422,7 +421,7 @@ The Ordway-Swisher Biological Station (OSBS) is operated by the University of Fl
 [//]:  A majority of sites can use the dialogue below.  If the site had any NLCD mismatch use something along the lines of: TOS plots were allocated at OSBS according to a spatially balanced and stratified-random design (RD[3]).  The 2006 National Land Cover Database (NLCD) was selected for stratification because of the consistent and comparable data availability across the United States. Due to a mismatch between a strata described by the NLCD (shrub scrub) and existing ground cover (turkey oak and long-leaf pine), TOS plots were not initially allocated to shrub scrub.  The associated pixels will be reclassified with data from NEON's remote sensing platform such that this landscape component will be sampled early in NEON Operations.  The maps below depict the plot locations for the first year of NEON sampling.  Some plot locations may change over time due to logistics, safety, and science requirements.  Please visit the NEON website (http://www.neonscience.org) for updated plot locations at each site.
 -->
 
-TOS plots were allocated at `r coreCode` according to a spatially balanced and stratified-random design (RD[3]).  The 2006 National Land Cover Database (NLCD) was selected for stratification because of the consistent and comparable data availability across the United States. Due to a mismatch between a strata described by the NLCD (shrub scrub) and existing ground cover (turkey oak (\textit{Quercus laevis})and long-leaf pine (\textit{Pinus palustris} Mill.), TOS plots were not initially allocated to shrub scrub.  The associated pixels will be reclassified with data from NEON's remote sensing platform such that this landscape component will be sampled early in NEON Operations. TOS plots that are distributed throughout the site according to the spatial design are hereafter referred to as 'distributed plots'. TOS plots that are randomly allocated within the airshed of the NEON Terrestrial Instrument System (TIS) tower to collect complementary data are not stratified by NLCD class; these plots are hereafter referred to as 'tower plots'. The maps below depict the plot locations for the first year of NEON sampling.  Some plot locations may change over time due to logistics, safety, and science requirements.  Please visit the NEON website (http://www.neonscience.org) for updated plot locations at each site.
+TOS plots were allocated at `r coreCode` according to a spatially balanced and stratified-random design (RD[3]).  The 2006 National Land Cover Database (NLCD) was selected for stratification because of the consistent and comparable data availability across the United States. Due to a mismatch between a strata described by the NLCD (shrub scrub) and existing ground cover (turkey oak (\textit{Quercus laevis}) and long-leaf pine (\textit{Pinus palustris} Mill.)), TOS plots were not initially allocated to shrub scrub.  The associated pixels will be reclassified with data from NEON's remote sensing platform such that this landscape component will be sampled early in NEON Operations. TOS plots that are distributed throughout the site according to the spatial design are hereafter referred to as 'Distributed Plots'. TOS plots that are randomly allocated within the airshed of the NEON Terrestrial Instrument System (TIS) tower to collect complementary data are not stratified by NLCD class; these plots are hereafter referred to as 'Tower Plots'. The maps below depict the plot locations for the first year of NEON sampling.  Some plot locations may change over time due to logistics, safety, and science requirements.  Please visit the NEON website (http://www.neonscience.org) for updated plot locations at each site.
 
 \begin{figure}[H]
 \centering
@@ -526,8 +525,19 @@ if(FOPS_established$target[which(FOPS_established$subtype=="phenology")]>8){
 FOPS_established$nlcdClass <- gsub("([a-z])([A-Z])", "\\1 \\2", FOPS_established$nlcdClass)
 FOPS_established$nlcdClass <- gsub("(^|[[:space:]])([[:alpha:]])", "\\1\\U\\2", FOPS_established$nlcdClass, perl=TRUE)
 
+#captialize the the plot types
+FOPS_established$plotType[FOPS_established$plotType == "distributed"] <- "Distributed"
+FOPS_established$plotType[FOPS_established$plotType == "tower"] <- "Tower"
+FOPS_established$subtype[FOPS_established$subtype == "base"] <- "Base Plot"
+FOPS_established$subtype[FOPS_established$subtype == "mammal"] <- "Mammal Grid"
+FOPS_established$subtype[FOPS_established$subtype == "tick"] <- "Tick Plot"
+FOPS_established$subtype[FOPS_established$subtype == "mosquito"] <- "Mosquito Point"
+FOPS_established$subtype[FOPS_established$subtype == "phenology"] <- "Phenology Plot"
+FOPS_established$subtype[FOPS_established$subtype == "bird"] <- "Bird Grid" 
+
 FOPS_established <- FOPS_established[order(FOPS_established$plotType, FOPS_established$subtype),]
 FOPSestablished <- FOPS_established[,c(2,3,1,4)]
+
 
 data_sorted<- data[order(data$siteID,data$plotType,data$subtype),]
 myvars <- c("siteID","plotType","subtype","plotID","nlcdClass","applicableModules")
@@ -653,7 +663,7 @@ Note: Any NLCD land cover classes less than 5% will not be sampled. Additionally
          FOPSestablished$nlcdClass, "&", FOPSestablished$target, 
          " \\\\ ","\\hline", sep="", collapse=" ")`
 \end{longtable}
-Note: NLCD land cover classes are not used to stratify tower plots
+Note: NLCD land cover classes are not used to stratify Tower Plots
 
 \begin{longtable}{|c|c|c|>{\centering\arraybackslash}p{4cm}|c|}
 \caption{Number of Distributed Base Plots per NLCD land cover class per protocol at `r coreCode`.}\\
@@ -880,7 +890,7 @@ lowestdepth<-max(Second.table$LowerDepth)
 <!---
 [//]:  Include general information: Date, group who collected the data (NEON staff or external contractor) and any deviations from the methods. Summarize high level important points. Reference the data product number on the data portal. Reference NRCS soil narratives if they become available.
 -->
-Belowground biomass characterization data was collected down to `r lowestdepth` cm by NEON staff in `r megapit.month` `r megapit.year`. Since the NEON protocol for long-term, operational sampling of belowground biomass only collects data to a depth of 30cm, the belowground biomass site characterization data are critical for scaling belowground biomass measurements to greater depths; see the TOS Science Design for Plant Biomass, Productivity, and Leaf Area Index (AD[8]) for more information. The tables below summarize the belowground biomass site characterization work and more data and information can be found by searching the data product numbers in Appendix A. Samples were collected following the standard methods outlined in TOS Site Characterization Methods (RD[6]), except a 5.08cm diameter bulk density soil corer, soil knife, and drill bit was used to extract soil to test out protocols methods at this site. The tables below summarize the belowground biomass site characterization work; more data and information can be found by searching the NEON data portal for the data product numbers in Appendix A.
+Belowground biomass characterization data was collected down to `r lowestdepth` cm by NEON staff in `r megapit.month` `r megapit.year`. Since the NEON protocol for long-term, operational sampling of belowground biomass only collects data to a depth of 30cm, the belowground biomass site characterization data are critical for scaling belowground biomass measurements to greater depths; see the TOS Science Design for Plant Biomass, Productivity, and Leaf Area Index (AD[8]) for more information. Samples were collected following the standard methods outlined in TOS Site Characterization Methods (RD[6]). A bulk density soil corer was used instead of a soil knife to extract soil. The tables below summarize the belowground biomass site characterization work; more data and information can be found by searching the NEON data portal for the data product numbers in Appendix A.
 
 ###Results
 [//]:  Be sure to check units!!!!
@@ -1246,6 +1256,8 @@ Note: Mean canopy area is collected for shrubs. Mean at breast height (ABH) diam
          " \\\\ ","\\hline", sep="", collapse=" ")`
 \end{longtable}
 
+Note: Percent herbaceous cover was measured by species and then added together to calculate the percent total herbaceous cover for each plot. 
+
 ```{r insect and tick, echo=FALSE, message=FALSE, warning=FALSE }
 site <- coreCode
 
@@ -1352,10 +1364,10 @@ Franz, R., Hall, D.W. (1991): Vegetative communities and annotated plant lists f
 The 12,000-acre (49 km$^2$) Disney Wilderness Preserve (DSNY) straddles the headwaters of the Everglades ecosystem in south-central Florida. This site is seasonally wet and flooded. Data from DSNY supports greater understanding of wetland regeneration, water storage and quality, and predictive models for future large-scale restorations. 
 
 *  Site host: The Nature Conservancy 
-*  Located in Polk and Osceola County,Florida
+*  Located in Polk and Osceola County, Florida
 *  Area: 49 km$^2$
 *  Elevation: 16-22 m
-*  Dominant vegetation type- The predominant ecosystem type is restored wet prairie with regenerating pine; vegetation cover at Disney site is primarily restored broom sedge prairie, interspersed with perennial grasses. The Disney site is composed of short gasses ranging from 1-1.5 meters in height on average, interspersed with pine sapling that are less than 30 cm tall on average. Some pine forests surround the east, northeast and southeast edges of the prairie, with an average height of 25 meters. Dominant vegetation types within the Disney Wilderness Preserve include:
+*  Dominant vegetation type- The dominant ecosystem type is restored wet prairie with regenerating pine; vegetation cover at Disney site is primarily restored broom sedge prairie, interspersed with perennial grasses. The Disney site is composed of short gasses, interspersed with pine saplings. Dominant vegetation types within the Disney Wilderness Preserve include:
     *  Pine Flatwoods
     *  Southern Coastal Plain Non-riverine Cypress Dome
     *  Florida Dry Prairie
@@ -1472,6 +1484,16 @@ FOPS_established<-FOPS_established[complete.cases(FOPS_established),]
 #format table to match SCR format
 FOPS_established$nlcdClass <- gsub("([a-z])([A-Z])", "\\1 \\2", FOPS_established$nlcdClass)
 FOPS_established$nlcdClass <- gsub("(^|[[:space:]])([[:alpha:]])", "\\1\\U\\2", FOPS_established$nlcdClass, perl=TRUE)
+
+#captialize the the plot types
+FOPS_established$plotType[FOPS_established$plotType == "distributed"] <- "Distributed"
+FOPS_established$plotType[FOPS_established$plotType == "tower"] <- "Tower"
+FOPS_established$subtype[FOPS_established$subtype == "base"] <- "Base Plot"
+FOPS_established$subtype[FOPS_established$subtype == "mammal"] <- "Mammal Grid"
+FOPS_established$subtype[FOPS_established$subtype == "tick"] <- "Tick Plot"
+FOPS_established$subtype[FOPS_established$subtype == "mosquito"] <- "Mosquito Point"
+FOPS_established$subtype[FOPS_established$subtype == "phenology"] <- "Phenology Plot"
+FOPS_established$subtype[FOPS_established$subtype == "bird"] <- "Bird Grid" 
 
 FOPS_established <- FOPS_established[order(FOPS_established$plotType, FOPS_established$subtype),]
 FOPSestablished <- FOPS_established[,c(2,3,1,4)]
@@ -1826,7 +1848,7 @@ lowestdepth<-max(Second.table$LowerDepth)
 <!---
 [//]:  Include general information: Date, group who collected the data (NEON staff or external contractor) and any deviations from the methods. Summarize high level important points. Reference the data product number on the data portal. Reference NRCS soil narratives if they become available.
 -->
-Belowground biomass characterization data was collected down to `r lowestdepth` cm by NEON staff in `r megapit.month` `r megapit.year`. Since the NEON protocol for long-term, operational sampling of belowground biomass only collects data to a depth of 30cm, the belowground biomass site characterization data are critical for scaling belowground biomass measurements to greater depths; see the TOS Science Design for Plant Biomass, Productivity, and Leaf Area Index (AD[8]) for more information. The tables below summarize the belowground biomass site characterization work and more data and information can be found by searching the data product numbers in Appendix A. Samples were collected following the standard methods outlined in TOS Site Characterization Methods (RD[6]), except a 5.08cm diameter bulk density soil corer, soil knife, and drill bit was used to extract soil to test out protocols methods at this site. The tables below summarize the belowground biomass site characterization work; more data and information can be found by searching the NEON data portal for the data product numbers in Appendix A.
+Belowground biomass characterization data was collected down to `r lowestdepth` cm by NEON staff in `r megapit.month` `r megapit.year`. Since the NEON protocol for long-term, operational sampling of belowground biomass only collects data to a depth of 30cm, the belowground biomass site characterization data are critical for scaling belowground biomass measurements to greater depths; see the TOS Science Design for Plant Biomass, Productivity, and Leaf Area Index (AD[8]) for more information. Samples were collected following the standard methods outlined in TOS Site Characterization Methods (RD[6]). A bulk density soil corer and soil knife were used to extract soil to test out protocols methods. The tables below summarize the belowground biomass site characterization work; more data and information can be found by searching the NEON data portal for the data product numbers in Appendix A.
 
 ###Results
 [//]:  Be sure to check units!!!!
@@ -2115,7 +2137,7 @@ Second.Table<-Second.Table[order(Second.Table$plotid),]
 
 ##Plant Characterization and Phenology Species Selection
 ###Site-Specific Methods
-Plant characterization data were collected by an external contractor during the summer of July 2013 by NEON technicians following the standard methods outlined in TOS Site Characterization Methods (RD[6]).For more information on this protocol and data product numbers see Appendix A.
+Plant characterization data were collected by an external contractor and NEON technicians during the summer of July 2013 following the standard methods outlined in TOS Site Characterization Methods (RD[6]).For more information on this protocol and data product numbers see Appendix A.
 
 ###Results
 
@@ -2153,6 +2175,8 @@ Note: Mean canopy area is collected for shrubs. Mean at breast height (ABH) diam
          Second.Table$Shannon, "&", Second.Table$Total.Herbacious.Cover, 
          " \\\\ ","\\hline", sep="", collapse=" ")`
 \end{longtable}
+
+Note: Percent herbaceous cover was measured by species and then added together to calculate the percent total herbaceous cover for each plot. 
 
 ```{r   rel1 insect and tick, echo=FALSE, message=FALSE, warning=FALSE }
 
@@ -2307,7 +2331,7 @@ The Joseph Jones Ecological Research Center (JERC) is an 11,000-hectare (13 km$^
 *  Located in: Baker Country, Georgia
 *  Area: 13 km$^2$
 *  Elevation: 30-60m
-*  Dominant vegetation type- The dominant vegetation cover at Joseph Jones is a mix of Longleaf Pine (\textit{Pinus palustris} Mill.), Oaks (various) and wiregrass (\textit{Aristida stricta} Michx.); numerous species of other perennial grasses and forbs are also present. In addition, this site is interspersed with several species of oaks that change the natural fire frequency and fuel quality.. 
+*  Dominant vegetation type- The dominant vegetation cover at Joseph Jones is a mix of Longleaf Pine (\textit{Pinus palustris} Mill.), Oaks (various) and wiregrass (\textit{Aristida stricta} Michx.); numerous species of other perennial grasses and forbs are also present. In addition, this site is interspersed with several species of oaks that change the natural fire frequency and fuel quality.
 *  General management: The Jones site has been managed with low intensity, dormant-season prescribed fires for the past 75 years at a frequency of every 3-4 years.
 *  There is an aquatic array at the Jones site in a representative perennial, ground- and surface-water fed stream, called the Ichawaynochaway creek. See the AOS site characterization report for more details (RD[05]).
 *  Plot Selection: NEON TOS Plots were allocated across the site avoiding existing research.  
@@ -2319,7 +2343,7 @@ The Joseph Jones Ecological Research Center (JERC) is an 11,000-hectare (13 km$^
 [//]:  A majority of sites can use the dialogue below.  If the site had any NLCD mismatch use something along the lines of: TOS plots were allocated at OSBS according to a spatially balanced and stratified-random design (RD[3]).  The 2006 National Land Cover Database (NLCD) was selected for stratification because of the consistent and comparable data availability across the United States. Due to a mismatch between a strata described by the NLCD (shrub scrub) and existing ground cover (turkey oak and long-leaf pine), TOS plots were not initially allocated to shrub scrub.  The associated pixels will be reclassified with data from NEON's remote sensing platform such that this landscape component will be sampled early in NEON Operations.  The maps below depict the plot locations for the first year of NEON sampling.  Some plot locations may change over time due to logistics, safety, and science requirements.  Please visit the NEON website (http://www.neonscience.org) for updated plot locations at each site.
 -->
 
-TOS plots were allocated at `r rel2Code` according to a spatially balanced and stratified-random design (RD[3]).  The 2006 National Land Cover Database (NLCD) was selected for stratification because of the consistent and comparable data availability across the United States. Due to a mismatch between a strata described by the NLCD (shrub scrub) and existing ground cover (turkey oak and long-leaf pine), TOS plots were not initially allocated to shrub scrub.  The associated pixels will be reclassified with data from NEON's remote sensing platform such that this landscape component will be sampled early in NEON Operations. TOS plots that are distributed throughout the site according to the spatial design are hereafter referred to as 'distributed plots'. TOS plots that are randomly allocated within the airshed of the NEON Terrestrial Instrument System (TIS) tower to collect complementary data are not stratified by NLCD class; these plots are hereafter referred to as 'tower plots'. The maps below depict the plot locations for the first year of NEON sampling.  Some plot locations may change over time due to logistics, safety, and science requirements.  Please visit the NEON website (http://www.neonscience.org) for updated plot locations at each site.
+TOS plots were allocated at  `r rel2Code` according to a spatially balanced and stratified-random design (RD[3]).  The 2006 National Land Cover Database (NLCD) was selected for stratification because of the consistent and comparable data availability across the United States. Due to a mismatch between a stratum described by the NLCD (pasture hay) and existing ground cover (cultivated crops), all vegetation associated with agricultural was validated under the "cultivated crops" category.  Similarly, due to a mismatch between a stratum described by the NLCD (grassland herbaceous) and existing ground cover (open mixed forest), TOS plots were not initially allocated to grassland herbaceous.  The associated pixels will be reclassified with data from NEON's remote sensing platform such that this landscape component will be sampled early in NEON Operations. TOS plots that are distributed throughout the site according to the spatial design are hereafter referred to as 'Distributed Plots'. TOS plots that are randomly allocated within the airshed of the NEON Terrestrial Instrument System (TIS) tower to collect complementary data are not stratified by NLCD class; these plots are hereafter referred to as 'Tower Plots'. The maps below depict the plot locations for the first year of NEON sampling.  Some plot locations may change over time due to logistics, safety, and science requirements.  Please visit the NEON website (http://www.neonscience.org) for updated plot locations at each site.
 
 \begin{figure}[H]
 \centering
@@ -2418,8 +2442,19 @@ FOPS_established<-FOPS_established[complete.cases(FOPS_established),]
 FOPS_established$nlcdClass <- gsub("([a-z])([A-Z])", "\\1 \\2", FOPS_established$nlcdClass)
 FOPS_established$nlcdClass <- gsub("(^|[[:space:]])([[:alpha:]])", "\\1\\U\\2", FOPS_established$nlcdClass, perl=TRUE)
 
+#captialize the the plot types
+FOPS_established$plotType[FOPS_established$plotType == "distributed"] <- "Distributed"
+FOPS_established$plotType[FOPS_established$plotType == "tower"] <- "Tower"
+FOPS_established$subtype[FOPS_established$subtype == "base"] <- "Base Plot"
+FOPS_established$subtype[FOPS_established$subtype == "mammal"] <- "Mammal Grid"
+FOPS_established$subtype[FOPS_established$subtype == "tick"] <- "Tick Plot"
+FOPS_established$subtype[FOPS_established$subtype == "mosquito"] <- "Mosquito Point"
+FOPS_established$subtype[FOPS_established$subtype == "phenology"] <- "Phenology Plot"
+FOPS_established$subtype[FOPS_established$subtype == "bird"] <- "Bird Grid" 
+
 FOPS_established <- FOPS_established[order(FOPS_established$plotType, FOPS_established$subtype),]
 FOPSestablished <- FOPS_established[,c(2,3,1,4)]
+
 
 data_sorted<- data[order(data$siteID,data$plotType,data$subtype),]
 myvars <- c("siteID","plotType","subtype","plotID","nlcdClass","applicableModules")
@@ -2545,7 +2580,7 @@ Note: Any NLCD land cover classes less than 5% will not be sampled. Additionally
          FOPSestablished$nlcdClass, "&", FOPSestablished$target, 
          " \\\\ ","\\hline", sep="", collapse=" ")`
 \end{longtable}
-Note: NLCD land cover classes are not used to stratify tower plots
+Note: NLCD land cover classes are not used to stratify Tower Plots.Mammals and birds are only sampled in forested areas in JERC due to the small patch size of the other land cover types. Due to logistical constrictions beetle sampling does not occur in cultivated crops. 
 
 \begin{longtable}{|c|c|c|>{\centering\arraybackslash}p{4cm}|c|}
 \caption{Number of Distributed Base plots per NLCD land cover class per protocol at `r rel2Code`}\\
@@ -2560,7 +2595,7 @@ Note: NLCD land cover classes are not used to stratify tower plots
          distributedOutput$established,
          " \\\\ ","\\hline", sep="", collapse=" ")`
 \end{longtable}
-Note: Distributed Base Plots typically support more than one TOS protocol; 'Number of Plots' cannot be added to get total TOS Distributed Base Plot number.
+Note: Distributed Base Plots typically support more than one TOS protocol; 'Number of Plots' cannot be added to get total TOS Distributed Base Plot number. 
 
 \begin{longtable}{|c|c|c|c|}
 \caption{Number of Tower Plots per protocol at `r rel2Code`} \\
@@ -2770,13 +2805,13 @@ lowestdepth<-max(Second.table$LowerDepth)
 <!---
 [//]:  Include general information: Date, group who collected the data (NEON staff or external contractor) and any deviations from the methods. Summarize high level important points. Reference the data product number on the data portal. Reference NRCS soil narratives if they become available.
 -->
-Belowground biomass characterization data was collected down to `r lowestdepth` cm by NEON staff in `r megapit.month` `r megapit.year`. Since the NEON protocol for long-term, operational sampling of belowground biomass only collects data to a depth of 30cm, the belowground biomass site characterization data are critical for scaling belowground biomass measurements to greater depths; see the TOS Science Design for Plant Biomass, Productivity, and Leaf Area Index (AD[8]) for more information. The tables below summarize the belowground biomass site characterization work and more data and information can be found by searching the data product numbers in Appendix A. Samples were collected following the standard methods outlined in TOS Site Characterization Methods (RD[6]), except a 5.08cm diameter bulk density soil corer, soil knife, and drill bit was used to extract soil to test out protocols methods at this site. The tables below summarize the belowground biomass site characterization work; more data and information can be found by searching the NEON data portal for the data product numbers in Appendix A.
+Belowground biomass characterization data was collected down to `r lowestdepth` cm by NEON staff in `r megapit.month` `r megapit.year`. Since the NEON protocol for long-term, operational sampling of belowground biomass only collects data to a depth of 30cm, the belowground biomass site characterization data are critical for scaling belowground biomass measurements to greater depths; see the TOS Science Design for Plant Biomass, Productivity, and Leaf Area Index (AD[8]) for more information. Samples were collected following the standard methods outlined in TOS Site Characterization Methods (RD[6]).A bulk density soil corer and soil knife were used to extract soil to test out protocols methods. The tables below summarize the belowground biomass site characterization work; more data and information can be found by searching the NEON data portal for the data product numbers in Appendix A.
 
 ###Results
 [//]:  Be sure to check units!!!!
 
 \begin{longtable}{|c|c|c|c|}
-\caption{Fine root mass per depth increment at`r rel2Code`}\\
+\caption{Fine root mass per depth increment at `r rel2Code`}\\
 \hline
 \textbf{Upper Depth} & \textbf{Lower Depth} & \textbf{Mean mg per cm$^3$} & \textbf{Std Dev} \\ 
 \hline
@@ -2808,7 +2843,7 @@ Belowground biomass characterization data was collected down to `r lowestdepth` 
 \begin{figure}[H]
 \centering
 \includegraphics[width=1\textwidth] {`r paste(myPathToGraphics,paste(rel2Code,'biomass.jpg'), sep='/')`}
-\caption{Cumulative root mass by pit depth at`r rel2Code`}
+\caption{Cumulative root mass by pit depth at  `r rel2Code`}
 \end{figure}
 
 \begin{longtable}{|c|c|}
@@ -3130,7 +3165,8 @@ Note: Mean canopy area is collected for shrubs. Mean at breast height (ABH) diam
          " \\\\ ","\\hline", sep="", collapse=" ")`
 \end{longtable}
 
-```{rel2 insect and tick, echo=FALSE, message=FALSE, warning=FALSE }
+Note: Percent herbaceous cover was measured by species and then added together to calculate the percent total herbaceous cover for each plot. 
+```{r rel2 insect and tick, echo=FALSE, message=FALSE, warning=FALSE }
 site <- rel2Code
 
 #beetle/mosquito/tick results:  since the data is coming from so many different sources the data will be manually manipulated and uploaded here to create the tables in latex.  the headers below are a guide, see previous site char. reports for other table headers depending on the data available at each site. Will have to change latex options if headers change. For bold data, trap locations ID will have to created ( I sort by unique lat/long combinations and create unqiue trap locations)
