@@ -1288,12 +1288,19 @@ mosquitoID$name <-paste("\\textit{",mosquitoID$name,"}",sep = " ")
 #tickID$name <-paste("\\textit{",tickID$name,"}",sep = " ")
 
 
+#D03 specific hacked code
+ticktable <-read.csv(paste(myPathToArthropods,'D3Ticks.csv',sep=""),
+                     head=TRUE,sep=",",stringsAsFactors = FALSE) 
+
+Core.ticktable<-ticktable[which(ticktable$Site==coreCode),]
+Rel1.ticktable<-ticktable[which(ticktable$Site==rel1Code),]
+Rel2.ticktable<-ticktable[which(ticktable$Site==rel2Code),]
+
 ```
 
 ##Beetles
 ###Site-Specific Methods
 There was no beetle site characterization work done at `r coreCode`. For more information on this protocol and data product numbers see Appendix A
-
 
 ##Mosquitoes
 ###Site-Specific Methods
@@ -1333,7 +1340,27 @@ Mosquito site characterization was conducted in June and July 2010 by NEON staff
 
 ##Ticks
 ###Site-Specific Methods
-There was no tick site characterization work done at `r coreCode`. For more information on this protocol and data product numbers see Appendix A
+Tick drags were conducted at `r coreCode` in the spring and summer of 2012. For more information on this protocol and data product numbers see Appendix A.
+
+###Results
+\begin{longtable}{|p {3cm}|p {1.5cm}|p {1.5cm}|p {1.5cm}|p {1.5cm}|p {1.5cm}|p {1.5cm}|p {1.5cm}|}
+\caption{Tick sampling results at `r coreCode` }\\
+\hline
+\textbf{ Vegetation Type} & \textbf{ Number of Plots Sampled} & \textbf{Tick Abundance (Mean)} & \textbf{Tick Abundance (stDev)} & \textbf{Total Number of Ticks Collected} & \textbf{Max Number of Ticks Collected} & \textbf{Number of Plots With No Ticks} & \textbf{Total Area Sampled (m$^3$)} \\ 
+\hline
+\endfirsthead
+\hline
+\textbf{ Vegetation Type} & \textbf{ Number of Plots Sampled} & \textbf{Tick Abundance (Mean)} & \textbf{Tick Abundance (stDev)} & \textbf{Total Number of Ticks Collected} & \textbf{Max Number of Ticks Collected} & \textbf{Number of Plots With No Ticks} & \textbf{Total Area Sampled (m$^3$)} \\ 
+\hline
+\endhead
+`r paste(Core.ticktable$Vegtype, "&", Core.ticktable$Numplotssampled, "&", 
+        Core.ticktable$Tickabundanceppmean, "&", Core.ticktable$TickabundanceppstDev, "&", 
+        Core.ticktable$totalticks, "&", Core.ticktable$maxticks, "&",
+        Core.ticktable$plotsempty, "&", Core.ticktable$totalareasampled,
+         " \\\\ ","\\hline", sep="", collapse=" ")`
+\end{longtable}
+Note: Land cover classes here match landfire vegetation categories, not the NLCD land cover types employed in current protocols.
+
 
 ##Species Reference Lists
 
@@ -2300,8 +2327,26 @@ Mosquito site characterization was conducted in June and July 2012 by NEON staff
 
 ##Ticks
 ###Site-Specific Methods
-There was no tick site characterization work done at `r rel1Code`. For more information on this protocol and data product numbers see Appendix A
+Tick drags were conducted at `r rel1Code` in the spring and summer of 2012. For more information on this protocol and data product numbers see Appendix A.
 
+###Results
+\begin{longtable}{|p {3cm}|p {1.5cm}|p {1.5cm}|p {1.5cm}|p {1.5cm}|p {1.5cm}|p {1.5cm}|p {1.5cm}|}
+\caption{Tick sampling results at `r rel1Code` }\\
+\hline
+\textbf{ Vegetation Type} & \textbf{ Number of Plots Sampled} & \textbf{Tick Abundance (Mean)} & \textbf{Tick Abundance (stDev)} & \textbf{Total Number of Ticks Collected} & \textbf{Max Number of Ticks Collected} & \textbf{Number of Plots With No Ticks} & \textbf{Total Area Sampled (m$^3$)} \\ 
+\hline
+\endfirsthead
+\hline
+\textbf{ Vegetation Type} & \textbf{ Number of Plots Sampled} & \textbf{Tick Abundance (Mean)} & \textbf{Tick Abundance (stDev)} & \textbf{Total Number of Ticks Collected} & \textbf{Max Number of Ticks Collected} & \textbf{Number of Plots With No Ticks} & \textbf{Total Area Sampled (m$^3$)} \\ 
+\hline
+\endhead
+`r paste(Rel1.ticktable$Vegtype, "&", Rel1.ticktable$Numplotssampled, "&", 
+        Rel1.ticktable$Tickabundanceppmean, "&", Rel1.ticktable$TickabundanceppstDev, "&", 
+        Rel1.ticktable$totalticks, "&", Rel1.ticktable$maxticks, "&",
+        Rel1.ticktable$plotsempty, "&", Rel1.ticktable$totalareasampled,
+         " \\\\ ","\\hline", sep="", collapse=" ")`
+\end{longtable}
+Note: Land cover classes here match landfire vegetation categories, not the NLCD land cover types employed in current protocols.
 
 ##Species Reference Lists
 
@@ -3289,8 +3334,26 @@ Mosquito site characterization was conducted in June and July 2012 by NEON staff
 
 ##Ticks
 ###Site-Specific Methods
-There was no tick site characterization work done at `r rel2Code`. For more information on this protocol and data product numbers see Appendix A
+Tick drags were conducted at `r rel2Code` in the spring and summer of 2012. For more information on this protocol and data product numbers see Appendix A.
 
+###Results
+\begin{longtable}{|p {3cm}|p {1.5cm}|p {1.5cm}|p {1.5cm}|p {1.5cm}|p {1.5cm}|p {1.5cm}|p {1.5cm}|}
+\caption{Tick sampling results at `r rel1Code` }\\
+\hline
+\textbf{ Vegetation Type} & \textbf{ Number of Plots Sampled} & \textbf{Tick Abundance (Mean)} & \textbf{Tick Abundance (stDev)} & \textbf{Total Number of Ticks Collected} & \textbf{Max Number of Ticks Collected} & \textbf{Number of Plots With No Ticks} & \textbf{Total Area Sampled (m$^3$)} \\ 
+\hline
+\endfirsthead
+\hline
+\textbf{ Vegetation Type} & \textbf{ Number of Plots Sampled} & \textbf{Tick Abundance (Mean)} & \textbf{Tick Abundance (stDev)} & \textbf{Total Number of Ticks Collected} & \textbf{Max Number of Ticks Collected} & \textbf{Number of Plots With No Ticks} & \textbf{Total Area Sampled (m$^3$)} \\ 
+\hline
+\endhead
+`r paste(Rel2.ticktable$Vegtype, "&", Rel2.ticktable$Numplotssampled, "&", 
+        Rel2.ticktable$Tickabundanceppmean, "&", Rel2.ticktable$TickabundanceppstDev, "&", 
+        Rel2.ticktable$totalticks, "&", Rel2.ticktable$maxticks, "&",
+        Rel2.ticktable$plotsempty, "&", Rel2.ticktable$totalareasampled,
+         " \\\\ ","\\hline", sep="", collapse=" ")`
+\end{longtable}
+Note: Land cover classes here match landfire vegetation categories, not the NLCD land cover types employed in current protocols.
 
 ##Species Reference Lists
 

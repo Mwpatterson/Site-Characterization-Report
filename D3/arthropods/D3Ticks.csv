@@ -1,4 +1,4 @@
-Site,Veg_type,Num_plots_sampled,Tick_abundance_pp_mean,Tick_abundance_pp_stDev,total_ticks,max_ticks,plots_empty,total_area_sampled
+Site,Vegtype,Numplotssampled,Tickabundanceppmean,TickabundanceppstDev,totalticks,maxticks,plotsempty,totalareasampled
 DSNY,Evergreen open tree canopy,9,0.3,0.95,3,3,8,2700
 DSNY,Mixed evergreen/deciduous open tree canopy,1,0,0,0,,1,300
 DSNY,Perennial graminoid grassland,7,0,0,0,,7,2100
