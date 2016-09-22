@@ -1,0 +1,14 @@
+Site,Veg_type,Num_plots_sampled,Tick_abundance_pp_mean,Tick_abundance_pp_stDev,total_ticks,max_ticks,plots_empty,total_area_sampled
+DSNY,Evergreen open tree canopy,9,0.3,0.95,3,3,8,2700
+DSNY,Mixed evergreen/deciduous open tree canopy,1,0,0,0,,1,300
+DSNY,Perennial graminoid grassland,7,0,0,0,,7,2100
+DSNY,Total,17,0.2,0.7,3,3,16,5100
+JERC,Annual gaminoid or forb,6,0,0,0,,6,1958
+JERC,Evergreen open tree canopy,5,0.4,0.89,2,2,4,5973
+JERC,Mixed evergreen/deciduous open tree canopy,4,0,0,0,,4,1481
+JERC,Perennial graminoid grassland,4,0,0,0,,4,1401
+JERC,Total,19,0.1,0.5,2,2,18,10813
+OSBS,Evergreen open tree canopy,3,20,17.1,60,39,0,811
+OSBS,Mixed evergreen/deciduous open tree canopy,14,0.2,0.6,3,2,12,6156
+OSBS,Perennial graminoid grassland,5,1.2,1.8,6,4,3,1615
+OSBS,Total,22,3.1,8.7,69,39,15,8582
