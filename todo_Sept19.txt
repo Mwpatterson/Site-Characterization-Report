@@ -9,6 +9,8 @@ updates needed in template
 *update logo in git
 *appendix A
 *references
+*site specific references 
+*red {nlcd year}
 
 D3
 *maps are tilted [X]
@@ -17,6 +19,9 @@ D3
 *fix code for table 2 in DSNY and add fix to template if we think it could be a problem that happens again
 *TOS spatial intro for JERC-  NLCD mismatch- work with Dave 
 *JERC phenology is 13 instead of 2 [X]
-*SPP reference lists for all three sites
-*References formatting
-*appendixA
+*SPP reference lists for all three sites [X]
+*References formatting [X]
+*appendixA [x]
+
+
+Transfer everything from the site char. folder in the science 2 drive to teh git, change whatever paths need to be changed

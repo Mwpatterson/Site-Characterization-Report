@@ -343,8 +343,8 @@ RDlist <- as.data.frame(rbind(
   "name1" = c("name"="NEON Acronym List", "doc"= "NEON.DOC.000008"),
   "name2" = c("name"="NEON Glossary of Terms", "doc"= "NEON.DOC.000243"),
   "name3" = c("name"="TOS Science Design for Spatial Sampling", "doc"= "NEON.DOC.000913"),
-  "name4" = c("name"="TIS Site Characterization Report", "doc"= "NEON.DOC.XXXXXX"),
-  "name5" = c("name"="AOS Site Characterization Report", "doc"= "NEON.DOC.XXXXXX"),
+  "name4" = c("name"="TIS Site Characterization Report", "doc"= "NEON.DOC.001591"),
+  "name5" = c("name"="AOS Site Characterization Report", "doc"= "NEON.DOC.011034"),
   "name6" = c("name"="TOS Site Characterization Methods", "doc"= "NEON.DOC.003885"),
   "name7" = c("name"="TOS Protocol and Procedure: Small Mammal Sampling", "doc"="NEON.DOC.000481"),
   "name8" = c("name"="TOS Protocol and Procedure: Breeding Landbird Abundance and Diversity", "doc" = "NEON.DOC.01401")
@@ -407,12 +407,12 @@ NLCD    &  National Land Cover Database \\ \hline
 The Ordway-Swisher Biological Station (OSBS) is operated by the University of Florida and comprises over 9,300 acres (38km$^2$). It is a year-round field station established for the long-term study and conservation of unique ecosystems through management, research and education. The Station is located approximately 20 miles east of Gainesville in Melrose (Putnam County, Florida).  The Ordway-Swisher Biological Station site is designed to study an intact longleaf pine ecosystem, which is one of the historically dominant forest types in the region. The longleaf pine ecosystem spans the region, with deep sandy soils through the central ridgeline from North-to-mid Florida.
 
 *  Site host: University of Florida Foundation 
-*  Putnam/Florida
+*  Located in: Putnam County, Florida
 *  Area: 38 km$^2$
 *  Elevation: 20-50m
-*  Dominant vegetation type- Ordway-Swisher is dominated by pine and turkey oak (\textit{Quercus laevis Walter}) vegetation with a grass and forb groundcover. Pines are primarily Longleaf Pines (\textit{Pinus palustris Mill.}) and Lobolly (\textit{P. Taeda}) and the dominant perennial grass is wiregrass (\textit{Aristida stricta Michx.}). Numerous species of other perennial grasses and forbs also present. 
+*  Dominant vegetation type- Ordway-Swisher is dominated by pine and turkey oak (\textit{Quercus laevis}) vegetation with a grass and forb groundcover. Pines are primarily Longleaf Pines (\textit{Pinus palustris} Mill.) and Lobolly (\textit{P. taeda}) and the dominant perennial grass is wiregrass (\textit{Aristida stricta Michx.}). Numerous species of other perennial grasses and forbs also present. 
 *  General management: The forest is maintained by fire and has a relatively open structure: it is managed with prescribed burns at a frequency of 3-4 years.
-*  There are two aquatic arrays at Ordway-Swisher, representing the two dominant aquatic features on the landscape: 1) Suggs lake, a shallow surface water lake that is rich in taxa and biologically active in structure and function; and 2) Barco lake, a deep lake connected to ground water.  See the AOS site characterization report for more details (RD[05]).
+*  There are two aquatic arrays at Ordway-Swisher: 1) Suggs lake, a shallow surface water lake that is rich in taxa and biologically active in structure and function; and 2) Barco lake, a deep lake connected to ground water.  See the AOS site characterization report for more details (RD[05]).
 *  Plot Selection: NEON TOS Plots were allocated across the site avoiding existing research.  
 
 
@@ -422,7 +422,7 @@ The Ordway-Swisher Biological Station (OSBS) is operated by the University of Fl
 [//]:  A majority of sites can use the dialogue below.  If the site had any NLCD mismatch use something along the lines of: TOS plots were allocated at OSBS according to a spatially balanced and stratified-random design (RD[3]).  The 2006 National Land Cover Database (NLCD) was selected for stratification because of the consistent and comparable data availability across the United States. Due to a mismatch between a strata described by the NLCD (shrub scrub) and existing ground cover (turkey oak and long-leaf pine), TOS plots were not initially allocated to shrub scrub.  The associated pixels will be reclassified with data from NEON's remote sensing platform such that this landscape component will be sampled early in NEON Operations.  The maps below depict the plot locations for the first year of NEON sampling.  Some plot locations may change over time due to logistics, safety, and science requirements.  Please visit the NEON website (http://www.neonscience.org) for updated plot locations at each site.
 -->
 
-TOS plots were allocated at `r coreCode` according to a spatially balanced and stratified-random design (RD[3]).  The 2006 National Land Cover Database (NLCD) was selected for stratification because of the consistent and comparable data availability across the United States. Due to a mismatch between a strata described by the NLCD (shrub scrub) and existing ground cover (turkey oak and long-leaf pine), TOS plots were not initially allocated to shrub scrub.  The associated pixels will be reclassified with data from NEON's remote sensing platform such that this landscape component will be sampled early in NEON Operations. TOS plots that are distributed throughout the site according to the spatial design are hereafter referred to as 'distributed plots'. TOS plots that are randomly allocated within the airshed of the NEON Terrestrial Instrument System (TIS) tower to collect complementary data are not stratified by NLCD class; these plots are hereafter referred to as 'tower plots'. The maps below depict the plot locations for the first year of NEON sampling.  Some plot locations may change over time due to logistics, safety, and science requirements.  Please visit the NEON website (http://www.neonscience.org) for updated plot locations at each site.
+TOS plots were allocated at `r coreCode` according to a spatially balanced and stratified-random design (RD[3]).  The 2006 National Land Cover Database (NLCD) was selected for stratification because of the consistent and comparable data availability across the United States. Due to a mismatch between a strata described by the NLCD (shrub scrub) and existing ground cover (turkey oak (\textit{Quercus laevis})and long-leaf pine (\textit{Pinus palustris} Mill.), TOS plots were not initially allocated to shrub scrub.  The associated pixels will be reclassified with data from NEON's remote sensing platform such that this landscape component will be sampled early in NEON Operations. TOS plots that are distributed throughout the site according to the spatial design are hereafter referred to as 'distributed plots'. TOS plots that are randomly allocated within the airshed of the NEON Terrestrial Instrument System (TIS) tower to collect complementary data are not stratified by NLCD class; these plots are hereafter referred to as 'tower plots'. The maps below depict the plot locations for the first year of NEON sampling.  Some plot locations may change over time due to logistics, safety, and science requirements.  Please visit the NEON website (http://www.neonscience.org) for updated plot locations at each site.
 
 \begin{figure}[H]
 \centering
@@ -438,7 +438,7 @@ See RD[03] for additional information about the sampling that occurs at each plo
 \caption{Map of the tower airshed at `r coreCode`}
 \label{fig:D10_CPER_map}
 \end{figure}
-More information about the tower airshed can be found in the FIU site characterization reports (RD[04])  
+More information about the tower airshed can be found in the FIU site characterization report (RD[04])  
 
 
 ```{r NLCD tables, echo=FALSE, message=FALSE, warning=FALSE}
@@ -628,8 +628,8 @@ distributedOutput <- filter(distributedOutput, subType == "Base Plot")
 towerOutput<- filter(output, plotType == "Tower")
 ```
 \begin{table}[H]
-\caption{NLCD Land Cover Classes and Area within the TOS site boundary at `r coreCode`}
-\begin{tabular}{|m{2in}|m{2in}|m{2in}|}
+\caption{NLCD land cover classes and area within the TOS site boundary at `r coreCode`}
+\begin{tabular}{|>{\centering\arraybackslash}p{6cm}|>{\centering\arraybackslash}p{4cm}|>{\centering\arraybackslash}p{4cm}|}
 \hline
 \textbf{NLCD Class} & \textbf{Site Area km$^2$} & \textbf{Percent} \\ \hline
 `r paste(all.dat$NLCD.Class, "&", all.dat$area, "&", 
@@ -637,10 +637,10 @@ towerOutput<- filter(output, plotType == "Tower")
          " \\\\ ","\\hline", sep="", collapse=" ")`
 \end{tabular}
 \end{table}
-Note: Any NLCD land cover classes less than 5% will not be sampled. Additionally, no sampling will take place in Water, Developed, or Barren NLCD classes.
+Note: Any NLCD land cover classes less than 5% will not be sampled. Additionally, no sampling will take place in Water, Developed, or Barren Land NLCD classes.
 
 \begin{longtable}{|c|c|c|c|}
-\caption{NLCD Land Cover Classes and TOS plot numbers at `r coreCode`}\\
+\caption{NLCD land cover classes and TOS plot numbers at `r coreCode`}\\
 \hline
 \textbf{Plot Type} & \textbf{Plot Subtype} & \textbf{NLCD Class} & \textbf{Number of Plots Established} \\ 
 \hline
@@ -653,10 +653,10 @@ Note: Any NLCD land cover classes less than 5% will not be sampled. Additionally
          FOPSestablished$nlcdClass, "&", FOPSestablished$target, 
          " \\\\ ","\\hline", sep="", collapse=" ")`
 \end{longtable}
-Note: NLCD land cover classes as not used to stratify tower plots
+Note: NLCD land cover classes are not used to stratify tower plots
 
-\begin{longtable}{|c|c|c|p{4cm}|c|}
-\caption{Number of distributed base plots per NLCD Land Cover Class per protocol at `r coreCode`.}\\
+\begin{longtable}{|c|c|c|>{\centering\arraybackslash}p{4cm}|c|}
+\caption{Number of Distributed Base Plots per NLCD land cover class per protocol at `r coreCode`.}\\
 \hline
 \textbf{Plot Type} & \textbf{Plot Subtype} & \textbf{NLCD Class} & \textbf{Protocols} & \textbf{Number of Plots} \\ \hline
 \endfirsthead
@@ -672,7 +672,7 @@ Note: Distributed Base Plots typically support more than one TOS protocol; 'Numb
 
 
 \begin{longtable}{|c|c|c|c|}
-\caption{Number of tower plots per protocol at `r coreCode`} \\
+\caption{Number of Tower Plots per protocol at `r coreCode`} \\
 \hline
 \textbf{Plot Type} & \textbf{Plot Subtype} & \textbf{Protocols} & \textbf{Number of Plots} \\ \hline
 \endfirsthead
@@ -683,7 +683,7 @@ Note: Distributed Base Plots typically support more than one TOS protocol; 'Numb
          towerOutput$established,
          " \\\\ ","\\hline", sep="", collapse=" ")`
 \end{longtable}
-Note: Tower Base Plots typically support more than one TOS protocol; 'Number of Plots' cannot be added to get total TOS Tower Base Plot number.
+Note: Tower Base Plots typically support more than one TOS protocol; 'Number of Plots' cannot be added to get the total TOS Tower Base Plot number.
 
 ```{r belowground biomass, echo=FALSE, message=FALSE, warning=FALSE}
 library(knitr)
@@ -880,13 +880,13 @@ lowestdepth<-max(Second.table$LowerDepth)
 <!---
 [//]:  Include general information: Date, group who collected the data (NEON staff or external contractor) and any deviations from the methods. Summarize high level important points. Reference the data product number on the data portal. Reference NRCS soil narratives if they become available.
 -->
-Belowground biomass characterization data was collected down to `r lowestdepth` cm by NEON staff in `r megapit.month` `r megapit.year`. Since the NEON protocol for long-term, operational sampling of belowground biomass only collects data to a depth of 30cm, the belowground biomass site characterization data are critical for scaling belowground biomass measurements to greater depths; see the TOS Science Design for Plant Biomass, Productivity, and Leaf Area Index (RD[8]) for more information. The tables below summarize the belowground biomass site characterization work and more data and information can be found by searching the data product numbers in Appendix A. Samples were collected following the standard methods outlined in TOS Site Characterization Methods (RD[6]), except a 5.08cm diameter bulk density soil corer, soil knife, and drill bit was used to extract soil to test out protocols methods at this site. The tables below summarize the belowground biomass site characterization work; more data and information can be found by searching the NEON data portal for the data product numbers in Appendix A.
+Belowground biomass characterization data was collected down to `r lowestdepth` cm by NEON staff in `r megapit.month` `r megapit.year`. Since the NEON protocol for long-term, operational sampling of belowground biomass only collects data to a depth of 30cm, the belowground biomass site characterization data are critical for scaling belowground biomass measurements to greater depths; see the TOS Science Design for Plant Biomass, Productivity, and Leaf Area Index (AD[8]) for more information. The tables below summarize the belowground biomass site characterization work and more data and information can be found by searching the data product numbers in Appendix A. Samples were collected following the standard methods outlined in TOS Site Characterization Methods (RD[6]), except a 5.08cm diameter bulk density soil corer, soil knife, and drill bit was used to extract soil to test out protocols methods at this site. The tables below summarize the belowground biomass site characterization work; more data and information can be found by searching the NEON data portal for the data product numbers in Appendix A.
 
 ###Results
 [//]:  Be sure to check units!!!!
 
 \begin{longtable}{|c|c|c|c|}
-\caption{Domain `r domainID` `r coreCode` fine root mass per depth increment}\\
+\caption{Fine root mass per depth increment at `r coreCode`}\\
 \hline
 \textbf{Upper Depth} & \textbf{Lower Depth} & \textbf{Mean mg per cm$^3$} & \textbf{Std Dev} \\ 
 \hline
@@ -900,7 +900,7 @@ Belowground biomass characterization data was collected down to `r lowestdepth` 
 \end{longtable}
 
 \begin{longtable}{|c|c|c|c|}
-\caption{Domain `r domainID` `r coreCode` cumulative fine root mass as a function of depth}\\
+\caption{Cumulative fine root mass as a function of depth at `r coreCode` }\\
 \hline
 \textbf{Upper Depth} & \textbf{Lower Depth} & \textbf{Mean Cumulative g per m$^2$} & \textbf{Cumulative Std Dev} \\ 
 \hline
@@ -917,11 +917,11 @@ Belowground biomass characterization data was collected down to `r lowestdepth` 
 \begin{figure}[H]
 \centering
 \includegraphics[width=1\textwidth] {`r paste(myPathToGraphics,paste(coreCode,'biomass.jpg'), sep='/')`}
-\caption{Domain `r domainID` `r coreCode`  cumulative root mass by pit depth}
+\caption{Cumulative root mass by pit depth at `r coreCode`}
 \end{figure}
 
 \begin{longtable}{|c|c|}
-\caption{Domain `r domainID` `r coreCode`  fine root biomass sampling summary data}\\
+\caption{Fine root biomass sampling summary data at `r coreCode`}\\
 \hline
 Total Pit Depth cm &`r paste(Summary.table$Summary.values[Summary.table$Summary.labels == "Total Pit Depth"], 
          " \\\\ ","\\hline", sep="", collapse=" ")`
@@ -1214,7 +1214,7 @@ Plant characterization data were collected by an external contractor during the 
 
 
 \begin{longtable}{|c|>{\centering\arraybackslash}p{4cm}|c|c|>{\centering\arraybackslash}p{2cm}|>{\centering\arraybackslash}p{2cm}|}
-\caption{Site Plant Characterization and Phenology Species Summary at `r coreCode`}\\
+\caption{Site plant characterization and phenology species summary at `r coreCode`}\\
 \hline
 \textbf{Taxon ID} & \textbf{Scientic Name} & \textbf{Rank} & \textbf{Mean Percent Cover} & \textbf{Mean Canopy Area per m$^2$} & \textbf{Mean ABH cm$^2$ per m$^2$} \\ 
 \hline
@@ -1228,10 +1228,10 @@ Plant characterization data were collected by an external contractor during the 
          " \\\\ ","\\hline", sep="", collapse=" ")`
 \end{longtable}
 
-
+Note: Mean canopy area is collected for shrubs. Mean at breast height (ABH) diameter is collected for trees. Taxon IDs and scientific names are based on the USDA Plants database (plants.usda.gov).
 
 \begin{longtable}{|c|c|c|c|}
-\caption{Per Plot Breakdown of Species Richness, Diversity, and Herbaceous Cover at  `r coreCode`}\\
+\caption{Per plot breakdown of species richness, diversity, and herbaceous cover at  `r coreCode`}\\
 \hline
 \textbf{Plot ID} & \textbf{Species Richness} & \textbf{Shannon Diversity Index} & \textbf{Percent Total Herbaceous Cover} \\ 
 \hline
@@ -1249,29 +1249,13 @@ Plant characterization data were collected by an external contractor during the 
 ```{r insect and tick, echo=FALSE, message=FALSE, warning=FALSE }
 site <- coreCode
 
-#beetle/mosquito/tick results:  since the data is coming from so many different sources the data will be manually manipulated and uploaded here to create the tables in latex.  the headers below are a guide, see previous site char. reports for other table headers depending on the data available at each site. Will have to change latex options if headers change. For bold data, trap locations ID will have to created ( I sort by unique lat/long combinations and create unqiue trap locations)
-
-#beetle trap locations (do not need if the data was pooled)Must include trapID,Lat, Long
-beetleTrapLocations <-read.csv(paste(myPathToArthropods,coreCode,'beetletrap.csv',sep=""),
-                     head=TRUE,sep=",",stringsAsFactors = FALSE)
-
-#beetle ID results: includes BOLDID, name (Gen Spp), date,trapID
-beetleID <-read.csv(paste(myPathToArthropods,coreCode,'beetle.csv',sep=""),
-                     head=TRUE,sep=",",stringsAsFactors = FALSE) 
-
-#remove incomplete records
-beetleID<- beetleID[complete.cases(beetleID$species_taxID),]
-beetleID<- beetleID[!grepl("_",beetleID$name),]
-
-#italize the scientifc name
-beetleID$name <-paste("\\textit{",beetleID$name,"}",sep = " ")
 
 #mosquito trap locations (do not need if the data was pooled)Must include trapID,Lat, Long
-mosquitoTrapLocations <-read.csv(paste(myPathToArthropods,coreCode,'mosquitotrap.csv',sep=""),
+mosquitoTrapLocations <-read.csv(paste(myPathToArthropods,site,'mosquitotrap.csv',sep=""),
                      head=TRUE,sep=",",stringsAsFactors = FALSE)
 
 #mosquito ID results: includes BOLDID, name (Gen Spp), date,trap
-mosquitoID <-read.csv(paste(myPathToArthropods,coreCode,'mosquito.csv',sep=""),
+mosquitoID <-read.csv(paste(myPathToArthropods,site,'mosquito.csv',sep=""),
                      head=TRUE,sep=",",stringsAsFactors = FALSE) 
 
 #remove incomplete records
@@ -1282,11 +1266,11 @@ mosquitoID<- mosquitoID[!grepl("_",mosquitoID$name),]
 mosquitoID$name <-paste("\\textit{",mosquitoID$name,"}",sep = " ")
 
 #tick trap locations (do not need if the data was pooled)Must include trapID,Lat, Long
-#tickTrapLocations <-read.csv(paste(myPathToArthropods,coreCode,'ticktrap.csv',sep=""),
+#tickTrapLocations <-read.csv(paste(myPathToArthropods,site,'ticktrap.csv',sep=""),
 #                     head=TRUE,sep=",",stringsAsFactors = FALSE)
 
 #tick ID results: includes BOLDID, name (Gen Spp), date,trap
-#tickID <-read.csv(paste(myPathToArthropods,coreCode,'tick.csv',sep=""),
+#tickID <-read.csv(paste(myPathToArthropods,site,'tick.csv',sep=""),
 #                     head=TRUE,sep=",",stringsAsFactors = FALSE) 
 #italize the scientifc name
 #tickID$name <-paste("\\textit{",tickID$name,"}",sep = " ")
@@ -1296,49 +1280,17 @@ mosquitoID$name <-paste("\\textit{",mosquitoID$name,"}",sep = " ")
 
 ##Beetles
 ###Site-Specific Methods
-Beetle site characterization was conducted in June and July 2010 by NEON staff following the standard methods outlined in TOS Site Characterization Methods (RD[6]). Beetle site characterization data was collected to start site level teaching collections. For sequencing information visit http://www.boldsystems.org. For more information on this protocol and data product numbers see Appendix A.
+There was no beetle site characterization work done at `r coreCode`. For more information on this protocol and data product numbers see Appendix A
 
-###Results
-
-[//]: run the results
-
-
-\begin{longtable}{|c|c|c|}
-\caption{`r coreCode` Beetle Trap Locations}\\
-\hline
-\textbf{Trap ID} & \textbf{Lat} & \textbf{Long} \\ 
-\hline
-\endfirsthead
-\hline
-\textbf{Trap ID} & \textbf{Lat} & \textbf{Long} \\ 
-\hline
-\endhead
-`r paste(beetleTrapLocations$trapID, "&", beetleTrapLocations$Lat, "&",
-         beetleTrapLocations$Long," \\\\ ","\\hline", sep="", collapse=" ")`
-\end{longtable}
-
-\begin{longtable}{|c|c|c|c|}
-\caption{`r coreCode` Beetle Identification Results}\\
-\hline
-\textbf{BOLD Sample ID} & \textbf{Scientific Name}  & \textbf{Collection Date}  & \textbf{Trap Location} \\ 
-\hline
-\endfirsthead
-\hline
-\textbf{BOLD Sample ID} & \textbf{Scientific Name}  & \textbf{Collection Date}  & \textbf{Trap Location} \\ 
-\hline
-\endhead
-`r paste(beetleID$BOLDID, "&", beetleID$name, "&", beetleID$date, "&",
-          beetleID$trapID," \\\\ ","\\hline", sep="", collapse=" ")`
-\end{longtable}
 
 ##Mosquitoes
 ###Site-Specific Methods
-Mosquito site characterization was conducted in June and July 2010 by NEON staff following the standard methods outlined in TOS Site Characterization Methods (RD[6]) to test protocol methods and start site level species lists. No pathogen testing was performed. For sequencing information visit http://www.boldsystems.org. For more information on this protocol and data product numbers see Appendix A.
+Mosquito site characterization was conducted in June and July 2010 by NEON staff following the standard methods outlined in TOS Site Characterization Methods (RD[6]) to test protocol methods and start site level species lists. No pathogen testing was performed. For DNA sequence data  visit http://www.boldsystems.org. For more information on this protocol and data product numbers see Appendix A.
 
 ###Results
 
 \begin{longtable}{|c|c|c|}
-\caption{`r coreCode` Mosquito Trap Locations}\\
+\caption{Mosquito trap locations at `r coreCode` }\\
 \hline
 \textbf{Trap ID} & \textbf{Lat} & \textbf{Long} \\ 
 \hline
@@ -1353,7 +1305,7 @@ Mosquito site characterization was conducted in June and July 2010 by NEON staff
 \end{longtable}
 
 \begin{longtable}{|c|>{\centering\arraybackslash}p{4cm}|c|c|}
-\caption{`r coreCode` Mosquito Identification Results}\\
+\caption{Mosquito identification results at `r coreCode` }\\
 \hline
 \textbf{BOLD Sample ID} & \textbf{Scientific Name} & \textbf{Collection Date} & \textbf{Trap Location} \\ 
 \hline
@@ -1371,19 +1323,39 @@ Mosquito site characterization was conducted in June and July 2010 by NEON staff
 ###Site-Specific Methods
 There was no tick site characterization work done at `r coreCode`. For more information on this protocol and data product numbers see Appendix A
 
-
 ##Species Reference Lists
-[//]: List references for plant/insects species lists (mammal and bird lists are available in the protocols)
+
+A review of the literature for taxonomic lists of interest for each site was conducted prior to field work. In the case of vertebrates that NEON may capture (e.g., herptiles, small mammals), these lists were often required to secure permits. Key references identified in this effort are listed below. Species lists and associated references for small mammals and breeding landbirds can be found in the appendices of the respective protocols (RD[07], RD[08]).
+
+\hangindent= 1cm
+Bousquet, Y. 2012. Catalogue of Geadephaga (Coleoptera, Adephaga) of America, north of Mexico. ZooKeys, (245), 1-1722.
+
+\hangindent= 1cm
+Darsie Jr., R. F., and R. A. Ward. 2005. Identification and geographical distribution of the mosquitoes of North America, North of Mexico. University Press of Florida, Gainesville.
+
+\hangindent= 1cm
+Dodd, C.K., Jr. 1992. Biological diversity of a temporary pond herpetofauna in north Florida sandhills. Biodiversity and Conservation. 1: 125-142.
+
+\hangindent= 1cm
+Dodd, C.K., Jr. 1995. Reptiles and amphibians in the endangered longleaf pine ecosystem. Pp. 129-131 In: E.T. LaRoe, G.S. Farris, C.E. Puckett, P.D. Doran and M.J. Mac (eds.). Our Living Resources, National Biological Service, Washington, D.C.
+
+\hangindent= 1cm
+"Flora and DNA Barcoding of Ordway-Swisher Biological Station." University of Florida Herbarium Digital Imaging Projects. University of Florida Herbarium. 31 March 2016. Web. 20 Sep 2016. 
+
+\hangindent= 1cm
+Franz, R., Hall, D.W. (1991): Vegetative communities and annotated plant lists for the Katharine Ordway Preserve-Swisher Memorial Sanctuary, Putnam County, Florida. Ordway Preserve Series,Report 3.
+
+
 
 \section{\uppercase{Relocatable Site- `r rel1Name` (`r rel1Code`)}}
 
-The 12,000-acre Disney Wilderness Preserve (DSNY) straddles the headwaters of the Everglades ecosystem in south-central Florida. This site is seasonally wet and flooded. Data from DSNY supports greater understanding of wetland regeneration, water storage and quality, and predictive models for future large-scale restorations. 
+The 12,000-acre (49 km$^2$) Disney Wilderness Preserve (DSNY) straddles the headwaters of the Everglades ecosystem in south-central Florida. This site is seasonally wet and flooded. Data from DSNY supports greater understanding of wetland regeneration, water storage and quality, and predictive models for future large-scale restorations. 
 
 *  Site host: The Nature Conservancy 
-*  Polk and Osceola County/Florida
+*  Located in Polk and Osceola County,Florida
 *  Area: 49 km$^2$
 *  Elevation: 16-22 m
-*  Dominant vegetation type- The predominant ecosystem type is restored wet prairie with regenerating longleaf pine; vegetation cover at Disney site is primarily restored broom sedge prairie, interspersed with perennial grasses. The Disney site is composed of short gasses ranging from 1-1.5 meters in height on average, interspersed with longleaf pine sapling that are less than 30 cm tall on average. Some pine forests surround the east, northeast and southeast edges of the prairie, with an average height of 25 meters. Dominant vegetation types within the Disney Wilderness Preserve include:
+*  Dominant vegetation type- The predominant ecosystem type is restored wet prairie with regenerating pine; vegetation cover at Disney site is primarily restored broom sedge prairie, interspersed with perennial grasses. The Disney site is composed of short gasses ranging from 1-1.5 meters in height on average, interspersed with pine sapling that are less than 30 cm tall on average. Some pine forests surround the east, northeast and southeast edges of the prairie, with an average height of 25 meters. Dominant vegetation types within the Disney Wilderness Preserve include:
     *  Pine Flatwoods
     *  Southern Coastal Plain Non-riverine Cypress Dome
     *  Florida Dry Prairie
@@ -1418,7 +1390,7 @@ See RD[03] for additional information about the sampling that occurs at each plo
 \caption{Map of the tower airshed at `r rel1Code`}
 \label{fig:D10_CPER_map}
 \end{figure}
-More information about the tower airshed can be found in the FIU site characterization reports (RD[04])  
+More information about the tower airshed can be found in the FIU site characterization report (RD[04])  
 
 
 ```{r rel1 NLCD tables, echo=FALSE, message=FALSE, warning=FALSE}
@@ -1603,8 +1575,8 @@ distributedOutput <- filter(distributedOutput, subType == "Base Plot")
 towerOutput<- filter(output, plotType == "Tower")
 ```
 \begin{table}[H]
-\caption{NLCD Land Cover Classes and Area within the TOS site boundary at `r rel1Code`}
-\begin{tabular}{|m{2in}|m{2in}|m{2in}|}
+\caption{NLCD land cover classes and area within the TOS site boundary at `r rel1Code`}
+\begin{tabular}{|>{\centering\arraybackslash}p{6cm}|>{\centering\arraybackslash}p{4cm}|>{\centering\arraybackslash}p{4cm}|}
 \hline
 \textbf{NLCD Class} & \textbf{Site Area km$^2$} & \textbf{Percent} \\ \hline
 `r paste(all.dat$NLCD.Class, "&", all.dat$area, "&", 
@@ -1612,10 +1584,10 @@ towerOutput<- filter(output, plotType == "Tower")
          " \\\\ ","\\hline", sep="", collapse=" ")`
 \end{tabular}
 \end{table}
-Note: Any NLCD land cover classes less than 5% will not be sampled. Additionally, no sampling will take place in Water, Developed, or Barren NLCD classes.
+Note: Any NLCD land cover classes less than 5% will not be sampled. Additionally, no sampling will take place in Water, Developed, or Barren Land NLCD classes.
 
 \begin{longtable}{|c|c|c|c|}
-\caption{NLCD Land Cover Classes and TOS plot numbers at `r rel1Code`}\\
+\caption{NLCD land cover classes and TOS plot numbers at `r rel1Code`}\\
 \hline
 \textbf{Plot Type} & \textbf{Plot Subtype} & \textbf{NLCD Class} & \textbf{Number of Plots Established} \\ 
 \hline
@@ -1628,10 +1600,10 @@ Note: Any NLCD land cover classes less than 5% will not be sampled. Additionally
          FOPSestablished$nlcdClass, "&", FOPSestablished$target, 
          " \\\\ ","\\hline", sep="", collapse=" ")`
 \end{longtable}
-Note: NLCD land cover classes as not used to stratify tower plots
+Note: NLCD land cover classes are not used to stratify Tower Plots
 
-\begin{longtable}{|c|c|c|p{4cm}|c|}
-\caption{Number of distributed base plots per NLCD Land Cover Class per protocol at `r rel1Code`. }\\
+\begin{longtable}{|c|c|c|>{\centering\arraybackslash}p{4cm}|c|}
+\caption{Number of Distributed Base plots per NLCD land cover class per protocol at `r rel1Code`. }\\
 \hline
 \textbf{Plot Type} & \textbf{Plot Subtype} & \textbf{NLCD Class} & \textbf{Protocols} & \textbf{Number of Plots} \\ \hline
 \endfirsthead
@@ -1646,7 +1618,7 @@ Note: NLCD land cover classes as not used to stratify tower plots
 Note: Distributed Base Plots typically support more than one TOS protocol; 'Number of Plots' cannot be added to get total TOS Distributed Base Plot number.
 
 \begin{longtable}{|c|c|c|c|}
-\caption{Number of tower plots per protocol at `r rel1Code`} \\
+\caption{Number of Tower Plots per protocol at `r rel1Code`} \\
 \hline
 \textbf{Plot Type} & \textbf{Plot Subtype} & \textbf{Protocols} & \textbf{Number of Plots} \\ \hline
 \endfirsthead
@@ -1854,13 +1826,13 @@ lowestdepth<-max(Second.table$LowerDepth)
 <!---
 [//]:  Include general information: Date, group who collected the data (NEON staff or external contractor) and any deviations from the methods. Summarize high level important points. Reference the data product number on the data portal. Reference NRCS soil narratives if they become available.
 -->
-Ex. Belowground biomass characterization data was collected down to `r lowestdepth` cm by NEON staff in `r megapit.month` `r megapit.year`. Since the NEON protocol for long-term, operational sampling of belowground biomass only collects data to a depth of 30cm, the belowground biomass site characterization data are critical for scaling belowground biomass measurements to greater depths; see the TOS Science Design for Plant Biomass, Productivity, and Leaf Area Index (RD[8]) for more information. The tables below summarize the belowground biomass site characterization work and more data and information can be found by searching the data product numbers in Appendix A. Samples were collected following the standard methods outlined in TOS Site Characterization Methods (RD[6]), except a 5.08cm diameter bulk density soil corer, soil knife, and drill bit was used to extract soil to test out protocols methods at this site. The tables below summarize the belowground biomass site characterization work; more data and information can be found by searching the NEON data portal for the data product numbers in Appendix A.
+Belowground biomass characterization data was collected down to `r lowestdepth` cm by NEON staff in `r megapit.month` `r megapit.year`. Since the NEON protocol for long-term, operational sampling of belowground biomass only collects data to a depth of 30cm, the belowground biomass site characterization data are critical for scaling belowground biomass measurements to greater depths; see the TOS Science Design for Plant Biomass, Productivity, and Leaf Area Index (AD[8]) for more information. The tables below summarize the belowground biomass site characterization work and more data and information can be found by searching the data product numbers in Appendix A. Samples were collected following the standard methods outlined in TOS Site Characterization Methods (RD[6]), except a 5.08cm diameter bulk density soil corer, soil knife, and drill bit was used to extract soil to test out protocols methods at this site. The tables below summarize the belowground biomass site characterization work; more data and information can be found by searching the NEON data portal for the data product numbers in Appendix A.
 
 ###Results
 [//]:  Be sure to check units!!!!
 
 \begin{longtable}{|c|c|c|c|}
-\caption{Domain `r domainID` `r rel1Code` fine root mass per depth increment}\\
+\caption{Fine root mass per depth increment at `r rel1Code`}\\
 \hline
 \textbf{Upper Depth} & \textbf{Lower Depth} & \textbf{Mean mg per cm$^3$} & \textbf{Std Dev} \\ 
 \hline
@@ -1875,7 +1847,7 @@ Ex. Belowground biomass characterization data was collected down to `r lowestdep
 \end{longtable}
 
 \begin{longtable}{|c|c|c|c|}
-\caption{Domain `r domainID` `r rel1Code` cumulative fine root mass as a function of depth}\\
+\caption{Cumulative fine root mass as a function of depth at `r rel1Code`}\\
 \hline
 \textbf{Upper Depth} & \textbf{Lower Depth} & \textbf{Mean Cumulative g per m$^2$} & \textbf{Cumulative Std Dev} \\ 
 \hline
@@ -1892,11 +1864,11 @@ Ex. Belowground biomass characterization data was collected down to `r lowestdep
 \begin{figure}[H]
 \centering
 \includegraphics[width=1\textwidth] {`r paste(myPathToGraphics,paste(rel1Code,'biomass.jpg'), sep='/')`}
-\caption{Domain `r domainID` `r rel1Code`  cumulative root mass by pit depth}
+\caption{Cumulative root mass by pit depth at `r rel1Code`}
 \end{figure}
 
 \begin{longtable}{|c|c|}
-\caption{Domain `r domainID` `r rel1Code`  fine root biomass sampling summary data}\\
+\caption{Fine root biomass sampling summary data at `r rel1Code`}\\
 \hline
 Total Pit Depth cm &`r paste(Summary.table$Summary.values[Summary.table$Summary.labels == "Total Pit Depth"], 
          " \\\\ ","\\hline", sep="", collapse=" ")`
@@ -2151,7 +2123,7 @@ Plant characterization data were collected by an external contractor during the 
 
 
 \begin{longtable}{|c|>{\centering\arraybackslash}p{4cm}|c|c|>{\centering\arraybackslash}p{2cm}|>{\centering\arraybackslash}p{2cm}|}
-\caption{Site Plant Characterization and Phenology Species Summary at  `r rel1Code`}\\
+\caption{Site plant characterization and phenology species summary at `r rel1Code`}\\
 \hline
 \textbf{Taxon ID} & \textbf{Scientic Name} & \textbf{Rank} & \textbf{Mean Percent Cover} & \textbf{Mean Canopy Area per m$^2$} & \textbf{Mean ABH cm$^2$ per m$^2$} \\ 
 \hline
@@ -2165,10 +2137,10 @@ Plant characterization data were collected by an external contractor during the 
          " \\\\ ","\\hline", sep="", collapse=" ")`
 \end{longtable}
 
-
+Note: Mean canopy area is collected for shrubs. Mean at breast height (ABH) diameter is collected for trees. Taxon IDs and scientific names are based on the USDA Plants database (plants.usda.gov).
 
 \begin{longtable}{|c|c|c|c|}
-\caption{Per Plot Breakdown of Species Richness, Diversity, and Herbaceous Cover at  `r rel1Code`}\\
+\caption{Per plot breakdown of species richness, diversity, and herbaceous cover at  `r rel1Code`}\\
 \hline
 \textbf{Plot ID} & \textbf{Species Richness} & \textbf{Shannon Diversity Index} & \textbf{Percent Total Herbaceous Cover} \\ 
 \hline
@@ -2182,8 +2154,7 @@ Plant characterization data were collected by an external contractor during the 
          " \\\\ ","\\hline", sep="", collapse=" ")`
 \end{longtable}
 
-```{rel1 insect and tick, echo=FALSE, message=FALSE, warning=FALSE }
-site <- coreCode
+```{r   rel1 insect and tick, echo=FALSE, message=FALSE, warning=FALSE }
 
 #beetle/mosquito/tick results:  since the data is coming from so many different sources the data will be manually manipulated and uploaded here to create the tables in latex.  the headers below are a guide, see previous site char. reports for other table headers depending on the data available at each site. Will have to change latex options if headers change. For bold data, trap locations ID will have to created ( I sort by unique lat/long combinations and create unqiue trap locations)
 
@@ -2218,11 +2189,11 @@ mosquitoID<- mosquitoID[!grepl("_",mosquitoID$name),]
 mosquitoID$name <-paste("\\textit{",mosquitoID$name,"}",sep = " ")
 
 #tick trap locations (do not need if the data was pooled)Must include trapID,Lat, Long
-#tickTrapLocations <-read.csv(paste(myPathToArthropods,coreCode,'ticktrap.csv',sep=""),
+#tickTrapLocations <-read.csv(paste(myPathToArthropods,site,'ticktrap.csv',sep=""),
 #                     head=TRUE,sep=",",stringsAsFactors = FALSE)
 
 #tick ID results: includes BOLDID, name (Gen Spp), date,trap
-#tickID <-read.csv(paste(myPathToArthropods,coreCode,'tick.csv',sep=""),
+#tickID <-read.csv(paste(myPathToArthropods,site,'tick.csv',sep=""),
 #                     head=TRUE,sep=",",stringsAsFactors = FALSE) 
 #italize the scientifc name
 #tickID$name <-paste("\\textit{",tickID$name,"}",sep = " ")
@@ -2232,7 +2203,7 @@ mosquitoID$name <-paste("\\textit{",mosquitoID$name,"}",sep = " ")
 
 ##Beetles
 ###Site-Specific Methods
-Beetle site characterization was conducted in June and July 2012 by NEON staff following the standard methods outlined in TOS Site Characterization Methods (RD[6]). Beetle site characterization data was collected to start site level teaching collections. For sequencing information visit http://www.boldsystems.org. For more information on this protocol and data product numbers see Appendix A.
+Beetle site characterization was conducted in June and July 2012 by NEON staff following the standard methods outlined in TOS Site Characterization Methods (RD[6]). Beetle site characterization data was collected to start site level teaching collections. For DNA sequence data visit http://www.boldsystems.org. For more information on this protocol and data product numbers see Appendix A.
 
 ###Results
 
@@ -2240,7 +2211,7 @@ Beetle site characterization was conducted in June and July 2012 by NEON staff f
 
 
 \begin{longtable}{|c|c|c|}
-\caption{`r rel1Code` Beetle Trap Locations}\\
+\caption{Beetle trap locations at `r rel1Code` }\\
 \hline
 \textbf{Trap ID} & \textbf{Lat} & \textbf{Long} \\ 
 \hline
@@ -2254,7 +2225,7 @@ Beetle site characterization was conducted in June and July 2012 by NEON staff f
 \end{longtable}
 
 \begin{longtable}{|c|c|c|c|}
-\caption{`r rel1Code` Beetle Identification Results}\\
+\caption{Beetle identification results at `r rel1Code`}\\
 \hline
 \textbf{BOLD Sample ID} & \textbf{Scientific Name}  & \textbf{Collection Date}  & \textbf{Trap Location} \\ 
 \hline
@@ -2269,12 +2240,12 @@ Beetle site characterization was conducted in June and July 2012 by NEON staff f
 
 ##Mosquitoes
 ###Site-Specific Methods
-Mosquito site characterization was conducted in June and July 2012 by NEON staff following the standard methods outlined in TOS Site Characterization Methods (RD[6]) to test protocol methods and start site level species lists. No pathogen testing was performed. For sequencing information visit http://www.boldsystems.org. For more information on this protocol and data product numbers see Appendix A.
+Mosquito site characterization was conducted in June and July 2012 by NEON staff following the standard methods outlined in TOS Site Characterization Methods (RD[6]) to test protocol methods and start site level species lists. No pathogen testing was performed. For DNA sequence data visit http://www.boldsystems.org. For more information on this protocol and data product numbers see Appendix A.
 
 ###Results
 
 \begin{longtable}{|c|c|c|}
-\caption{`r rel2Code` Mosquito Trap Locations}\\
+\caption{Mosquito trap locations at `r rel2Code`}\\
 \hline
 \textbf{Trap ID} & \textbf{Lat} & \textbf{Long} \\ 
 \hline
@@ -2289,7 +2260,7 @@ Mosquito site characterization was conducted in June and July 2012 by NEON staff
 \end{longtable}
 
 \begin{longtable}{|c|>{\centering\arraybackslash}p{4cm}|c|c|}
-\caption{`r rel1Code` Mosquito Identification Results}\\
+\caption{Mosquito identification results at `r rel1Code`}\\
 \hline
 \textbf{BOLD Sample ID} & \textbf{Scientific Name} & \textbf{Collection Date} & \textbf{Trap Location} \\ 
 \hline
@@ -2309,19 +2280,36 @@ There was no tick site characterization work done at `r rel1Code`. For more info
 
 
 ##Species Reference Lists
-[//]: List references for plant/insects species lists (mammal and bird lists are available in the protocols)
+
+A review of the literature for taxonomic lists of interest for each site was conducted prior to field work. In the case of vertebrates that NEON may capture (e.g., herptiles, small mammals), these lists were often required to secure permits. Key references identified in this effort are listed below. Species lists and associated references for small mammals and breeding landbirds can be found in the appendices of the respective protocols (RD[07], RD[08]).
+
+\hangindent= 1cm
+Bousquet, Y. 2012. Catalogue of Geadephaga (Coleoptera, Adephaga) of America, north of Mexico. ZooKeys, (245), 1-1722.
+
+\hangindent= 1cm
+Darsie Jr., R. F., and R. A. Ward. 2005. Identification and geographical distribution of the mosquitoes of North America, North of Mexico. University Press of Florida, Gainesville.
+
+\hangindent= 1cm
+Farmer, Anna L., et al. 2014. "Survey of Winter-breeding Amphibian Species." Florida Fish and Wildlife Conservation Commisiion, Fish and Wildlife Research Institute. 
+
+\hangindent= 1cm
+Hammer, Roger L. Central Florida Wildflowers: A Field Guide to Wildflowers of the Lake Wales Ridge, Ocala National Forest, Disney Wilderness Preserve, and More than 60 State Parks and Preserves. Rowman & Littlefield, 2016.
+
+\hangindent= 1cm
+Ware, S., C. Frost, and P.D. Doerr. 1993. Southern Mixed Hardwood Forest: The Former Longleaf Pine Forest, Pages 447-493 in (W.H. Martin, et al. eds.) Biodiversity of the Southeastern United States, John Wiley & Sons, New York. 502pp.
+
 
 \section{\uppercase{Core Site- `r rel2Name` (`r rel2Code`)}}
 
-The Joseph Jones Ecological Research Center (JERC) is an 11,000-hectare (13 km$^2$) reserve located within the Lower Coastal Plains and Flatwoods areas in southern Georgia. There is an aquatic array at the Jones site in a representative perennial, ground- and surface-water fed stream, called the Ichawaynochaway creek.
+The Joseph Jones Ecological Research Center (JERC) is an 11,000-hectare (13 km$^2$) reserve located within the Lower Coastal Plains and Flatwoods areas in southern Georgia. 
 
 *  Site host: Private Owner 
-*  Baker/Georgia
+*  Located in: Baker Country, Georgia
 *  Area: 13 km$^2$
 *  Elevation: 30-60m
 *  Dominant vegetation type- The dominant vegetation cover at Joseph Jones is a mix of Longleaf Pine (\textit{Pinus palustris} Mill.), Oaks (various) and wiregrass (\textit{Aristida stricta} Michx.); numerous species of other perennial grasses and forbs are also present. In addition, this site is interspersed with several species of oaks that change the natural fire frequency and fuel quality.. 
 *  General management: The Jones site has been managed with low intensity, dormant-season prescribed fires for the past 75 years at a frequency of every 3-4 years.
-*  The aquatic site Flint River (FLNT) is located within the JERC TOS boundary. See the AOS site characterization report for more details (RD[05]).
+*  There is an aquatic array at the Jones site in a representative perennial, ground- and surface-water fed stream, called the Ichawaynochaway creek. See the AOS site characterization report for more details (RD[05]).
 *  Plot Selection: NEON TOS Plots were allocated across the site avoiding existing research.  
 
 
@@ -2347,7 +2335,7 @@ See RD[03] for additional information about the sampling that occurs at each plo
 \caption{Map of the tower airshed at `r rel2Code`}
 \label{fig:D10_CPER_map}
 \end{figure}
-More information about the tower airshed can be found in the FIU site characterization reports (RD[04])  
+More information about the tower airshed can be found in the FIU site characterization report (RD[04])  
 
 
 ```{r rel2 NLCD tables, echo=FALSE, message=FALSE, warning=FALSE}
@@ -2532,8 +2520,8 @@ distributedOutput <- filter(distributedOutput, subType == "Base Plot")
 towerOutput<- filter(output, plotType == "Tower")
 ```
 \begin{table}[H]
-\caption{NLCD Land Cover Classes and Area within the TOS site boundary at `r rel2Code`}
-\begin{tabular}{|m{2in}|m{2in}|m{2in}|}
+\caption{NLCD land cover classes and area within the TOS site boundary at `r rel2Code`}
+\begin{tabular}{|>{\centering\arraybackslash}p{6cm}|>{\centering\arraybackslash}p{4cm}|>{\centering\arraybackslash}p{4cm}|}
 \hline
 \textbf{NLCD Class} & \textbf{Site Area km$^2$} & \textbf{Percent} \\ \hline
 `r paste(all.dat$NLCD.Class, "&", all.dat$area, "&", 
@@ -2541,10 +2529,10 @@ towerOutput<- filter(output, plotType == "Tower")
          " \\\\ ","\\hline", sep="", collapse=" ")`
 \end{tabular}
 \end{table}
-Note: Any NLCD land cover classes less than 5% will not be sampled. Additionally, no sampling will take place in Water, Developed, or Barren NLCD classes.
+Note: Any NLCD land cover classes less than 5% will not be sampled. Additionally, no sampling will take place in Water, Developed, or Barren Land NLCD classes.
 
 \begin{longtable}{|c|c|c|c|}
-\caption{NLCD Land Cover Classes and TOS plot numbers at `r rel2Code`}\\
+\caption{NLCD land cover classes and TOS plot numbers at `r rel2Code`}\\
 \hline
 \textbf{Plot Type} & \textbf{Plot Subtype} & \textbf{NLCD Class} & \textbf{Number of Plots Established} \\ 
 \hline
@@ -2557,10 +2545,10 @@ Note: Any NLCD land cover classes less than 5% will not be sampled. Additionally
          FOPSestablished$nlcdClass, "&", FOPSestablished$target, 
          " \\\\ ","\\hline", sep="", collapse=" ")`
 \end{longtable}
-Note: NLCD land cover classes as not used to stratify tower plots
+Note: NLCD land cover classes are not used to stratify tower plots
 
-\begin{longtable}{|c|c|c|p{4cm}|c|}
-\caption{Number of distributed base plots per NLCD Land Cover Class per protocol at `r rel2Code`}\\
+\begin{longtable}{|c|c|c|>{\centering\arraybackslash}p{4cm}|c|}
+\caption{Number of Distributed Base plots per NLCD land cover class per protocol at `r rel2Code`}\\
 \hline
 \textbf{Plot Type} & \textbf{Plot Subtype} & \textbf{NLCD Class} & \textbf{Protocols} & \textbf{Number of Plots} \\ \hline
 \endfirsthead
@@ -2575,7 +2563,7 @@ Note: NLCD land cover classes as not used to stratify tower plots
 Note: Distributed Base Plots typically support more than one TOS protocol; 'Number of Plots' cannot be added to get total TOS Distributed Base Plot number.
 
 \begin{longtable}{|c|c|c|c|}
-\caption{Number of tower plots per protocol at `r rel2Code`} \\
+\caption{Number of Tower Plots per protocol at `r rel2Code`} \\
 \hline
 \textbf{Plot Type} & \textbf{Plot Subtype} & \textbf{Protocols} & \textbf{Number of Plots} \\ \hline
 \endfirsthead
@@ -2782,13 +2770,13 @@ lowestdepth<-max(Second.table$LowerDepth)
 <!---
 [//]:  Include general information: Date, group who collected the data (NEON staff or external contractor) and any deviations from the methods. Summarize high level important points. Reference the data product number on the data portal. Reference NRCS soil narratives if they become available.
 -->
-Ex. Belowground biomass characterization data was collected down to `r lowestdepth` cm by NEON staff in `r megapit.month` `r megapit.year`. Since the NEON protocol for long-term, operational sampling of belowground biomass only collects data to a depth of 30cm, the belowground biomass site characterization data are critical for scaling belowground biomass measurements to greater depths; see the TOS Science Design for Plant Biomass, Productivity, and Leaf Area Index (RD[8]) for more information. The tables below summarize the belowground biomass site characterization work and more data and information can be found by searching the data product numbers in Appendix A. Samples were collected following the standard methods outlined in TOS Site Characterization Methods (RD[6]), except a 5.08cm diameter bulk density soil corer, soil knife, and drill bit was used to extract soil to test out protocols methods at this site. The tables below summarize the belowground biomass site characterization work; more data and information can be found by searching the NEON data portal for the data product numbers in Appendix A.
+Belowground biomass characterization data was collected down to `r lowestdepth` cm by NEON staff in `r megapit.month` `r megapit.year`. Since the NEON protocol for long-term, operational sampling of belowground biomass only collects data to a depth of 30cm, the belowground biomass site characterization data are critical for scaling belowground biomass measurements to greater depths; see the TOS Science Design for Plant Biomass, Productivity, and Leaf Area Index (AD[8]) for more information. The tables below summarize the belowground biomass site characterization work and more data and information can be found by searching the data product numbers in Appendix A. Samples were collected following the standard methods outlined in TOS Site Characterization Methods (RD[6]), except a 5.08cm diameter bulk density soil corer, soil knife, and drill bit was used to extract soil to test out protocols methods at this site. The tables below summarize the belowground biomass site characterization work; more data and information can be found by searching the NEON data portal for the data product numbers in Appendix A.
 
 ###Results
 [//]:  Be sure to check units!!!!
 
 \begin{longtable}{|c|c|c|c|}
-\caption{Domain `r domainID` `r rel2Code` fine root mass per depth increment}\\
+\caption{Fine root mass per depth increment at`r rel2Code`}\\
 \hline
 \textbf{Upper Depth} & \textbf{Lower Depth} & \textbf{Mean mg per cm$^3$} & \textbf{Std Dev} \\ 
 \hline
@@ -2803,7 +2791,7 @@ Ex. Belowground biomass characterization data was collected down to `r lowestdep
 \end{longtable}
 
 \begin{longtable}{|c|c|c|c|}
-\caption{Domain `r domainID` `r rel2Code` cumulative fine root mass as a function of depth}\\
+\caption{Cumulative fine root mass as a function of depth at `r rel2Code`}\\
 \hline
 \textbf{Upper Depth} & \textbf{Lower Depth} & \textbf{Mean Cumulative g per m$^2$} & \textbf{Cumulative Std Dev} \\ 
 \hline
@@ -2820,11 +2808,11 @@ Ex. Belowground biomass characterization data was collected down to `r lowestdep
 \begin{figure}[H]
 \centering
 \includegraphics[width=1\textwidth] {`r paste(myPathToGraphics,paste(rel2Code,'biomass.jpg'), sep='/')`}
-\caption{Domain `r domainID` `r rel2Code`  cumulative root mass by pit depth}
+\caption{Cumulative root mass by pit depth at`r rel2Code`}
 \end{figure}
 
 \begin{longtable}{|c|c|}
-\caption{Domain `r domainID` `r rel2Code`  fine root biomass sampling summary data}\\
+\caption{Fine root biomass sampling summary data at `r rel2Code`}\\
 \hline
 Total Pit Depth cm &`r paste(Summary.table$Summary.values[Summary.table$Summary.labels == "Total Pit Depth"], 
          " \\\\ ","\\hline", sep="", collapse=" ")`
@@ -3111,7 +3099,7 @@ Plant characterization data were collected by an external contractor during the 
 
 
 \begin{longtable}{|c|>{\centering\arraybackslash}p{4cm}|c|c|>{\centering\arraybackslash}p{2cm}|>{\centering\arraybackslash}p{2cm}|}
-\caption{Site Plant Characterization and Phenology Species Summary at `r rel2Code`}\\
+\caption{Site plant characterization and phenology species summary at `r rel2Code`}\\
 \hline
 \textbf{Taxon ID} & \textbf{Scientic Name} & \textbf{Rank} & \textbf{Mean Percent Cover} & \textbf{Mean Canopy Area per m$^2$} & \textbf{Mean ABH cm$^2$ per m$^2$} \\ 
 \hline
@@ -3125,10 +3113,10 @@ Plant characterization data were collected by an external contractor during the 
          " \\\\ ","\\hline", sep="", collapse=" ")`
 \end{longtable}
 
-
+Note: Mean canopy area is collected for shrubs. Mean at breast height (ABH) diameter is collected for trees. Taxon IDs and scientific names are based on the USDA Plants database (plants.usda.gov).
 
 \begin{longtable}{|c|c|c|c|}
-\caption{Per Plot Breakdown of Species Richness, Diversity, and Herbaceous Cover at  `r rel2Code`}\\
+\caption{Per plot breakdown of species richness, diversity, and herbaceous cover at  `r rel2Code`}\\
 \hline
 \textbf{Plot ID} & \textbf{Species Richness} & \textbf{Shannon Diversity Index} & \textbf{Percent Total Herbaceous Cover} \\ 
 \hline
@@ -3148,11 +3136,11 @@ site <- rel2Code
 #beetle/mosquito/tick results:  since the data is coming from so many different sources the data will be manually manipulated and uploaded here to create the tables in latex.  the headers below are a guide, see previous site char. reports for other table headers depending on the data available at each site. Will have to change latex options if headers change. For bold data, trap locations ID will have to created ( I sort by unique lat/long combinations and create unqiue trap locations)
 
 #beetle trap locations (do not need if the data was pooled)Must include trapID,Lat, Long
-beetleTrapLocations <-read.csv(paste(myPathToArthropods,site,'beetletrap.csv',sep=""),
+beetleTrapLocations <-read.csv(paste(myPathToArthropods,rel2Code,'beetletrap.csv',sep=""),
                      head=TRUE,sep=",",stringsAsFactors = FALSE)
 
 #beetle ID results: includes BOLDID, name (Gen Spp), date,trapID
-beetleID <-read.csv(paste(myPathToArthropods,site,'beetle.csv',sep=""),
+beetleID <-read.csv(paste(myPathToArthropods,rel2Code,'beetle.csv',sep=""),
                      head=TRUE,sep=",",stringsAsFactors = FALSE) 
 
 #remove incomplete records
@@ -3163,11 +3151,11 @@ beetleID<- beetleID[!grepl("_",beetleID$name),]
 beetleID$name <-paste("\\textit{",beetleID$name,"}",sep = " ")
 
 #mosquito trap locations (do not need if the data was pooled)Must include trapID,Lat, Long
-mosquitoTrapLocations <-read.csv(paste(myPathToArthropods,site,'mosquitotrap.csv',sep=""),
+mosquitoTrapLocations <-read.csv(paste(myPathToArthropods,rel2Code,'mosquitotrap.csv',sep=""),
                      head=TRUE,sep=",",stringsAsFactors = FALSE)
 
 #mosquito ID results: includes BOLDID, name (Gen Spp), date,trap
-mosquitoID <-read.csv(paste(myPathToArthropods,site,'mosquito.csv',sep=""),
+mosquitoID <-read.csv(paste(myPathToArthropods,rel2Code,'mosquito.csv',sep=""),
                      head=TRUE,sep=",",stringsAsFactors = FALSE) 
 
 #remove incomplete records
@@ -3178,11 +3166,11 @@ mosquitoID<- mosquitoID[!grepl("_",mosquitoID$name),]
 mosquitoID$name <-paste("\\textit{",mosquitoID$name,"}",sep = " ")
 
 #tick trap locations (do not need if the data was pooled)Must include trapID,Lat, Long
-#tickTrapLocations <-read.csv(paste(myPathToArthropods,coreCode,'ticktrap.csv',sep=""),
+#tickTrapLocations <-read.csv(paste(myPathToArthropods,rel2Code,'ticktrap.csv',sep=""),
 #                     head=TRUE,sep=",",stringsAsFactors = FALSE)
 
 #tick ID results: includes BOLDID, name (Gen Spp), date,trap
-#tickID <-read.csv(paste(myPathToArthropods,coreCode,'tick.csv',sep=""),
+#tickID <-read.csv(paste(myPathToArthropods,rel2Code,'tick.csv',sep=""),
 #                     head=TRUE,sep=",",stringsAsFactors = FALSE) 
 #italize the scientifc name
 #tickID$name <-paste("\\textit{",tickID$name,"}",sep = " ")
@@ -3192,7 +3180,7 @@ mosquitoID$name <-paste("\\textit{",mosquitoID$name,"}",sep = " ")
 
 ##Beetles
 ###Site-Specific Methods
-Beetle site characterization was conducted in June and July 2012 by NEON staff following the standard methods outlined in TOS Site Characterization Methods (RD[6]). Beetle site characterization data was collected to start site level teaching collections. For sequencing information visit http://www.boldsystems.org. For more information on this protocol and data product numbers see Appendix A.
+Beetle site characterization was conducted in June and July 2012 by NEON staff following the standard methods outlined in TOS Site Characterization Methods (RD[6]). Beetle site characterization data was collected to start site level teaching collections. For DNA sequence data visit http://www.boldsystems.org. For more information on this protocol and data product numbers see Appendix A.
 
 ###Results
 
@@ -3200,7 +3188,7 @@ Beetle site characterization was conducted in June and July 2012 by NEON staff f
 
 
 \begin{longtable}{|c|c|c|}
-\caption{`r rel2Code` Beetle Trap Locations}\\
+\caption{Beetle trap locations at `r rel2Code`}\\
 \hline
 \textbf{Trap ID} & \textbf{Lat} & \textbf{Long} \\ 
 \hline
@@ -3214,7 +3202,7 @@ Beetle site characterization was conducted in June and July 2012 by NEON staff f
 \end{longtable}
 
 \begin{longtable}{|c|c|c|c|}
-\caption{`r rel2Code` Beetle Identification Results}\\
+\caption{Beetle identification results at `r rel2Code` }\\
 \hline
 \textbf{BOLD Sample ID} & \textbf{Scientific Name}  & \textbf{Collection Date}  & \textbf{Trap Location} \\ 
 \hline
@@ -3229,12 +3217,12 @@ Beetle site characterization was conducted in June and July 2012 by NEON staff f
 
 ##Mosquitoes
 ###Site-Specific Methods
-Mosquito site characterization was conducted in June and July 2012 by NEON staff following the standard methods outlined in TOS Site Characterization Methods (RD[6]) to test protocol methods and start site level species lists. No pathogen testing was performed. For sequencing information visit http://www.boldsystems.org. For more information on this protocol and data product numbers see Appendix A.
+Mosquito site characterization was conducted in June and July 2012 by NEON staff following the standard methods outlined in TOS Site Characterization Methods (RD[6]) to test protocol methods and start site level species lists. No pathogen testing was performed. For DNA sequence data visit http://www.boldsystems.org. For more information on this protocol and data product numbers see Appendix A.
 
 ###Results
 
 \begin{longtable}{|c|c|c|}
-\caption{`r rel2Code` Mosquito Trap Locations}\\
+\caption{Mosquito trap locations at `r rel2Code`}\\
 \hline
 \textbf{Trap ID} & \textbf{Lat} & \textbf{Long} \\ 
 \hline
@@ -3249,7 +3237,7 @@ Mosquito site characterization was conducted in June and July 2012 by NEON staff
 \end{longtable}
 
 \begin{longtable}{|c|>{\centering\arraybackslash}p{4cm}|c|c|}
-\caption{`r rel2Code` Mosquito Identification Results}\\
+\caption{Mosquito identification results at `r rel2Code` }\\
 \hline
 \textbf{BOLD Sample ID} & \textbf{Scientific Name} & \textbf{Collection Date} & \textbf{Trap Location} \\ 
 \hline
@@ -3269,7 +3257,62 @@ There was no tick site characterization work done at `r rel2Code`. For more info
 
 
 ##Species Reference Lists
-[//]: List references for plant/insects species lists (mammal and bird lists are available in the protocols)
+
+A review of the literature for taxonomic lists of interest for each site was conducted prior to field work. In the case of vertebrates that NEON may capture (e.g., herptiles, small mammals), these lists were often required to secure permits. Key references identified in this effort are listed below. Species lists and associated references for small mammals and breeding landbirds can be found in the appendices of the respective protocols (RD[07], RD[08]).
+
+\hangindent= 1cm
+Bousquet, Y. 2012. Catalogue of Geadephaga (Coleoptera, Adephaga) of America, north of Mexico. ZooKeys, (245), 1-1722.
+
+\hangindent= 1cm
+Darsie Jr., R. F., and R. A. Ward. 2005. Identification and geographical distribution of the mosquitoes of North America, North of Mexico. University Press of Florida, Gainesville.
+
+\hangindent= 1cm
+Drew, M. B., L. K. Kirkman, and A. K. Gholson, Jr. 1998. The vascular flora of Ichauway, Baker County, Georgia: A remnant longleaf pine/wiregrass ecosystem. Castanea 63:1-24.
+
+\hangindent= 1cm
+Goebel, P. C., B. J. Palik, L. K. Kirkman, M. B. Drew, L. West, and D. C. Pederson. 2001. Forest ecosystems of a Lower Gulf Coastal Plain landscape: multifactor classification and analysis. Journal of the Torrey Botanical Society 128:47-75.
+
+\hangindent= 1cm
+Liner, A. E., L. L. Smith, S. W. Golladay, S. B. Castleberry, and J. W. Gibbons. 2008. Amphibian distributions within three types of isolated wetlands in southwest Georgia. American Midland Naturalist 160:69-81. 
 
 
 
+\section{\uppercase{References}}
+
+\hangindent= 1cm
+Fry, J., Xian, G., Jin, S., Dewitz, J., Homer, C., Yang, L., Barnes, C., Herold, N., and Wickham, J., 2011. Completion of the 2006 National Land Cover Database for the Conterminous United States, \textit{PE\&RS}, Vol. 77(9):858-864. 
+
+\hangindent= 1cm
+USDA, NRCS. 2016. The PLANTS Database (http://plants.usda.gov, 1 August 2016). National Plant Data Team, Greensboro, NC 27401-4901 USA.
+
+``` {r appendix A, echo=FALSE, message=FALSE, warning=FALSE}
+
+if (file.exists(
+  'C:/Users/rkrauss/Documents/GitHub/organismalIPT')){
+  appendixA<-read.csv("C:/Users/rkrauss/Documents/GitHub/Site-Characterization-Report/appendixA.csv", sep = ",", head=T,stringsAsFactors = F)
+}
+
+if (file.exists(
+  'C:/Users/mpatterson/Documents/GitHub/Site-Characterization-Report')){
+  appendixA<-read.csv("C:/Users/mpatterson/Documents/GitHub/Site-Characterization-Report/appendixA.csv", sep = ",", head=T,stringsAsFactors = F)
+}
+
+#appendixA <- read.csv("C:/Users/rkrauss/Documents/GitHub/Site-Characterization-Report/appendixA.csv", sep = ",", head=T)
+
+
+```
+
+\section{\uppercase{Appendix A: Data Product Numbers}}
+
+For more information on the sampling protocols and the latest observatory data visit http://data.neonscience.org/data-product-catalog and search by name or code number.
+
+\begin{longtable}{|>{\centering\arraybackslash}p{4cm}|>{\centering\arraybackslash}p{8cm}|>{\centering\arraybackslash}p{4cm}|}
+\caption{NEON data product names and descriptions}\\
+\hline
+\textbf{Name} & \textbf{Description}  & \textbf{Identification Code} \\ \hline
+\endfirsthead
+\hline
+\textbf{Name} & \textbf{Description}  & \textbf{Identification Code} \\ \hline
+\endhead
+`r paste(appendixA$Name, "&", appendixA$Description, "&", appendixA$Identification.Code," \\\\ ","\\hline", sep="", collapse=" ")`
+\end{longtable}
