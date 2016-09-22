@@ -1,15 +1,6 @@
 updates needed in template
-*make insect dates red in the site specific information since they will need to be manually changed 
-*gsub (instead of sub) in the plant char. section ( in case of 2 & signs in the spp. name)
-*plotid/morder in plant tables (second table) (have the if else code already made)
-*add () to section heads with site codes- so it reads SITE NAME (CODE)
-*table names-  some of the nlcd table names are too long
-*stop duplicate tables in table of contents if they extend one page
-*km2 in site intro text km$^2$
-*update logo in git
-*appendix A
-*references
-*site specific references 
+*use D3- remove site specific details and add in generic examples
+*make insect dates red in the site specific information since they will need to be manually changed  
 *red {nlcd year}
 
 D3
@@ -17,11 +8,16 @@ D3
 *blue in DSNY boundary is tough to read [X]
 *DSNY phenology says 13 instead of 2  [X]
 *fix code for table 2 in DSNY and add fix to template if we think it could be a problem that happens again
-*TOS spatial intro for JERC-  NLCD mismatch- work with Dave 
+*TOS spatial intro for JERC-  NLCD mismatch- work with Dave [x]
 *JERC phenology is 13 instead of 2 [X]
 *SPP reference lists for all three sites [X]
 *References formatting [X]
 *appendixA [x]
 
 
-Transfer everything from the site char. folder in the science 2 drive to teh git, change whatever paths need to be changed
+Code to write
+*automaticailly add in FIU/AOS site char reports
+*add in SCR doc numbers
+*Filtering BOLD data
+
+Transfer everything from the site char. folder in the science 2 drive to the git hub, change whatever paths need to be changed
