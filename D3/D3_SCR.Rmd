@@ -902,10 +902,10 @@ Belowground biomass characterization data were collected down to down to a depth
 \begin{longtable}{|c|c|c|c|}
 \caption{Fine root mass per depth increment (cm) at `r coreCode`}\\
 \hline
-\textbf{Upper Depth} & \textbf{Lower Depth} & \textbf{Mean mg per cm$^3$} & \textbf{Std Dev} \\ 
+\textbf{Upper Depth} & \textbf{Lower Depth} & \textbf{Mean (mg per cm$^3$)} & \textbf{Std Dev} \\ 
 \hline
 \endfirsthead
-\textbf{Upper Depth} & \textbf{Lower Depth} & \textbf{Mean mg per cm$^3$} & \textbf{Std Dev} \\ 
+\textbf{Upper Depth} & \textbf{Lower Depth} & \textbf{Mean (mg per cm$^3$)} & \textbf{Std Dev} \\ 
 \hline
 \endhead
 `r paste(First.table$UpperDepth, "&", First.table$LowerDepth, "&", 
@@ -916,11 +916,11 @@ Belowground biomass characterization data were collected down to down to a depth
 \begin{longtable}{|c|c|c|c|}
 \caption{Cumulative fine root mass as a function of depth (cm) at `r coreCode` }\\
 \hline
-\textbf{Upper Depth} & \textbf{Lower Depth} & \textbf{Mean Cumulative g per m$^2$} & \textbf{Cumulative Std Dev} \\ 
+\textbf{Upper Depth} & \textbf{Lower Depth} & \textbf{Mean Cumulative (g per m$^2$)} & \textbf{Cumulative Std Dev} \\ 
 \hline
 \endfirsthead
 \hline
-\textbf{Upper Depth} & \textbf{Lower Depth} & \textbf{Mean Cumulative g per m$^2$} & \textbf{Cumulative Std Dev} \\ 
+\textbf{Upper Depth} & \textbf{Lower Depth} & \textbf{Mean Cumulative (g per m$^2$)} & \textbf{Cumulative Std Dev} \\ 
 \hline
 \endhead
 `r paste(Second.table$UpperDepth, "&", Second.table$LowerDepth, "&", 
@@ -930,11 +930,9 @@ Belowground biomass characterization data were collected down to down to a depth
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=1\textwidth] {`r paste(myPathToGraphics,paste(coreCode,'biomass.jpg'), sep='/')`}
+\includegraphics[height=12cm] {`r paste(myPathToGraphics,paste(coreCode,'biomass.jpg'), sep='/')`}
 \caption{Cumulative root mass by pit depth at `r coreCode`}
 \end{figure}
-
-\newpage
 
 \begin{longtable}{|c|c|}
 \caption{Fine root biomass sampling summary data at `r coreCode`}\\
@@ -1232,11 +1230,11 @@ Plant characterization data were collected by an external contractor during the 
 \begin{longtable}{|c|>{\centering\arraybackslash}p{4cm}|c|c|>{\centering\arraybackslash}p{2cm}|>{\centering\arraybackslash}p{2cm}|}
 \caption{Site plant characterization and phenology species summary at `r coreCode`}\\
 \hline
-\textbf{Taxon ID} & \textbf{Scientic Name} & \textbf{Rank} & \textbf{Mean Percent Cover} & \textbf{Mean Canopy Area per m$^2$} & \textbf{Mean ABH cm$^2$ per m$^2$} \\ 
+\textbf{Taxon ID} & \textbf{Scientic Name} & \textbf{Rank} & \textbf{Mean Percent Cover} & \textbf{Mean Canopy Area per m$^2$} & \textbf{Mean ABH (cm$^2$ per m$^2$)} \\ 
 \hline
 \endfirsthead
 \hline
-\textbf{Taxon ID} & \textbf{Scientic Name} & \textbf{Rank} & \textbf{Mean Percent Cover} & \textbf{Mean Canopy Area per m$^2$} & \textbf{Mean ABH cm$^2$ per m$^2$} \\ 
+\textbf{Taxon ID} & \textbf{Scientic Name} & \textbf{Rank} & \textbf{Mean Percent Cover} & \textbf{Mean Canopy Area per m$^2$} & \textbf{Mean ABH (cm$^2$ per m$^2$)} \\ 
 \hline
 \endhead
 `r paste(First.Table$taxonID, "&", First.Table$Genspp , First.Table$theRest, "&",
@@ -1394,7 +1392,7 @@ Franz, R., Hall, D.W. (1991): Vegetative communities and annotated plant lists f
 
 
 
-\section{\uppercase{Relocatable Site- `r rel1Name` (`r rel1Code`)}}
+\section{\uppercase{Relocatable Site 1- `r rel1Name` (`r rel1Code`)}}
 
 The 12,000-acre (49 km$^2$) Disney Wilderness Preserve (DSNY) straddles the headwaters of the Everglades ecosystem in south-central Florida. This site is seasonally wet and flooded. Data from DSNY support greater understanding of wetland regeneration, water storage and quality, and predictive models for future large-scale restorations. 
 
@@ -1923,7 +1921,7 @@ Belowground biomass characterization data were collected down to a depth of `r l
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=1\textwidth] {`r paste(myPathToGraphics,paste(rel1Code,'biomass.jpg'), sep='/')`}
+\includegraphics[height=12cm] {`r paste(myPathToGraphics,paste(rel1Code,'biomass.jpg'), sep='/')`}
 \caption{Cumulative root mass by pit depth at `r rel1Code`}
 \end{figure}
 
@@ -2392,7 +2390,7 @@ Hammer, Roger L. Central Florida Wildflowers: A Field Guide to Wildflowers of th
 Ware, S., C. Frost, and P.D. Doerr. 1993. Southern Mixed Hardwood Forest: The Former Longleaf Pine Forest, Pages 447-493 in (W.H. Martin, et al. eds.) Biodiversity of the Southeastern United States, John Wiley & Sons, New York. 502pp.
 
 
-\section{\uppercase{Relocatable Site- `r rel2Name` (`r rel2Code`)}}
+\section{\uppercase{Relocatable Site 2- `r rel2Name` (`r rel2Code`)}}
 
 The Joseph Jones Ecological Research Center (JERC) is an 11,000-hectare (13 km$^2$) reserve located within the Lower Coastal Plains and Flatwoods areas in southern Georgia. 
 
@@ -2919,7 +2917,7 @@ Belowground biomass characterization data were collected down down to a depth of
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=1\textwidth, scale=.07] {`r paste(myPathToGraphics,paste(rel2Code,'biomass.jpg'), sep='/')`}
+\includegraphics[height=12cm] {`r paste(myPathToGraphics,paste(rel2Code,'biomass.jpg'), sep='/')`}
 \caption{Cumulative root mass by pit depth at  `r rel2Code`}
 \end{figure}
 
