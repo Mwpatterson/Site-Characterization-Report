@@ -1265,6 +1265,23 @@ Note: Percent herbaceous cover was measured by species and then added together t
 ```{r insect and tick, echo=FALSE, message=FALSE, warning=FALSE }
 site <- coreCode
 
+#beetle trap locations (do not need if the data was pooled)Must include trapID,Lat, Long
+beetleTrapLocations <-read.csv(paste(myPathToArthropods,coreCode,'beetletrap.csv',sep=""),
+                     head=TRUE,sep=",",stringsAsFactors = FALSE)
+
+#beetle ID results: includes BOLDID, name (Gen Spp), date,trapID
+beetleID <-read.csv(paste(myPathToArthropods,coreCode,'beetle.csv',sep=""),
+                     head=TRUE,sep=",",stringsAsFactors = FALSE) 
+
+#remove incomplete records from BOLD database files
+#beetleID<- beetleID[complete.cases(beetleID$species_taxID),]
+#beetleID<- beetleID[!grepl("_",beetleID$name),]
+
+#italize the scientifc name
+beetleID$name <-paste("\\textit{",beetleID$name,"}",sep = " ")
+#add in sp. if necessary
+beetleID$name <- paste(beetleID$name, beetleID$addName, sep =" ")
+
 
 #mosquito trap locations (do not need if the data was pooled)Must include trapID,Lat, Long
 mosquitoTrapLocations <-read.csv(paste(myPathToArthropods,site,'mosquitotrap.csv',sep=""),
@@ -1304,7 +1321,40 @@ Rel2.ticktable<-ticktable[which(ticktable$Site==rel2Code),]
 
 ##Beetles
 ###Site-Specific Methods
-There was no beetle site characterization work done at `r coreCode`. For more information on this protocol and data product numbers see Appendix A.
+Beetle site characterization was conducted in August and September 2012 by NEON staff following the standard methods outlined in TOS Site Characterization Methods (RD[6]). Beetle site characterization data was collected to start site level teaching collections. For DNA sequence data generated as a result of these efforts, visit the Barcode of Life Datasystems (BOLD) at http://www.boldsystems.org. For more information on this protocol and data product numbers see Appendix A.
+
+
+###Results
+
+\begin{longtable}{|c|c|c|}
+\caption{Beetle trap locations at `r coreCode` }\\
+\hline
+\textbf{Trap ID} & \textbf{Lat} & \textbf{Long} \\ 
+\hline
+\endfirsthead
+\hline
+\textbf{Trap ID} & \textbf{Lat} & \textbf{Long} \\ 
+\hline
+\endhead
+`r paste(beetleTrapLocations$trapID, "&", beetleTrapLocations$Lat, "&",
+         beetleTrapLocations$Long," \\\\ ","\\hline", sep="", collapse=" ")`
+\end{longtable}
+
+
+\begin{longtable}{|c|c|c|c|c|}
+\caption{Beetle identification results at `r coreCode`}\\
+\hline
+\textbf{Sample ID} & \textbf{Scientific Name} & \textbf{Morpho Species Name}  & \textbf{Collection Date}  & \textbf{Trap Location} \\ 
+\hline
+\endfirsthead
+\hline
+\textbf{Sample ID} & \textbf{Scientific Name}  & \textbf{Morpho Species Name} & \textbf{Collection Date}  & \textbf{Trap Location} \\ 
+\hline
+\endhead
+`r paste(beetleID$BOLDID, "&", beetleID$name, "&", beetleID$morph, "&", beetleID$date, "&",
+          beetleID$trapID," \\\\ ","\\hline", sep="", collapse=" ")`
+\end{longtable}
+Note: Samples that include "NEONTcarabid" in their sample ID indicate BOLD records are available.  Samples without "NEONTcarabid" were identified by a parataxonimist. 
 
 ##Mosquitoes
 ###Site-Specific Methods
@@ -2217,6 +2267,7 @@ Note: Mean canopy area is collected for shrubs. Mean area at breast height (ABH)
 Note: Percent herbaceous cover was measured by species and then added together to calculate the percent total herbaceous cover for each plot. 
 
 ```{r   rel1 insect and tick, echo=FALSE, message=FALSE, warning=FALSE }
+site <- rel1Code
 
 #beetle/mosquito/tick results:  since the data is coming from so many different sources the data will be manually manipulated and uploaded here to create the tables in latex.  the headers below are a guide, see previous site char. reports for other table headers depending on the data available at each site. Will have to change latex options if headers change. For bold data, trap locations ID will have to created ( I sort by unique lat/long combinations and create unqiue trap locations)
 
@@ -2236,10 +2287,6 @@ beetleID <-read.csv(paste(myPathToArthropods,rel1Code,'beetle.csv',sep=""),
 beetleID$name <-paste("\\textit{",beetleID$name,"}",sep = " ")
 #add in sp. if necessary
 beetleID$name <- paste(beetleID$name, beetleID$add..Name, sep =" ")
-
-#add "unknown" 
-beetleID$name[beetleID$name==""] <- "Unknown" 
-
 
 
 #mosquito trap locations (do not need if the data was pooled)Must include trapID,Lat, Long
@@ -3313,21 +3360,22 @@ Beetle site characterization was conducted in June and July 2012 by NEON staff f
 `r paste(beetleTrapLocations$trapID, "&", beetleTrapLocations$Lat, "&",
          beetleTrapLocations$Long," \\\\ ","\\hline", sep="", collapse=" ")`
 \end{longtable}
-Note: Trap locations were recorded to only three decimal places, thus introducing mapping error. No sampling occurred outside of the permitted boundary.
 
-\begin{longtable}{|c|c|c|c|}
-\caption{Beetle identification results at `r rel2Code` }\\
+
+\begin{longtable}{|c|c|c|c|c|}
+\caption{Beetle identification results at `r rel2Code`}\\
 \hline
-\textbf{BOLD Sample ID} & \textbf{Scientific Name}  & \textbf{Collection Date}  & \textbf{Trap Location} \\ 
+\textbf{Sample ID} & \textbf{Scientific Name} & \textbf{Morpho Species Name}  & \textbf{Collection Date}  & \textbf{Trap Location} \\ 
 \hline
 \endfirsthead
 \hline
-\textbf{BOLD Sample ID} & \textbf{Scientific Name}  & \textbf{Collection Date}  & \textbf{Trap Location} \\ 
+\textbf{Sample ID} & \textbf{Scientific Name}  & \textbf{Morpho Species Name} & \textbf{Collection Date}  & \textbf{Trap Location} \\ 
 \hline
 \endhead
-`r paste(beetleID$BOLDID, "&", beetleID$name, "&", beetleID$date, "&",
+`r paste(beetleID$BOLDID, "&", beetleID$name, "&", beetleID$morph, "&", beetleID$date, "&",
           beetleID$trapID," \\\\ ","\\hline", sep="", collapse=" ")`
 \end{longtable}
+Note: Samples that include "NEONTcarabid" in their sample ID indicate BOLD records are available.  Samples without "NEONTcarabid" were identified by a parataxonimist. . 
 
 ##Mosquitoes
 ###Site-Specific Methods
