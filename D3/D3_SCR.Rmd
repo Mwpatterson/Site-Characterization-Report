@@ -934,6 +934,8 @@ Belowground biomass characterization data were collected down to down to a depth
 \caption{Cumulative root mass by pit depth at `r coreCode`}
 \end{figure}
 
+\newpage
+
 \begin{longtable}{|c|c|}
 \caption{Fine root biomass sampling summary data at `r coreCode`}\\
 \hline
@@ -1942,11 +1944,11 @@ Belowground biomass characterization data were collected down to a depth of `r l
 \begin{longtable}{|c|c|c|c|}
 \caption{Fine root mass per depth increment (cm) at `r rel1Code`}\\
 \hline
-\textbf{Upper Depth} & \textbf{Lower Depth} & \textbf{Mean mg per cm$^3$} & \textbf{Std Dev} \\ 
+\textbf{Upper Depth} & \textbf{Lower Depth} & \textbf{Mean (mg per cm$^3$)} & \textbf{Std Dev} \\ 
 \hline
 \endfirsthead
 \hline
-\textbf{Upper Depth} & \textbf{Lower Depth} & \textbf{Mean mg per cm$^3$} & \textbf{Std Dev} \\ 
+\textbf{Upper Depth} & \textbf{Lower Depth} & \textbf{Mean (mg per cm$^3$)} & \textbf{Std Dev} \\ 
 \hline
 \endhead
 `r paste(First.table$UpperDepth, "&", First.table$LowerDepth, "&", 
@@ -1957,11 +1959,11 @@ Belowground biomass characterization data were collected down to a depth of `r l
 \begin{longtable}{|c|c|c|c|}
 \caption{Cumulative fine root mass as a function of depth (cm) at `r rel1Code`}\\
 \hline
-\textbf{Upper Depth} & \textbf{Lower Depth} & \textbf{Mean Cumulative g per m$^2$} & \textbf{Cumulative Std Dev} \\ 
+\textbf{Upper Depth} & \textbf{Lower Depth} & \textbf{Mean Cumulative (g per m$^2$)} & \textbf{Cumulative Std Dev} \\ 
 \hline
 \endfirsthead
 \hline
-\textbf{Upper Depth} & \textbf{Lower Depth} & \textbf{Mean Cumulative g per m$^2$} & \textbf{Cumulative Std Dev} \\ 
+\textbf{Upper Depth} & \textbf{Lower Depth} & \textbf{Mean Cumulative (g per m$^2$)} & \textbf{Cumulative Std Dev} \\ 
 \hline
 \endhead
 `r paste(Second.table$UpperDepth, "&", Second.table$LowerDepth, "&", 
@@ -1974,8 +1976,6 @@ Belowground biomass characterization data were collected down to a depth of `r l
 \includegraphics[height=12cm] {`r paste(myPathToGraphics,paste(rel1Code,'biomass.jpg'), sep='/')`}
 \caption{Cumulative root mass by pit depth at `r rel1Code`}
 \end{figure}
-
-\newpage
 
 \begin{longtable}{|c|c|}
 \caption{Fine root biomass sampling summary data at `r rel1Code`}\\
@@ -2235,11 +2235,11 @@ Plant characterization data were collected by an external contractor and NEON te
 \begin{longtable}{|c|>{\centering\arraybackslash}p{4cm}|c|c|>{\centering\arraybackslash}p{2cm}|>{\centering\arraybackslash}p{2cm}|}
 \caption{Site plant characterization and phenology species summary at `r rel1Code`}\\
 \hline
-\textbf{Taxon ID} & \textbf{Scientic Name} & \textbf{Rank} & \textbf{Mean Percent Cover} & \textbf{Mean Canopy Area per m$^2$} & \textbf{Mean ABH cm$^2$ per m$^2$} \\ 
+\textbf{Taxon ID} & \textbf{Scientic Name} & \textbf{Rank} & \textbf{Mean Percent Cover} & \textbf{Mean Canopy Area per m$^2$} & \textbf{Mean ABH (cm$^2$ per m$^2$)} \\ 
 \hline
 \endfirsthead
 \hline
-\textbf{Taxon ID} & \textbf{Scientic Name} & \textbf{Rank} & \textbf{Mean Percent Cover} & \textbf{Mean Canopy Area per m$^2$} & \textbf{Mean ABH cm$^2$ per m$^2$} \\ 
+\textbf{Taxon ID} & \textbf{Scientic Name} & \textbf{Rank} & \textbf{Mean Percent Cover} & \textbf{Mean Canopy Area per m$^2$} & \textbf{Mean ABH (cm$^2$ per m$^2$)} \\ 
 \hline
 \endhead
 `r paste(First.Table$taxonID, "&", First.Table$Genspp , First.Table$theRest, "&",
@@ -2935,11 +2935,11 @@ Belowground biomass characterization data were collected down down to a depth of
 \begin{longtable}{|c|c|c|c|}
 \caption{Fine root mass per depth increment (cm) at `r rel2Code`}\\
 \hline
-\textbf{Upper Depth} & \textbf{Lower Depth} & \textbf{Mean mg per cm$^3$} & \textbf{Std Dev} \\ 
+\textbf{Upper Depth} & \textbf{Lower Depth} & \textbf{Mean (mg per cm$^3$)} & \textbf{Std Dev} \\ 
 \hline
 \endfirsthead
 \hline
-\textbf{Upper Depth} & \textbf{Lower Depth} & \textbf{Mean mg per cm$^3$} & \textbf{Std Dev} \\ 
+\textbf{Upper Depth} & \textbf{Lower Depth} & \textbf{Mean (mg per cm$^3$)} & \textbf{Std Dev} \\ 
 \hline
 \endhead
 `r paste(First.table$UpperDepth, "&", First.table$LowerDepth, "&", 
@@ -2950,11 +2950,11 @@ Belowground biomass characterization data were collected down down to a depth of
 \begin{longtable}{|c|c|c|c|}
 \caption{Cumulative fine root mass as a function of depth (cm) at `r rel2Code`}\\
 \hline
-\textbf{Upper Depth} & \textbf{Lower Depth} & \textbf{Mean Cumulative g per m$^2$} & \textbf{Cumulative Std Dev} \\ 
+\textbf{Upper Depth} & \textbf{Lower Depth} & \textbf{Mean Cumulative (g per m$^2$)} & \textbf{Cumulative Std Dev} \\ 
 \hline
 \endfirsthead
 \hline
-\textbf{Upper Depth} & \textbf{Lower Depth} & \textbf{Mean Cumulative g per m$^2$} & \textbf{Cumulative Std Dev} \\ 
+\textbf{Upper Depth} & \textbf{Lower Depth} & \textbf{Mean Cumulative (g per m$^2$)} & \textbf{Cumulative Std Dev} \\ 
 \hline
 \endhead
 `r paste(Second.table$UpperDepth, "&", Second.table$LowerDepth, "&", 
@@ -2967,8 +2967,6 @@ Belowground biomass characterization data were collected down down to a depth of
 \includegraphics[height=12cm] {`r paste(myPathToGraphics,paste(rel2Code,'biomass.jpg'), sep='/')`}
 \caption{Cumulative root mass by pit depth at  `r rel2Code`}
 \end{figure}
-
-\newpage
 
 \begin{longtable}{|c|c|}
 \caption{Fine root biomass sampling summary data at `r rel2Code`}\\
@@ -3260,11 +3258,11 @@ Plant characterization data were collected by an external contractor during the 
 \begin{longtable}{|c|>{\centering\arraybackslash}p{4cm}|c|c|>{\centering\arraybackslash}p{2cm}|>{\centering\arraybackslash}p{2cm}|}
 \caption{Site plant characterization and phenology species summary at `r rel2Code`}\\
 \hline
-\textbf{Taxon ID} & \textbf{Scientic Name} & \textbf{Rank} & \textbf{Mean Percent Cover} & \textbf{Mean Canopy Area per m$^2$} & \textbf{Mean ABH cm$^2$ per m$^2$} \\ 
+\textbf{Taxon ID} & \textbf{Scientic Name} & \textbf{Rank} & \textbf{Mean Percent Cover} & \textbf{Mean Canopy Area per m$^2$} & \textbf{Mean ABH (cm$^2$ per m$^2$)} \\ 
 \hline
 \endfirsthead
 \hline
-\textbf{Taxon ID} & \textbf{Scientic Name} & \textbf{Rank} & \textbf{Mean Percent Cover} & \textbf{Mean Canopy Area per m$^2$} & \textbf{Mean ABH cm$^2$ per m$^2$} \\ 
+\textbf{Taxon ID} & \textbf{Scientic Name} & \textbf{Rank} & \textbf{Mean Percent Cover} & \textbf{Mean Canopy Area per m$^2$} & \textbf{Mean ABH (cm$^2$ per m$^2$)} \\ 
 \hline
 \endhead
 `r paste(First.Table$taxonID, "&", First.Table$Genspp , First.Table$theRest, "&",
