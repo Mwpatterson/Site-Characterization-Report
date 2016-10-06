@@ -2230,12 +2230,19 @@ beetleTrapLocations <-read.csv(paste(myPathToArthropods,rel1Code,'beetletrap.csv
 beetleID <-read.csv(paste(myPathToArthropods,rel1Code,'beetle.csv',sep=""),
                      head=TRUE,sep=",",stringsAsFactors = FALSE) 
 
-#remove incomplete records
-beetleID<- beetleID[complete.cases(beetleID$species_taxID),]
-beetleID<- beetleID[!grepl("_",beetleID$name),]
+#remove incomplete records from BOLD database files
+#beetleID<- beetleID[complete.cases(beetleID$species_taxID),]
+#beetleID<- beetleID[!grepl("_",beetleID$name),]
 
 #italize the scientifc name
 beetleID$name <-paste("\\textit{",beetleID$name,"}",sep = " ")
+#add in sp. if necessary
+beetleID$name <- paste(beetleID$name, beetleID$add..Name, sep =" ")
+
+#add "unknown" 
+beetleID$name[beetleID$name==""] <- "Unknown" 
+
+
 
 #mosquito trap locations (do not need if the data was pooled)Must include trapID,Lat, Long
 mosquitoTrapLocations <-read.csv(paste(myPathToArthropods,rel1Code,'mosquitotrap.csv',sep=""),
@@ -2287,21 +2294,23 @@ Beetle site characterization was conducted in June and July 2012 by NEON staff f
 `r paste(beetleTrapLocations$trapID, "&", beetleTrapLocations$Lat, "&",
          beetleTrapLocations$Long," \\\\ ","\\hline", sep="", collapse=" ")`
 \end{longtable}
-Note: Trap locations were recorded to only three decimal places, thus introducing mapping error. No sampling occurred outside of the permitted boundary.
 
-\begin{longtable}{|c|c|c|c|}
+
+\begin{longtable}{|c|c|c|c|c|}
 \caption{Beetle identification results at `r rel1Code`}\\
 \hline
-\textbf{BOLD Sample ID} & \textbf{Scientific Name}  & \textbf{Collection Date}  & \textbf{Trap Location} \\ 
+\textbf{Sample ID} & \textbf{Scientific Name} & \textbf{Morpho Species Name}  & \textbf{Collection Date}  & \textbf{Trap Location} \\ 
 \hline
 \endfirsthead
 \hline
-\textbf{BOLD Sample ID} & \textbf{Scientific Name}  & \textbf{Collection Date}  & \textbf{Trap Location} \\ 
+\textbf{Sample ID} & \textbf{Scientific Name}  & \textbf{Morpho Species Name} & \textbf{Collection Date}  & \textbf{Trap Location} \\ 
 \hline
 \endhead
-`r paste(beetleID$BOLDID, "&", beetleID$name, "&", beetleID$date, "&",
+`r paste(beetleID$BOLDID, "&", beetleID$name, "&", beetleID$morph, "&", beetleID$date, "&",
           beetleID$trapID," \\\\ ","\\hline", sep="", collapse=" ")`
 \end{longtable}
+Note: Samples that include "NEONTcarabid" in their sample ID indicate BOLD records are available.  Samples without "NEONTcarabid" were identified by a parataxonimist. 
+
 
 ##Mosquitoes
 ###Site-Specific Methods
