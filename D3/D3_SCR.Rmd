@@ -232,7 +232,7 @@ See configuration management system for approval history.
 
 
 
-\scriptsize{The National Ecological Observatory Network is a project solely funded by the National Science Foundation and managed under cooperative agreement by Battelle. Any opinions, findings, and conclusions or recommendations expressed in this material are those of the author(s) and do not necessarily reflect the views of the National Science Foundation.}
+\scriptsize{The National Ecological Observatory Network is a project solely funded by the National Science Foundation and managed under cooperative agreement by Battelle Ecology Inc. Any opinions, findings, and conclusions or recommendations expressed in this material are those of the author(s) and do not necessarily reflect the views of the National Science Foundation.}
 \end{center}
 
 \newpage
@@ -255,17 +255,23 @@ See configuration management system for approval history.
 
 
 \newpage
+\pagenumbering{roman}
+\fancyfoot[C]{\thepage}
 \renewcommand\contentsname{\uppercase{Table of contents}}
 \tableofcontents
+\fancyfoot[C]{\thepage}
 
 \renewcommand\listtablename{\uppercase{list of tables and figures}}
 \let\oldnumberline\numberline
 \renewcommand{\numberline}{\tablename~\oldnumberline}
 \listoftables
+\fancyfoot[C]{\thepage}
 \renewcommand{\numberline}{\figurename~\oldnumberline}
 \renewcommand\listfigurename{}
 \addtocontents{lof}{\vskip -1.2cm}
 \listoffigures
+\fancyfoot[C]{\thepage}
+
 
 \newpage
 
@@ -402,6 +408,8 @@ The Southeast Domain is a patchwork of forest, grassland, and wetland communitie
 *  Relocatable 1: `r rel1Name`
 *  Relocatable 2: `r rel2Name`
 *  Science themes: Forest Management 
+
+\newpage
 
 \section{\uppercase{Core Site- `r coreName` (`r coreCode`)}}
 
@@ -894,7 +902,7 @@ lowestdepth<-max(Second.table$LowerDepth)
 <!---
 [//]:  Include general information: Date, group who collected the data (NEON staff or external contractor) and any deviations from the methods. Summarize high level important points. Reference the data product number on the data portal. Reference NRCS soil narratives if they become available.
 -->
-Belowground biomass characterization data were collected down to down to a depth of `r lowestdepth` cm by NEON staff in `r megapit.month` `r megapit.year`. Since the NEON protocol for long-term, operational sampling of belowground biomass only collects data to a depth of 30 cm, the belowground biomass site characterization data are critical for scaling belowground biomass measurements to greater depths; see the TOS Science Design for Plant Biomass, Productivity, and Leaf Area Index (AD[8]) for more information. Samples were collected following the standard methods outlined in TOS Site Characterization Methods (RD[6]). A bulk density soil corer was used instead of a soil knife to extract soil. Roots were sorted by diameter size (less than or greater than two mm) and root status (live or dead). The tables below summarize all the belowground biomass less than or equal to 30mm diameter; size class data and more information can be found by searching the NEON data portal for the data product numbers in Appendix A.
+Belowground biomass characterization data were collected down to down to a depth of `r lowestdepth` cm by NEON staff in `r megapit.month` `r megapit.year`. Since the NEON protocol for long-term, operational sampling of belowground biomass only collects data to a depth of 30 cm, the belowground biomass site characterization data are critical for scaling belowground biomass measurements to greater depths; see the TOS Science Design for Plant Biomass, Productivity, and Leaf Area Index (AD[8]) for more information. Samples were collected following the standard methods outlined in TOS Site Characterization Methods (RD[6]). A bulk density soil corer was used instead of a soil knife to extract soil. Roots were sorted by diameter size (less than or greater than two mm) and root status (live or dead). The tables below summarize all the belowground biomass less than or equal to 30 mm diameter; size class data and more information can be found by searching the NEON data portal for the data product numbers in Appendix A.
 
 ###Results
 [//]:  Be sure to check units!!!!
@@ -1442,7 +1450,7 @@ Dodd, C.K., Jr. 1995. Reptiles and amphibians in the endangered longleaf pine ec
 \hangindent= 1cm
 Franz, R., Hall, D.W. (1991): Vegetative communities and annotated plant lists for the Katharine Ordway Preserve-Swisher Memorial Sanctuary, Putnam County, Florida. Ordway Preserve Series,Report 3.
 
-
+\newpage
 
 \section{\uppercase{Relocatable Site 1- `r rel1Name` (`r rel1Code`)}}
 
@@ -1936,7 +1944,7 @@ lowestdepth<-max(Second.table$LowerDepth)
 <!---
 [//]:  Include general information: Date, group who collected the data (NEON staff or external contractor) and any deviations from the methods. Summarize high level important points. Reference the data product number on the data portal. Reference NRCS soil narratives if they become available.
 -->
-Belowground biomass characterization data were collected down to a depth of `r lowestdepth` cm by NEON staff in `r megapit.month` `r megapit.year`. Since the NEON protocol for long-term, operational sampling of belowground biomass only collects data to a depth of 30 cm, the belowground biomass site characterization data are critical for scaling belowground biomass measurements to greater depths; see the TOS Science Design for Plant Biomass, Productivity, and Leaf Area Index (AD[8]) for more information. Samples were collected following the standard methods outlined in TOS Site Characterization Methods (RD[6]). A bulk density soil corer and soil knife were used to extract soil to test out protocols methods. Roots were sorted by diameter size (less than or greater than two mm) and root status (live or dead). The tables below summarize all the belowground biomass less than or equal to 30mm diameter; size class data and more information can be found by searching the NEON data portal for the data product numbers in Appendix A.
+Belowground biomass characterization data were collected down to a depth of `r lowestdepth` cm by NEON staff in `r megapit.month` `r megapit.year`. Since the NEON protocol for long-term, operational sampling of belowground biomass only collects data to a depth of 30 cm, the belowground biomass site characterization data are critical for scaling belowground biomass measurements to greater depths; see the TOS Science Design for Plant Biomass, Productivity, and Leaf Area Index (AD[8]) for more information. Samples were collected following the standard methods outlined in TOS Site Characterization Methods (RD[6]). A bulk density soil corer and soil knife were used to extract soil to test out protocols methods. Roots were sorted by diameter size (less than or greater than two mm) and root status (live or dead). The tables below summarize all the belowground biomass less than or equal to 30 mm diameter; size class data and more information can be found by searching the NEON data portal for the data product numbers in Appendix A.
 
 ###Results
 [//]:  Be sure to check units!!!!
@@ -2436,6 +2444,7 @@ Hammer, Roger L. Central Florida Wildflowers: A Field Guide to Wildflowers of th
 \hangindent= 1cm
 Ware, S., C. Frost, and P.D. Doerr. 1993. Southern Mixed Hardwood Forest: The Former Longleaf Pine Forest, Pages 447-493 in (W.H. Martin, et al. eds.) Biodiversity of the Southeastern United States, John Wiley & Sons, New York. 502pp.
 
+\newpage
 
 \section{\uppercase{Relocatable Site 2- `r rel2Name` (`r rel2Code`)}}
 
@@ -2927,7 +2936,7 @@ lessthan <- "???"
 <!---
 [//]:  Include general information: Date, group who collected the data (NEON staff or external contractor) and any deviations from the methods. Summarize high level important points. Reference the data product number on the data portal. Reference NRCS soil narratives if they become available.
 -->
-Belowground biomass characterization data were collected down down to a depth of `r lowestdepth` cm by NEON staff in `r megapit.month` `r megapit.year`. Since the NEON protocol for long-term, operational sampling of belowground biomass only collects data to a depth of 30 cm, the belowground biomass site characterization data are critical for scaling belowground biomass measurements to greater depths; see the TOS Science Design for Plant Biomass, Productivity, and Leaf Area Index (AD[8]) for more information. Samples were collected following the standard methods outlined in TOS Site Characterization Methods (RD[6]). A bulk density soil corer and soil knife were used to extract soil to test out protocols methods. Roots were sorted by diameter size (less than or greater than two mm) and root status (live or dead). The tables below summarize all the belowground biomass less than or equal to 30mm diameter; size class data and more information can be found by searching the NEON data portal for the data product numbers in Appendix A.
+Belowground biomass characterization data were collected down down to a depth of `r lowestdepth` cm by NEON staff in `r megapit.month` `r megapit.year`. Since the NEON protocol for long-term, operational sampling of belowground biomass only collects data to a depth of 30 cm, the belowground biomass site characterization data are critical for scaling belowground biomass measurements to greater depths; see the TOS Science Design for Plant Biomass, Productivity, and Leaf Area Index (AD[8]) for more information. Samples were collected following the standard methods outlined in TOS Site Characterization Methods (RD[6]). A bulk density soil corer and soil knife were used to extract soil to test out protocols methods. Roots were sorted by diameter size (less than or greater than two mm) and root status (live or dead). The tables below summarize all the belowground biomass less than or equal to 30 mm diameter; size class data and more information can be found by searching the NEON data portal for the data product numbers in Appendix A.
 
 ###Results
 [//]:  Be sure to check units!!!!
