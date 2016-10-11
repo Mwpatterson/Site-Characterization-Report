@@ -116,16 +116,16 @@ thirdAuthor <- "Oliver Smith"
 thirdOrg <- "SCI"
 
 #Approvals
-approvalName <- ""
-approvalOrg <- ""
-approvalDate <- ""
+approvalName <- "Andrea Thorpe"
+approvalOrg <- "SCI"
+approvalDate <- "mm/dd/2016"
 
-secondApprovalName <- ""
-secondApprovalOrg <- ""
-secondApprovalDate <- ""
+secondApprovalName <- "Mike Stewart"
+secondApprovalOrg <- "SYS"
+secondApprovalDate <- "mm/dd/2016"
 
 #Release
-releasedByName <- "Jen DeNicholas"
+releasedByName <- "Judy Salazar"
 releasedByOrg <- "CM"
 releasedByDate <- "mm/dd/2016"
 
@@ -133,7 +133,7 @@ releasedByDate <- "mm/dd/2016"
 #change record
 revA <- "A"
 revADate <- "mm/dd/yyyy"
-revAECO <- "ECO-xxxx"
+revAECO <- "ECO-04253"
 revADesc <- "Initial Release" 
 
 revB <- "B"
@@ -212,8 +212,6 @@ variablesReported <- c("targetTaxaPresent", "morphospeciesID","individualCount",
 \textbf{APPROVALS}     &\textbf{ORGANIZATION}  &\textbf{APPROVAL DATE} \\ \hline
 `r approvalName`       & `r approvalOrg`       &  `r approvalDate`\\ \hline
 `r secondApprovalName` & `r secondApprovalOrg` &`r secondApprovalDate`  \\ \hline
- & & \\ \hline
- & & \\ \hline
 \end{tabular}
 
 \setlength{\extrarowheight}{1mm}
