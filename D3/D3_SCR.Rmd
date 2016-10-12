@@ -230,8 +230,13 @@ See configuration management system for approval history.
 
 
 
-\scriptsize{The National Ecological Observatory Network is a project solely funded by the National Science Foundation and managed under cooperative agreement by Battelle Ecology Inc. Any opinions, findings, and conclusions or recommendations expressed in this material are those of the author(s) and do not necessarily reflect the views of the National Science Foundation.}
+\scriptsize{The National Ecological Observatory Network is a project solely funded by the National Science Foundation and managed under cooperative agreement by Battelle. Any opinions, findings, and conclusions or recommendations expressed in this material are those of the author(s) and do not necessarily reflect the views of the National Science Foundation.}
 \end{center}
+
+
+\fancyfoot[L]{
+\footnotesize{\color{gray}Template\_NEON.DOC.004243 Rev H}
+} 
 
 \newpage
 
@@ -255,10 +260,12 @@ See configuration management system for approval history.
 \newpage
 \pagenumbering{roman}
 \fancyfoot[C]{\thepage}
+\fancyfoot[L]{
+\footnotesize{}
+} 
 \renewcommand\contentsname{\uppercase{Table of contents}}
 \tableofcontents
 \fancyfoot[C]{\thepage}
-
 \renewcommand\listtablename{\uppercase{list of tables and figures}}
 \let\oldnumberline\numberline
 \renewcommand{\numberline}{\tablename~\oldnumberline}
@@ -275,9 +282,6 @@ See configuration management system for approval history.
 
 \section{\uppercase{Description}}
 \pagenumbering{arabic} 
-\fancyfoot[L]{
-\footnotesize{\color{gray}Template NEON.DOC.050006 Rev F}
-} 
 \fancyfoot[C]{
 Page \thepage \hspace{1pt} of \pageref{LastPage}
 }
